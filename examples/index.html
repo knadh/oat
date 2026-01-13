@@ -9,7 +9,7 @@
   <style>
     /* Demo-specific styles */
     .demo-section {
-      margin-bottom: var(--lt-space-12);
+      margin-bottom: var(--lt-space-18);
       padding-bottom: var(--lt-space-8);
       border-bottom: 1px solid var(--lt-border);
     }
@@ -68,7 +68,23 @@
   <div class="sidebar-content">
     <div class="container" style="padding: var(--lt-space-8) var(--lt-space-4);">
       <h1>LongTerm UI</h1>
-      <p>A minimal, semantic-first UI component library with zero dependencies.</p>
+      <p>
+        A minimal, semantic-first UI component library with zero external dependencies. HTML native tags are styled by default
+        without needing any classes. Dynamic components like dialogs and dropdown use WebComponents.
+      </p>
+      <p>
+        I was sick of getting rug-pulled and vendor-version-locked in by Javascript frameworks, UI-frameworks with numerous dependencies,
+        endeming to the Javascript ecosystem. I want a vanilla HTML+CSS+JS UI library that I can maintain and use across my
+        projects over the long term without being beholden to what is fashionable at the moment. So literally, LongTerm UI.
+        My primary usecase is server-side rendered web applications.
+      </p>
+      <p>
+        This lib has been created with heavy LLM assistance and has a shadcn-ui-like aesthetic with no external dependencies.
+        I don't intend to maintain this to compete with any other framework, nor take feature requests. It's for my own use
+        (and of course anyone else who finds it useful as-is).
+      </p>
+
+      <hr /><br /><br />
 
       <!-- Typography -->
       <section id="typography" class="demo-section">
