@@ -8,7 +8,7 @@ Include the CSS and JS files directly in your HTML:
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css">
-<script src="https://unpkg.com/@knadh/oatat.min.js" defer></script>
+<script src="https://unpkg.com/@knadh/oat/oat.min.js" defer></script>
 ```
 
 ----------
