@@ -15,6 +15,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/card.css \
             src/css/alert.css \
             src/css/badge.css \
+            src/css/avatar.css \
             src/css/accordion.css \
             src/css/tabs.css \
             src/css/dialog.css \
