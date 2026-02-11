@@ -9,6 +9,12 @@
   <meta property="og:image" content="https://oat.ink/thumb.png">
   <link rel="stylesheet" href="/oat.min.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <script src="/oat.min.js" defer></script>
   <script src="/main.js"></script>
   <style>
@@ -270,9 +276,9 @@
 
   <script>
     function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
     }
   </script>
 </body>
