@@ -7,6 +7,16 @@
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
 
   <meta property="og:image" content="https://oat.ink/thumb.png">
+  <script>
+    // Prevent FOUC - apply theme before rendering
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="/oat.min.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script src="/oat.min.js" defer></script>
