@@ -21,16 +21,19 @@
         .favicon {
           display: inline-block;
         }
+
         .logo {
           display: none;
         }
       }
     }
+
     body:not(.home) {
       nav[data-topnav] {
         .favicon {
           display: none;
         }
+
         .logo {
           display: inline-block;
         }
@@ -61,6 +64,7 @@
         align-items: center;
         gap: var(--space-2);
       }
+
       .favicon {
         line-height: 1;
       }
@@ -72,12 +76,15 @@
 
     .intro {
       margin-bottom: var(--space-12);
+
       .logo img {
         max-height: 60px;
       }
+
       .title {
         margin-bottom: var(--space-2);
       }
+
       .slogan {
         margin: 0 0 var(--space-12) 0;
         font-weight: normal;
@@ -95,15 +102,18 @@
       .logo {
         border-bottom: none;
         padding-bottom: var(--space-4);
+
         img {
           max-height: 40px;
         }
       }
+
       nav sup {
         color: var(--muted-foreground);
         font-size: var(--text-8);
         margin-left: var(--space-1);
       }
+
       footer button {
         width: 100%;
       }
@@ -151,6 +161,7 @@
 
     .demo-grid {
       gap: var(--space-2);
+
       [class*="col-"] {
         background: var(--primary);
         color: var(--primary-foreground);
@@ -196,6 +207,84 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Command Palette Styles */
+    #command-palette {
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-large);
+      background: var(--background);
+      color: var(--foreground);
+      width: 100%;
+      max-width: 600px;
+      margin: 10vh auto;
+      overflow: hidden;
+
+      &::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      max-height: 50vh;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: var(--space-4);
+      font-size: var(--text-6);
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      color: var(--foreground);
+      outline: none;
+    }
+
+    #search-results {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
+      flex: 1;
+
+      li {
+        margin: 0;
+      }
+
+      a {
+        display: block;
+        padding: var(--space-3) var(--space-4);
+        text-decoration: none;
+        color: var(--foreground);
+        cursor: pointer;
+
+        &.selected,
+        &:hover {
+          background-color: var(--accent);
+        }
+      }
+    }
+
+    .search-footer {
+      padding: var(--space-2) var(--space-4);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-8);
+      color: var(--muted-foreground);
+      background: var(--muted);
+      display: flex;
+      justify-content: flex-end;
+
+      kbd {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 0 4px;
+        font-family: monospace;
+      }
+    }
   </style>
 </head>
 
@@ -233,14 +322,16 @@
                 <rect x="14" y="14" width="7" height="7" />
                 <rect x="3" y="14" width="7" height="7" />
               </svg>
-              Components
+              Components <small
+                style="font-weight: normal; font-size: 0.7em; opacity: 0.7; margin-left: auto; margin-right: 0.5rem;">Cmd+K</small>
             </summary>
             <ul>
               <li><a href="/components">All components</a></li>
               {% set components = get_section(path="components/_index.md") %}
               {% for page in components.pages %}
               <li><a href="/components/#{{ page.slug }}">{{ page.title }}
-                {% if page.extra.webcomponent | default(value=false) %}<sup title="WebComponent">WC</sup>{% endif %}</a></li>
+                  {% if page.extra.webcomponent | default(value=false) %}<sup title="WebComponent">WC</sup>{% endif
+                  %}</a></li>
               {% endfor %}
             </ul>
           </details>
@@ -250,11 +341,15 @@
     <footer>
       <button class="outline small" onclick="toggleTheme()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
         Dark mode
       </button>
@@ -265,8 +360,22 @@
     <div class="container">
       {% block content %}{% endblock %}
 
-      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash
+            Nadh</small></a></footer>
     </div>
   </main>
+
+  <dialog id="command-palette" class="search-dialog">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search components..." aria-label="Search components">
+      <ul id="search-results"></ul>
+      <div class="search-footer">
+        <small>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate, <kbd>Enter</kbd> to select, <kbd>Esc</kbd> to close</small>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/search.js"></script>
 </body>
+
 </html>

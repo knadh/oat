@@ -3,9 +3,7 @@ title = "Oat UI"
 compile_sass = false
 build_search_index = false
 
-[markdown]
-highlight_code = true
-highlight_theme = "charcoal"
+
 
 [extra]
 description = "Oat - Ultra-lightweight, semantic, zero-dependency HTML UI component library"

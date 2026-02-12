@@ -27,6 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set theme based on saved preference or system setting.
   var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', t);
+
+  // Active state scrollspy
+  const sidebarLinks = document.querySelectorAll('aside[data-sidebar] nav a');
+  const sections = document.querySelectorAll('.demo-section');
+
+  if (sidebarLinks.length > 0 && sections.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          sidebarLinks.forEach(link => {
+            if (link.getAttribute('href').includes(`#${id}`)) {
+              link.setAttribute('aria-current', 'location');
+            } else {
+              link.removeAttribute('aria-current');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' }); // Trigger when section is near top
+
+    sections.forEach(section => observer.observe(section));
+  }
 });
 
 

@@ -11,13 +11,13 @@
     gap: var(--space-4);
 
     &:has(nav[data-topnav]) {
-      > aside[data-sidebar] {
+      >aside[data-sidebar] {
         top: var(--topnav-height);
         height: calc(100dvh - var(--topnav-height));
       }
 
       /* <main> immediately after top-nav, adjust for topnav height */
-      > main {
+      >main {
         min-width: 0;
         margin-top: calc(var(--topnav-height));
 
@@ -28,7 +28,7 @@
       }
     }
 
-    > aside[data-sidebar] {
+    >aside[data-sidebar] {
       position: sticky;
       top: 0;
       z-index: 1;
@@ -40,22 +40,30 @@
       flex-direction: column;
       width: var(--sidebar-width);
 
-      > header {
+      >header {
         flex-shrink: 0;
         padding: var(--space-3);
       }
 
-      > footer {
+      >footer {
         flex-shrink: 0;
         margin-top: auto;
         padding: var(--space-3);
       }
 
-      > nav {
+      >nav {
         flex: 1;
         min-height: 0;
         overflow-y: auto;
         padding: var(--space-3) var(--space-2);
+        scrollbar-width: none;
+
+        /* Firefox */
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Chrome, Safari, Edge */
       }
 
       nav {
@@ -82,7 +90,8 @@
           border-radius: var(--radius-small);
           transition: background-color var(--transition-fast);
 
-          &:hover, &[aria-current] {
+          &:hover,
+          &[aria-current] {
             background-color: var(--accent);
           }
         }
@@ -92,9 +101,18 @@
         border: none;
         overflow: visible;
 
-        & + details { margin-top: 0; }
-        &[open] summary { border-bottom: none; }
-        > ul { margin-left: var(--space-4); padding: var(--space-1) 0; }
+        &+details {
+          margin-top: 0;
+        }
+
+        &[open] summary {
+          border-bottom: none;
+        }
+
+        >ul {
+          margin-left: var(--space-4);
+          padding: var(--space-1) 0;
+        }
       }
 
       summary {
@@ -148,7 +166,7 @@
     [data-sidebar-layout] {
       grid-template-columns: 1fr;
 
-      > aside[data-sidebar] {
+      >aside[data-sidebar] {
         position: fixed;
         top: 0;
         left: 0;
@@ -159,12 +177,14 @@
         box-shadow: var(--shadow-large);
       }
 
-      &[data-sidebar-open] > aside[data-sidebar] {
+      &[data-sidebar-open]>aside[data-sidebar] {
         transform: translateX(0);
       }
     }
 
-    [data-sidebar-toggle] { display: inline-block; }
+    [data-sidebar-toggle] {
+      display: inline-block;
+    }
 
     [data-sidebar-header] {
       display: flex;
