@@ -27,7 +27,7 @@
       transform: translate(1px, 1px);
     }
 
-    &.secondary {
+    &[data-variant="secondary"] {
       background-color: var(--secondary);
       color: var(--secondary-foreground);
       border-color: rgb(from #fff r g b / 0.5) rgb(from #000 r g b / 0.1) rgb(from #000 r g b / 0.1) rgb(from #fff r g b / 0.5);
@@ -37,32 +37,62 @@
       }
     }
 
-    &.outline {
-      background-color: transparent;
-      color: var(--foreground);
-      border-color: var(--border);
+    &[data-variant="danger"] {
+      background-color: var(--danger);
+      color: var(--danger-foreground);
 
       &:hover:not(:disabled) {
+        background-color: color-mix(in srgb, var(--danger), black 15%);
+      }
+    }
+
+    &.outline {
+      background-color: transparent;
+      border-color: var(--border);
+
+      &:not([data-variant]) {
+        color: var(--foreground);
+      }
+      &[data-variant="danger"] {
+        color: var(--danger);
+        border-color: var(--danger);
+        &:hover:not(:disabled) {
+          background-color: color-mix(in srgb, var(--danger), transparent 90%);
+        }
+      }
+      &[data-variant="secondary"] {
+        color: var(--secondary-foreground);
+        border-color: var(--secondary);
+        &:hover:not(:disabled) {
+          background-color: color-mix(in srgb, var(--secondary), transparent 80%);
+        }
+      }
+      &:hover:not(:disabled):not([data-variant]) {
         background-color: var(--accent);
       }
     }
 
     &.ghost {
       background-color: transparent;
-      color: var(--foreground);
       border-color: transparent;
 
-      &:hover:not(:disabled) {
-        background-color: var(--accent);
+      &:not([data-variant]) {
+        color: var(--foreground);
       }
-    }
-
-    &.danger {
-      background-color: var(--danger);
-      color: var(--danger-foreground);
-
-      &:hover:not(:disabled) {
-        background-color: color-mix(in srgb, var(--danger), black 15%);
+      &[data-variant="danger"] {
+        color: var(--danger);
+        &:hover:not(:disabled) {
+          background-color: color-mix(in srgb, var(--danger), transparent 90%);
+        }
+      }
+      &[data-variant="secondary"] {
+        color: var(--secondary-foreground);
+        &:hover:not(:disabled) {
+          background-color: color-mix(in srgb, var(--secondary), transparent 80%);
+        }
+      }
+      &:hover:not(:disabled):not([data-variant]) {
+        background-color: var(--accent);
       }
     }
 

@@ -9,7 +9,7 @@ Use the standard `title` attribute on any element to render a tooltip with smoot
 {% demo() %}
 ```html
 <button title="Save your changes">Save</button>
-<button title="Delete this item" class="danger">Delete</button>
+<button title="Delete this item" data-variant="danger">Delete</button>
 <a href="#" title="View your profile">Profile</a>
 ```
 {% end %}

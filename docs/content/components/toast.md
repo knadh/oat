@@ -9,7 +9,7 @@ Show toast notifications with `ot.toast(message, options?)`.
 {% demo() %}
 ```html
 <button onclick="ot.toast('Action completed successfully', 'All good', { variant: 'success' })">Success</button>
-<button onclick="ot.toast('Something went wrong', 'Oops', { variant: 'danger', placement: 'top-left' })" class="danger">Danger</button>
+<button onclick="ot.toast('Something went wrong', 'Oops', { variant: 'danger', placement: 'top-left' })" data-variant="danger">Danger</button>
 <button onclick="ot.toast('Please review this warning', 'Warning', { variant: 'warning', placement: 'bottom-right' })" class="outline">Warning</button>
 <button onclick="ot.toast('New notification', 'For your attenton', { placement: 'top-center' })">Info</button>
 ```
@@ -44,7 +44,7 @@ Use `ot.toastEl(element, options?)` to show toasts with custom HTML content.
   <output class="toast" data-variant="success">
     <h6 class="toast-title">Changes saved</h6>
     <p>Your document has been updated.</p>
-    <button class="secondary small" onclick="this.closest('.toast').remove()">Okay</button>
+    <button data-variant="secondary" class="small" onclick="this.closest('.toast').remove()">Okay</button>
   </output>
 </template>
 

@@ -44,8 +44,8 @@ Wrap in `<ot-dropdown>`. Use `popovertarget` on the trigger and `popover` on the
     </header>
     <br />
     <footer>
-      <button class="outline small" popovertarget="demo-confirm">Cancel</button>
-      <button class="danger small" popovertarget="demo-confirm">Delete</button>
+      <button class="outline" class="small" popovertarget="demo-confirm">Cancel</button>
+      <button data-variant="danger" class="small" popovertarget="demo-confirm">Delete</button>
     </footer>
   </article>
 </ot-dropdown>

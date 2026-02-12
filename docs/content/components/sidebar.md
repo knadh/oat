@@ -28,7 +28,7 @@ Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-
       </ul>
     </nav>
     <footer>
-      <button class="outline sm" style="width: 100%;">Logout</button>
+      <button class="outline" class="sm" style="width: 100%;">Logout</button>
     </footer>
   </aside>
   <main>
