@@ -19,6 +19,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/tabs.css \
             src/css/dialog.css \
             src/css/dropdown.css \
+            src/css/popover.css \
             src/css/toast.css \
             src/css/sidebar.css \
             src/css/skeleton.css \
@@ -37,7 +38,7 @@ css:
 
 js:
 	@mkdir -p dist
-	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
+	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/popover.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
 	@esbuild dist/oat.js --minify --outfile=dist/oat.min.js
 	@gzip -9 -k -f dist/oat.min.js
 	@cp dist/oat.min.js docs/static/oat.min.js

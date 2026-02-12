@@ -1,0 +1,60 @@
+@layer components {
+  .popover {
+    position: fixed;
+    margin: 0;
+    padding: var(--space-4);
+    min-width: 14rem;
+    max-width: 24rem;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-medium);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 150ms ease-out,
+      transform 150ms ease-out,
+      display 150ms allow-discrete,
+      overlay 150ms allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @starting-style {
+      &:popover-open {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+    }
+
+    & > header {
+      margin-bottom: var(--space-2);
+
+      & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+        margin-bottom: 0;
+        font-size: var(--text-7);
+        font-weight: var(--font-semibold);
+      }
+
+      & > p {
+        font-size: var(--text-7);
+        color: var(--muted-foreground);
+        margin: 0;
+      }
+    }
+
+    & > p, & > div, & > section {
+      font-size: var(--text-7);
+      color: var(--muted-foreground);
+    }
+
+    & > footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+  }
+}
