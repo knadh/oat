@@ -1,56 +1,58 @@
 @layer components {
-  menu[popover] {
-    position: fixed;
-    margin: 0;
-    padding: var(--space-1);
-    min-width: 12rem;
-    background-color: var(--background);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
-    box-shadow: var(--shadow-medium);
-    opacity: 0;
-    transform: translateY(-4px);
-    transition:
-      opacity 150ms ease-out,
-      transform 150ms ease-out,
-      display 150ms allow-discrete,
-      overlay 150ms allow-discrete;
+  ot-dropdown {
+    [popover] {
+      position: fixed;
+      margin: 0;
+      /* padding: var(--space-1); */
+      min-width: 12rem;
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-medium);
+      box-shadow: var(--shadow-medium);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition:
+        opacity 150ms ease-out,
+        transform 150ms ease-out,
+        display 150ms allow-discrete,
+        overlay 150ms allow-discrete;
 
-    &:popover-open {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @starting-style {
       &:popover-open {
-        opacity: 0;
-        transform: translateY(-4px);
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @starting-style {
+        &:popover-open {
+          opacity: 0;
+          transform: translateY(-4px);
+        }
+      }
+
+      hr {
+        margin: var(--space-1) 0;
       }
     }
 
-    hr {
-      margin: var(--space-1) 0;
-    }
-  }
+    [role="menuitem"] {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: var(--space-2);
+      width: 100%;
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-7);
+      text-align: start;
+      color: var(--foreground);
+      background: none;
+      border: none;
+      border-radius: var(--radius-small);
+      cursor: pointer;
 
-  [role="menuitem"] {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: var(--space-2);
-    width: 100%;
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-7);
-    text-align: start;
-    color: var(--foreground);
-    background: none;
-    border: none;
-    border-radius: var(--radius-small);
-    cursor: pointer;
-
-    &:hover, &:focus {
-      background-color: var(--accent);
-      outline: none;
+      &:hover, &:focus {
+        background-color: var(--accent);
+        outline: none;
+      }
     }
   }
 }

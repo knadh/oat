@@ -28,6 +28,7 @@ function getContainer(placement) {
     document.body.appendChild(el);
     containers[placement] = el;
   }
+
   return containers[placement];
 }
 
@@ -68,27 +69,18 @@ function show(toast, options = {}) {
 
 // Simple text toast.
 ot.toast = function (message, title, options = {}) {
-  if (typeof message === 'object' && message !== null) {
-    options = message;
-    message = '';
-  }
+  const { variant = 'info', ...rest } = options;
 
-  const { variant = '', ...rest } = options;
-
-  // Create toast
   const toast = document.createElement('output');
-  toast.className = 'toast';
-  toast.setAttribute('role', 'status');
-  if (variant) toast.setAttribute('data-variant', variant);
+  toast.setAttribute('data-variant', variant);
 
-  const titleText = title || (variant[0].toUpperCase() + variant.slice(1));
-  const titleEl = document.createElement('h6');
-  titleEl.className = 'toast-title';
-  if (variant) {
+  if (title) {
+    const titleEl = document.createElement('h6');
+    titleEl.className = 'toast-title';
     titleEl.style.color = `var(--${variant})`;
+    titleEl.textContent = title;
+    toast.appendChild(titleEl);
   }
-  titleEl.textContent = title || titleText;
-  toast.appendChild(titleEl);
 
   if (message) {
     const msgEl = document.createElement('div');
@@ -123,12 +115,7 @@ function removeToast(toast, container) {
   }
   toast.setAttribute('data-exiting', '');
 
-  let done = false;
   const cleanup = () => {
-    if (done) {
-      return;
-    }
-    done = true;
     toast.remove();
     if (!container.children.length) {
       container.hidePopover();

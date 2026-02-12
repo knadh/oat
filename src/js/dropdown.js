@@ -18,7 +18,7 @@ class OtDropdown extends OtBase {
   #position;
 
   init() {
-    this.#menu = this.$('menu[popover]');
+    this.#menu = this.$('[popover]');
     this.#trigger = this.$('[popovertarget]');
 
     if (!this.#menu || !this.#trigger) return;
