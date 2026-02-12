@@ -15,9 +15,9 @@
     border-width: 0;
   }
 
-  .text-left { text-align: left; }
+  .text-left { text-align: start; }
   .text-center { text-align: center; }
-  .text-right { text-align: right; }
+  .text-right { text-align: end; }
   .text-light { color: var(--muted-foreground); }
   .text-lighter { color: var(--muted-foreground); }
 
@@ -43,13 +43,13 @@
   .gap-2 { gap: var(--space-2); }
   .gap-4 { gap: var(--space-4); }
 
-  .mt-2 { margin-top: var(--space-2); }
-  .mt-4 { margin-top: var(--space-4); }
-  .mt-6 { margin-top: var(--space-6); }
+  .mt-2 { margin-block-start: var(--space-2); }
+  .mt-4 { margin-block-start: var(--space-4); }
+  .mt-6 { margin-block-start: var(--space-6); }
 
-  .mb-2 { margin-bottom: var(--space-2); }
-  .mb-4 { margin-bottom: var(--space-4); }
-  .mb-6 { margin-bottom: var(--space-6); }
+  .mb-2 { margin-block-end: var(--space-2); }
+  .mb-4 { margin-block-end: var(--space-4); }
+  .mb-6 { margin-block-end: var(--space-6); }
   .p-4 { padding: var(--space-4); }
 
   .w-100 { width: 100%; }
@@ -58,7 +58,7 @@
 ul, ol {
   &.unstyled {
     list-style: none;
-    padding-left: 0;
-    margin-left: 0;
+    padding-inline-start: 0;
+    margin-inline-start: 0;
   }
 }

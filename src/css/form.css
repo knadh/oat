@@ -14,7 +14,7 @@
 
   :where(input:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color]), textarea, select) {
     width: 100%;
-    margin-top: var(--space-1);
+    margin-block-start: var(--space-1);
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-7);
     line-height: var(--leading-normal);
@@ -59,7 +59,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right var(--space-2) center;
-    padding-right: var(--space-6);
+    padding-inline-end: var(--space-6);
   }
 
   input:where([type=checkbox], [type=radio]) {
@@ -170,7 +170,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-medium);
     padding: var(--space-4);
-    margin-bottom: var(--space-4);
+    margin-block-end: var(--space-4);
   }
 
   legend {
@@ -190,8 +190,8 @@
 
     & > :is(input, textarea, select) {
       flex: 1;
-      margin-top: 0;
-      border-right: 0;
+      margin-block-start: 0;
+      border-inline-end: 0;
     }
 
     & > :is(input, textarea, select, button) {
@@ -221,14 +221,14 @@
   }
 
   [data-field] {
-    margin-bottom: var(--space-4);
+    margin-block-end: var(--space-4);
 
     /* Hint text that succeeds an input with aria-describedby */
     [data-hint], .error {
       font-size: var(--text-8);
       font-weight: var(--font-normal);
       color: var(--muted-foreground);
-      margin-top: var(--space-1);
+      margin-block-start: var(--space-1);
     }
 
     .error {

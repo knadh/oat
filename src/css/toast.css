@@ -52,8 +52,8 @@
     pointer-events: auto;
     background-color: var(--card);
     border: 1px solid var(--border);
-    border-left-width: var(--space-1);
-    border-left-style: solid;
+    border-inline-start-width: var(--space-1);
+    border-inline-start-style: solid;
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
     transition: opacity 150ms, transform 150ms, margin 150ms;
@@ -68,19 +68,19 @@
     }
 
     &[data-variant="success"] {
-      border-left-color: var(--success);
+      border-inline-start-color: var(--success);
     }
 
     &[data-variant="danger"] {
-      border-left-color: var(--danger);
+      border-inline-start-color: var(--danger);
     }
 
     &[data-variant="warning"] {
-      border-left-color: var(--warning);
+      border-inline-start-color: var(--warning);
     }
 
     &[data-variant="info"] {
-      border-left-color: var(--secondary);
+      border-inline-start-color: var(--secondary);
     }
 
     & > [data-close] {

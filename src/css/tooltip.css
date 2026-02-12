@@ -6,7 +6,7 @@
   [data-tooltip]::before,
   [data-tooltip]::after {
     position: absolute;
-    left: 50%;
+    inset-inline-start: 50%;
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
@@ -17,7 +17,7 @@
   /* Text */
   [data-tooltip]::after {
     content: attr(data-tooltip);
-    bottom: calc(100% + 10px);
+    inset-block-end: calc(100% + 10px);
     transform: translateX(-50%) translateY(4px);
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-7);
@@ -31,7 +31,7 @@
   /* Arrow */
   [data-tooltip]::before {
     content: '';
-    bottom: calc(100% - 5px);
+    inset-block-end: calc(100% - 5px);
     transform: translateX(-50%) translateY(4px);
     border: 8px solid transparent;
     border-top-color: var(--foreground);

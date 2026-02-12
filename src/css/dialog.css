@@ -58,16 +58,16 @@
       flex-direction: column;
       gap: var(--space-1);
       padding: var(--space-6);
-      padding-bottom: 0;
+      padding-block-end: 0;
 
       & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
-        margin-bottom: 0;
+        margin-block-end: 0;
       }
 
       & > p {
         font-size: var(--text-7);
         color: var(--muted-foreground);
-        margin-bottom: 0;
+        margin-block-end: 0;
       }
     }
 
@@ -83,7 +83,7 @@
       justify-content: flex-end;
       gap: var(--space-2);
       padding: var(--space-6);
-      padding-top: 0;
+      padding-block-start: 0;
     }
   }
 }

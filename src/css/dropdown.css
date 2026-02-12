@@ -36,12 +36,12 @@
   [role="menuitem"] {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: start;
     gap: var(--space-2);
     width: 100%;
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-7);
-    text-align: left;
+    text-align: start;
     color: var(--foreground);
     background: none;
     border: none;

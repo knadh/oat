@@ -19,11 +19,11 @@
       /* <main> immediately after top-nav, adjust for topnav height */
       > main {
         min-width: 0;
-        margin-top: calc(var(--topnav-height));
+        margin-block-start: calc(var(--topnav-height));
 
         /* Offset #anchor scrolling to not go behind the topnav. */
         [id] {
-          scroll-margin-top: calc(var(--topnav-height) + var(--space-6));
+          scroll-margin-block-start: calc(var(--topnav-height) + var(--space-6));
         }
       }
     }
@@ -35,7 +35,7 @@
       height: 100dvh;
       align-self: start;
       background-color: var(--background);
-      border-right: 1px solid var(--border);
+      border-inline-end: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       width: var(--sidebar-width);
@@ -47,7 +47,7 @@
 
       > footer {
         flex-shrink: 0;
-        margin-top: auto;
+        margin-block-start: auto;
         padding: var(--space-3);
       }
 
@@ -94,7 +94,7 @@
 
         & + details { margin-top: 0; }
         &[open] summary { border-bottom: none; }
-        > ul { margin-left: var(--space-4); padding: var(--space-1) 0; }
+        > ul { margin-inline-start: var(--space-4); padding: var(--space-1) 0; }
       }
 
       summary {
@@ -117,9 +117,8 @@
 
   nav[data-topnav] {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
     z-index: 5;
     min-height: var(--topnav-height);
     display: flex;

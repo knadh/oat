@@ -16,7 +16,7 @@
 
   th {
     padding: var(--space-3) var(--space-2);
-    text-align: left;
+    text-align: start;
     font-weight: var(--font-medium);
     color: var(--muted-foreground);
   }
