@@ -76,6 +76,7 @@
   }
 
   [data-theme="dark"] {
+      color-scheme: dark;
     --background: #09090b;
     --foreground: #fafafa;
     --card: #18181b;
