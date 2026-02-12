@@ -1,0 +1,45 @@
+@layer components {
+  nav[aria-label="breadcrumb"] {
+    font-size: var(--text-7);
+    color: var(--muted-foreground);
+
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-1);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    /* Separator */
+    li+li::before {
+      content: "/";
+      color: var(--muted-foreground);
+    }
+
+    a {
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--foreground);
+      }
+    }
+
+    /* Current page - not a link */
+    [aria-current="page"] {
+      color: var(--foreground);
+      font-weight: var(--font-medium);
+      pointer-events: none;
+    }
+  }
+}

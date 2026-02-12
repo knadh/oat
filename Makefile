@@ -23,6 +23,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/sidebar.css \
             src/css/skeleton.css \
             src/css/tooltip.css \
+            src/css/breadcrumb.css \
             src/css/utilities.css
 
 dist: css js size
