@@ -23,10 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Move the original Zola syntax-highlighted <pre> into the Code tab.
     demo.querySelector(':scope > ot-tabs > [role="tabpanel"]:last-child').appendChild(pre);
   });
-
-  // Set theme based on saved preference or system setting.
-  var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', t);
 });
 
 
