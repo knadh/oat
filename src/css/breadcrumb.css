@@ -1,0 +1,36 @@
+@layer components {
+  nav[aria-label="breadcrumb"] ol {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-8);
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+
+      &:not(:last-child)::after {
+        content: ">";
+        color: var(--muted-foreground);
+      }
+
+      a {
+        color: var(--muted-foreground);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--foreground);
+        }
+      }
+
+      &:last-child {
+        color: var(--foreground);
+        font-weight: var(--font-medium);
+      }
+    }
+  }
+}
