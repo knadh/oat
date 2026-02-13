@@ -1,0 +1,59 @@
+@layer components {
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--text-7);
+    font-weight: var(--font-medium);
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    user-select: none;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+
+      &[src=""],
+      &:not([src]) {
+        display: none;
+      }
+    }
+
+    &.xs {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: var(--text-9);
+    }
+
+    &.small {
+      width: 2rem;
+      height: 2rem;
+      font-size: var(--text-8);
+    }
+
+    &.large {
+      width: 3rem;
+      height: 3rem;
+      font-size: var(--text-6);
+    }
+
+    &.xl {
+      width: 4rem;
+      height: 4rem;
+      font-size: var(--text-5);
+    }
+
+    &.square {
+      border-radius: var(--radius-medium);
+    }
+  }
+}
