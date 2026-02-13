@@ -205,8 +205,13 @@
 
     & > :is(input, textarea, select) {
       flex: 1;
-      margin-block-start: 0;
-      border-inline-end: 0;
+      &:not(:first-child){
+        margin-block-start: 0;
+      }
+
+      &:not(:last-child){
+        border-inline-end: 0;
+      }
     }
 
     & > :is(input, textarea, select, button) {
@@ -214,7 +219,7 @@
       &:first-child {
         border-radius: var(--radius-medium) 0 0 var(--radius-medium);
       }
-      
+
       &:last-child {
         border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
       }
