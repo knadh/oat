@@ -22,6 +22,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/toast.css \
             src/css/sidebar.css \
             src/css/skeleton.css \
+            src/css/stepper.css \
             src/css/tooltip.css \
             src/css/utilities.css
 

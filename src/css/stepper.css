@@ -1,0 +1,96 @@
+@layer components {
+  .stepper {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--border);
+      border-radius: var(--radius-full);
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 5rem;
+      position: relative;
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background-color: var(--border);
+        z-index: 0;
+      }
+
+      &[data-completed]:not(:last-child)::after {
+        background-color: var(--primary);
+      }
+
+      .step-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: var(--space-2);
+        font-size: var(--text-8);
+        font-weight: var(--font-medium);
+        background-color: var(--muted);
+        color: var(--muted-foreground);
+        border: 2px solid var(--border);
+        border-radius: var(--radius-full);
+        position: relative;
+        z-index: 1;
+      }
+
+      &[aria-current="step"] .step-icon {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border-color: var(--primary);
+      }
+
+      &[data-completed] .step-icon {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border-color: var(--primary);
+      }
+
+      .step-label {
+        font-size: var(--text-8);
+        color: var(--muted-foreground);
+        text-align: center;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        line-height: 1.3;
+      }
+
+      &[aria-current="step"] .step-label {
+        color: var(--foreground);
+        font-weight: var(--font-medium);
+      }
+
+      &[data-completed] .step-label {
+        color: var(--foreground);
+      }
+    }
+  }
+}
