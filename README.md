@@ -10,6 +10,10 @@ I wrote this to use in my own projects after getting sick of the ridiculous bloa
 
 See live demo and docs at [**oat.ink**](https://oat.ink)
 
+### Extensions
+
+- **[oat-chips](https://github.com/someshkar/oat-chips)** - Chip/tag component. [Demo](https://oat-chips.somesh.dev)
+
 -------------
 
 <img width="739" height="735" alt="image" src="https://github.com/user-attachments/assets/b0a2f55c-659d-4aab-922c-b13d89eeab36" />
