@@ -178,6 +178,46 @@
       }
     }
 
+    .code-block {
+      position: relative;
+    }
+
+    .code-block pre {
+      margin-block-end: 0;
+    }
+
+    .code-block .copy-button {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: var(--muted-foreground);
+      opacity: 0;
+      transform: translateY(-2px);
+      pointer-events: none;
+      transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .code-block .copy-button svg {
+      display: block;
+    }
+
+    .code-block:hover .copy-button,
+    .code-block:focus-within .copy-button {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     .section-permalink {
       display: block;
       margin-top: var(--space-4);
