@@ -15,6 +15,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/card.css \
             src/css/alert.css \
             src/css/badge.css \
+            src/css/chip.css \
             src/css/accordion.css \
             src/css/tabs.css \
             src/css/dialog.css \
@@ -37,7 +38,7 @@ css:
 
 js:
 	@mkdir -p dist
-	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
+	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/chip.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
 	@esbuild dist/oat.js --minify --outfile=dist/oat.min.js
 	@gzip -9 -k -f dist/oat.min.js
 	@cp dist/oat.min.js docs/static/oat.min.js
