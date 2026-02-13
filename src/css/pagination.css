@@ -1,0 +1,50 @@
+@layer components {
+  .pagination {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0;
+    list-style: none;
+
+    button, a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.5rem;
+      height: 2.5rem;
+      padding: var(--space-2);
+      font-size: var(--text-7);
+      font-weight: var(--font-medium);
+      text-decoration: none;
+      background-color: transparent;
+      color: var(--foreground);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-medium);
+      cursor: pointer;
+
+      &:hover:not(:disabled):not([aria-current]) {
+        background-color: var(--accent);
+      }
+
+      &[aria-current="page"] {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        border-color: var(--primary);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .ellipsis {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.5rem;
+      height: 2.5rem;
+      color: var(--muted-foreground);
+    }
+  }
+}
