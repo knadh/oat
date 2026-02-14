@@ -44,6 +44,7 @@ class OtDropdown extends OtBase {
   }
 
   onclick(e) {
+    e.preventDefault();
     if (!e.target.matches('[role="menuitem"]')) return;
     const label = e.target.textContent;
     const value = e.target.getAttribute('data-value');
