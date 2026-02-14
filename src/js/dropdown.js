@@ -33,7 +33,10 @@ class OtDropdown extends OtBase {
 
     this.#menu.addEventListener('toggle', this);
     this.#menu.addEventListener('keydown', this);
-
+    const menuItems = [...this.$$('[role="menuitem"]')];
+    menuItems.forEach(element => {
+      element.addEventListener('click', this);
+    });
     this.#position = () => {
       // Position has to be calculated and applied manually because
       // popover positioning is like fixed, relative to the window.
@@ -95,6 +98,10 @@ class OtDropdown extends OtBase {
     if (this.#menu) {
       this.#menu.removeEventListener('toggle', this);
       this.#menu.removeEventListener('keydown', this);
+      const menuItems = [...this.$$('[role="menuitem"]')];
+      menuItems.forEach(element => {
+        element.removeEventListener('click', this);
+      });
     }
   }
 }
