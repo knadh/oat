@@ -23,30 +23,33 @@
     }
 
     &.success {
-      color: var(--success);
+      color: color-mix(in srgb, var(--success), black 60%);
       background-color: color-mix(in srgb, var(--success) 12%, white);
     }
 
     &.warning {
-      color: var(--warning);
+      color: color-mix(in srgb, var(--warning), black 60%);
       background-color: color-mix(in srgb, var(--warning) 12%, white);
     }
 
     &.danger {
-      color: var(--danger);
+      color: color-mix(in srgb, var(--danger), black 60%);
       background-color: color-mix(in srgb, var(--danger) 15%, white);
     }
 
     [data-theme="dark"] & {
       &.success {
+        color: color-mix(in srgb, var(--success), white 20%);
         background-color: color-mix(in srgb, var(--success) 40%, black);
       }
 
       &.warning {
+        color: color-mix(in srgb, var(--warning), white 20%);
         background-color: color-mix(in srgb, var(--warning) 40%, black);
       }
 
       &.danger {
+        color: color-mix(in srgb, var(--danger), white 20%);
         background-color: color-mix(in srgb, var(--danger) 40%, black);
       }
     }

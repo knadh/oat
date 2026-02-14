@@ -203,24 +203,25 @@
     padding: 0;
     margin: 0;
 
-    & > :is(input, textarea, select) {
+    &> :is(input, textarea, select) {
       flex: 1;
       margin-block-start: 0;
       border-inline-end: 0;
     }
 
-    & > :is(input, textarea, select, button) {
+    &> :is(input, textarea, select, button) {
       border-radius: 0;
+
       &:first-child {
         border-radius: var(--radius-medium) 0 0 var(--radius-medium);
       }
-      
+
       &:last-child {
         border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
       }
     }
 
-    & > legend {
+    &>legend {
       float: inline-start;
       display: inline-flex;
       align-items: center;
@@ -239,7 +240,8 @@
     margin-block-end: var(--space-4);
 
     /* Hint text that succeeds an input with aria-describedby */
-    [data-hint], .error {
+    [data-hint],
+    .error {
       font-size: var(--text-8);
       font-weight: var(--font-normal);
       color: var(--muted-foreground);
@@ -253,7 +255,11 @@
     /* Reveal error on data-field="error" */
     &[data-field="error"] .error {
       display: block;
-      color: var(--danger);
+      color: color-mix(in srgb, var(--danger), black 60%);
+
+      [data-theme="dark"] & {
+        color: color-mix(in srgb, var(--danger), white 20%);
+      }
     }
   }
 }
