@@ -3,7 +3,7 @@ title = "Customizing"
 description = "Customize and theme Oat by overriding CSS variables"
 +++
 
-Pretty much all properties of Oat are defined as CSS variables that can be overridden. See [theme.css](#) to see all variables. To override, redefine them in a CSS file in your project and include it after the lib's CSS files.
+Pretty much all properties of Oat are defined as CSS variables that can be overridden. See [theme.css](https://github.com/knadh/oat/blob/master/src/css/01-theme.css) to see all variables. To override, redefine them in a CSS file in your project and include it after the lib's CSS files.
 
 ## Picking and choosing
 
