@@ -3,6 +3,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-medium);
     overflow: hidden;
+    interpolate-size: allow-keywords;
 
     & + details {
       margin-top: -1px;
@@ -58,5 +59,17 @@
 
   details > *:not(summary) {
     padding: var(--space-4);
+  }
+
+  details::details-content {
+    height: 0;
+    overflow: hidden;
+    transition: height var(--transition-fast), content-visibility var(--transition-fast);
+    transition-behavior: allow-discrete;
+    transition-timing-function: ease-out;
+  }
+
+  details[open]::details-content {
+    height: auto;
   }
 }
