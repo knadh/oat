@@ -13,44 +13,62 @@
       border: none;
     }
 
-    &[data-variant="error"], &[data-variant="danger"] {
-      color: var(--danger);
+    &[data-variant="error"],
+    &[data-variant="danger"] {
+      color: color-mix(in srgb, var(--danger), black 60%);
       background-color: color-mix(in srgb, var(--danger) 8%, white);
 
       & a {
-        color: var(--danger);
+        color: color-mix(in srgb, var(--danger), black 60%);
       }
     }
 
     &[data-variant="success"] {
-      color: var(--success);
+      color: color-mix(in srgb, var(--success), black 60%);
       background-color: color-mix(in srgb, var(--success) 8%, white);
 
       & a {
-        color: var(--success);
+        color: color-mix(in srgb, var(--success), black 60%);
       }
     }
 
     &[data-variant="warning"] {
-      color: var(--warning);
+      color: color-mix(in srgb, var(--warning), black 60%);
       background-color: color-mix(in srgb, var(--warning) 8%, white);
 
       & a {
-        color: var(--warning);
+        color: color-mix(in srgb, var(--warning), black 60%);
       }
     }
 
     [data-theme="dark"] & {
-      &[data-variant="error"], &[data-variant="danger"] {
+
+      &[data-variant="error"],
+      &[data-variant="danger"] {
+        color: color-mix(in srgb, var(--danger), white 20%);
         background-color: color-mix(in srgb, var(--danger) 20%, black);
+
+        & a {
+          color: color-mix(in srgb, var(--danger), white 20%);
+        }
       }
 
       &[data-variant="success"] {
+        color: color-mix(in srgb, var(--success), white 20%);
         background-color: color-mix(in srgb, var(--success) 20%, black);
+
+        & a {
+          color: color-mix(in srgb, var(--success), white 20%);
+        }
       }
 
       &[data-variant="warning"] {
+        color: color-mix(in srgb, var(--warning), white 20%);
         background-color: color-mix(in srgb, var(--warning) 20%, black);
+
+        & a {
+          color: color-mix(in srgb, var(--warning), white 20%);
+        }
       }
     }
   }
