@@ -46,14 +46,13 @@ class OtDropdown extends OtBase {
   onclick(e) {
     e.preventDefault();
     if (!e.target.matches('[role="menuitem"]')) return;
-    const label = e.target.textContent;
     const value = e.target.getAttribute('data-value');
     const items = this.$$('[role="menuitem"]');
     const index = items.indexOf(e.target);
     
     this.emit('ot-change', { 
       type: 'action', 
-      label,
+      label: e.target.textContent,
       value,
       index 
     });
