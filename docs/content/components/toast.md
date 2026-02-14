@@ -4,7 +4,7 @@ weight = 160
 description = "Notification toasts with placement and stacking."
 +++
 
-Show toast notifications with `ot.toast(message, options?)`.
+Show toast notifications with `ot.toast(message, title?, options?)`.
 
 {% demo() %}
 ```html

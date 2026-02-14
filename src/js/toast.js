@@ -3,9 +3,9 @@
  *
  * Usage:
  *   ot.toast('Saved!')
- *   ot.toast('Saved!', 'Your changes have been saved.')
- *   ot.toast('Success', 'Operation completed.', { variant: 'success' })
- *   ot.toast('Error', 'Something went wrong.', { variant: 'danger', placement: 'bottom-center' })
+ *   ot.toast('Action completed successfully', 'All good')
+ *   ot.toast('Operation completed.', 'Success', { variant: 'success' })
+ *   ot.toast('Something went wrong.', 'Error', { variant: 'danger', placement: 'bottom-center' })
  *
  *   // Custom markup
  *   ot.toastEl(element)
