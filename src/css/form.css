@@ -60,6 +60,25 @@
     background-repeat: no-repeat;
     background-position: right var(--space-2) center;
     padding-inline-end: var(--space-6);
+    cursor: pointer;
+  }
+
+  /* File input button */
+  input[type="file"]::file-selector-button {
+    margin-inline-end: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    font-size: var(--text-7);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+  }
+
+  input[type="file"]::file-selector-button:hover {
+    background-color: var(--muted);
   }
 
   input:where([type=checkbox], [type=radio]) {
