@@ -15,6 +15,14 @@
     (function() {
       var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', t);
+      
+      // Set the initial theme toggle text.
+      window.onload = function() {
+        var text = document.getElementById('theme-toggle-text');
+        if (text) {
+          text.innerText = t === 'dark' ? 'Switch to Light' : 'Switch to Dark';
+        }
+      };
     })();
   </script>
   <script src="/oat.min.js" defer></script>
@@ -277,7 +285,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
 
-        Switch theme
+        <span id="theme-toggle-text">Switch theme</span>
       </button>
     </footer>
   </aside>

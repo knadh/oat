@@ -30,4 +30,9 @@ function toggleTheme() {
   var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
+
+  var text = document.getElementById('theme-toggle-text');
+  if (text) {
+    text.innerText = theme === 'dark' ? 'Switch to Light' : 'Switch to Dark';
+  }
 }
