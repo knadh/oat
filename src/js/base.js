@@ -77,7 +77,7 @@ class OtBase extends HTMLElement {
 
   // Generate a unique ID string.
   uid() {
-    return Math.random().toString(36).slice(2, 10);
+    return crypto.randomUUID().slice(0, 8);
   }
 }
 
