@@ -32,7 +32,7 @@ Or import individual files from `@knadh/oat/css` and `@knadh/oat/js`.
 
 ### Download
 
-Download the the CSS and JS files:
+Download the CSS and JS files:
 
 ```shell
 wget https://raw.githubusercontent.com/knadh/oat/refs/heads/gh-pages/oat.min.css
