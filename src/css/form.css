@@ -172,6 +172,12 @@
       }
     }
 
+   input[type=range][vertical] {
+    writing-mode: bt-lr;
+    width: var(--bar-height);
+    height: 8rem;
+   }
+
     &::-moz-range-thumb {
       width: 1.25rem;
       height: 1.25rem;
@@ -234,6 +240,31 @@
       border-radius: var(--radius-medium) 0 0 var(--radius-medium);
     }
   }
+
+   /* -----------------------------------
+     Multi-thumb range pattern
+  ------------------------------------ */
+  .range-group {
+    position: relative;
+    display:block;
+    height: var(--bar-height);
+  }
+
+  .range-group input[type=range]{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: transparent;
+  }
+
+  .range-group input[type=range]::-webkit-slider-thumb{
+    pointer-events: auto;
+  }
+
+  .range-group input[type=range]::-moz-range-thumb{
+    pointer-events: auto;
+  }
+
 
   [data-field] {
     margin-block-end: var(--space-4);

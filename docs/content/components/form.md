@@ -76,6 +76,11 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
     <input type="range" min="0" max="100" value="50" />
   </label>
 
+  <label data-field>
+   Vertical volume
+   <input type="range" min="0" max="100" value="40" vertical />
+  </label>
+
   <button type="submit">Submit</button>
 </form>
 ```
@@ -102,6 +107,19 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
   <input type="text" placeholder="Search" />
   <button>Go</button>
 </fieldset>
+```
+{% end %}
+
+### Multi-thumb slider
+
+Use the `range-group` attribute on a wrapping element to stack multiple input[type="range"] elements and create a multi-thumb slider.
+
+{% demo() %}
+```html
+<label range-group>
+  <input type="range" min="0" max="100" value="20">
+  <input type="range" min="0" max="100" value="80">
+</label>
 ```
 {% end %}
 
