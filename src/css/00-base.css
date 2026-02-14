@@ -45,27 +45,27 @@
   }
 
   h1 {
-    font-size: 2.25rem;
+    font-size: var(--text-1);
     margin: var(--space-10) 0 var(--space-6);
   }
 
   h2 {
-    font-size: 1.875rem;
+    font-size: var(--text-2);
     margin: var(--space-8) 0 var(--space-5);
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: var(--text-3);
     margin: var(--space-6) 0 var(--space-4);
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-size: var(--text-4);
     margin: var(--space-5) 0 var(--space-3);
   }
 
   h5 {
-    font-size: 1.125rem;
+    font-size: var(--text-5);
     margin: var(--space-4) 0 var(--space-2);
   }
 
