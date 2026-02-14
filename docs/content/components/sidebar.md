@@ -4,7 +4,7 @@ weight = 120
 description = "Responsive admin dashboard layout with sticky sidebar, optional topnav, and collapsible sections."
 +++
 
-Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-sidebar>` for the sidebar and `<main>` for content. The sidebar stays sticky while the main content scrolls. On mobile, the sidebar becomes a slide-out overlay toggled by a `[data-sidebar-toggle]` button.
+Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-sidebar>` for the sidebar and `<main>` for content. The sidebar stays sticky while the main content scrolls. On mobile, the sidebar becomes a slide-out overlay toggled by a `[data-sidebar-toggle]` button. To make the sidebar collapsible at all widths, set `data-sidebar-layout="always"`.
 
 <div class="sidebar-example">
 {% demo() %}
@@ -39,6 +39,16 @@ Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-
 {% end %}
 </div>
 
+### Always-collapsible
+
+Set `data-sidebar-layout="always"` to keep the toggle visible on all screen sizes.
+
+```html
+<body data-sidebar-layout="always">
+  ...
+</body>
+```
+
 ### With top sticky nav
 
 Add `data-topnav` to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it.
@@ -67,7 +77,8 @@ Add `data-topnav` to a header element for a full-width top navigation bar. The s
 | Attribute             | Element    |                                                          |
 | --------------------- | ---------- | -------------------------------------------------------- |
 | `data-sidebar-layout` | Container  | Grid layout wrapper (sidebar + main), typically `<body>` |
+| `data-sidebar-layout="always"` | Container | Always-collapsible sidebar (toggle visible on screen sizes) |
 | `data-topnav`         | `<header>` | Full-width top nav (optional, spans full width)          |
 | `data-sidebar`        | `<aside>`  | Sticky sidebar element                                   |
-| `data-sidebar-toggle` | `<button>` | Toggles sidebar visibility on mobile                     |
+| `data-sidebar-toggle` | `<button>` | Toggles sidebar (mobile) and collapse (always mode)      |
 | `data-sidebar-open`   | Layout     | Applied to layout when sidebar is open                   |

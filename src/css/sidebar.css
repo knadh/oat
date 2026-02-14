@@ -143,6 +143,34 @@
     cursor: pointer;
   }
 
+  [data-sidebar-layout="always"] [data-sidebar-toggle] {
+    display: inline-block;
+  }
+
+  [data-sidebar-layout="always"] {
+    transition: grid-template-columns var(--transition);
+
+    > aside[data-sidebar] {
+      transform: translateX(0);
+      opacity: 1;
+      transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
+    }
+  }
+
+  [data-sidebar-layout="always"][data-sidebar-open] {
+    grid-template-columns: 0px 1fr;
+    gap: 0;
+
+    > aside[data-sidebar] {
+      overflow: hidden;
+      min-width: 0;
+      transform: translateX(-100%);
+      opacity: 0;
+      visibility: hidden;
+      border-inline-end: none;
+    }
+  }
+
   @media (max-width: 768px) {
     [data-sidebar-layout] {
       grid-template-columns: 1fr;
