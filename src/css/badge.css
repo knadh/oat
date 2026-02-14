@@ -24,31 +24,18 @@
 
     &.success {
       color: var(--success);
-      background-color: color-mix(in srgb, var(--success) 12%, white);
+      background-color: color-mix(in srgb, var(--success) 12%, var(--background));
     }
 
     &.warning {
       color: var(--warning);
-      background-color: color-mix(in srgb, var(--warning) 12%, white);
+      background-color: color-mix(in srgb, var(--warning) 12%, var(--background));
     }
 
     &.danger {
       color: var(--danger);
-      background-color: color-mix(in srgb, var(--danger) 15%, white);
+      background-color: color-mix(in srgb, var(--danger) 15%, var(--background));
     }
 
-    [data-theme="dark"] & {
-      &.success {
-        background-color: color-mix(in srgb, var(--success) 40%, black);
-      }
-
-      &.warning {
-        background-color: color-mix(in srgb, var(--warning) 40%, black);
-      }
-
-      &.danger {
-        background-color: color-mix(in srgb, var(--danger) 40%, black);
-      }
-    }
   }
 }

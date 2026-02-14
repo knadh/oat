@@ -5,21 +5,10 @@
     border-radius: var(--radius-medium);
     animation: shimmer 2s infinite;
     background-size: 200% 100%;
-    background-image: linear-gradient(
-      90deg,
-      var(--muted) 0%,
-      color-mix(in srgb, var(--muted) 30%, white) 30%,
-      var(--muted) 100%
-    );
-
-    [data-theme="dark"] & {
-      background-image: linear-gradient(
-        90deg,
+    background-image: linear-gradient(90deg,
         var(--muted) 0%,
-        color-mix(in srgb, var(--muted) 90%, var(--foreground)) 90%,
-        var(--muted) 100%
-      );
-    }
+        color-mix(in srgb, var(--muted) 30%, var(--background)) 30%,
+        var(--muted) 100%);
 
     &.box {
       width: 4rem;
@@ -37,7 +26,12 @@
   }
 
   @keyframes shimmer {
-    from { background-position: 200% 0; }
-    to { background-position: -200% 0; }
+    from {
+      background-position: 200% 0;
+    }
+
+    to {
+      background-position: -200% 0;
+    }
   }
 }

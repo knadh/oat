@@ -13,9 +13,10 @@
       border: none;
     }
 
-    &[data-variant="error"], &[data-variant="danger"] {
+    &[data-variant="error"],
+    &[data-variant="danger"] {
       color: var(--danger);
-      background-color: color-mix(in srgb, var(--danger) 8%, white);
+      background-color: color-mix(in srgb, var(--danger) 8%, var(--background));
 
       & a {
         color: var(--danger);
@@ -24,7 +25,7 @@
 
     &[data-variant="success"] {
       color: var(--success);
-      background-color: color-mix(in srgb, var(--success) 8%, white);
+      background-color: color-mix(in srgb, var(--success) 8%, var(--background));
 
       & a {
         color: var(--success);
@@ -33,25 +34,12 @@
 
     &[data-variant="warning"] {
       color: var(--warning);
-      background-color: color-mix(in srgb, var(--warning) 8%, white);
+      background-color: color-mix(in srgb, var(--warning) 8%, var(--background));
 
       & a {
         color: var(--warning);
       }
     }
 
-    [data-theme="dark"] & {
-      &[data-variant="error"], &[data-variant="danger"] {
-        background-color: color-mix(in srgb, var(--danger) 20%, black);
-      }
-
-      &[data-variant="success"] {
-        background-color: color-mix(in srgb, var(--success) 20%, black);
-      }
-
-      &[data-variant="warning"] {
-        background-color: color-mix(in srgb, var(--warning) 20%, black);
-      }
-    }
   }
 }
