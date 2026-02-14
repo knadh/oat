@@ -1,7 +1,5 @@
 @layer components {
   .badge {
-    --bg-amount: 12%;
-
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
@@ -12,10 +10,6 @@
     background-color: var(--primary);
     color: var(--primary-foreground);
     border-radius: var(--radius-full);
-
-    [data-theme="dark"] & {
-      --bg-amount: 40%;
-    }
 
     &.secondary {
       background-color: var(--secondary);
@@ -29,18 +23,27 @@
     }
 
     &.success {
-      color: var(--success);
-      background-color: color-mix(in srgb, var(--success) var(--bg-amount), transparent);
+      --badge-base: var(--success);
     }
 
     &.warning {
-      color: var(--warning);
-      background-color: color-mix(in srgb, var(--warning) var(--bg-amount), transparent);
+      --badge-base: var(--warning);
     }
 
     &.danger {
-      color: var(--danger);
-      background-color: color-mix(in srgb, var(--danger) var(--bg-amount), transparent);
+      --badge-base: var(--danger);
+    }
+
+    &:is(.success, .warning, .danger) {
+      color: color-mix(in srgb, var(--badge-base) 60%, black);
+      background-color: color-mix(in srgb, var(--badge-base) 12%, white);
+    }
+
+    [data-theme="dark"] & {
+      &:is(.success, .warning, .danger) {
+        color: color-mix(in srgb, var(--badge-base) 60%, white);
+        background-color: color-mix(in srgb, var(--badge-base) 40%, black);
+      }
     }
   }
 }

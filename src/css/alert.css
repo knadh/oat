@@ -1,7 +1,5 @@
 @layer components {
   [role="alert"] {
-    --bg-amount: 8%;
-
     position: relative;
     display: flex;
     gap: var(--space-3);
@@ -11,39 +9,35 @@
     border-radius: var(--radius-medium);
     font-size: var(--text-7);
 
-    [data-theme="dark"] & {
-      --bg-amount: 20%;
-    }
-
     &[data-variant] {
       border: none;
     }
 
-    &[data-variant="error"],
-    &[data-variant="danger"] {
-      color: var(--danger);
-      background-color: color-mix(in srgb, var(--danger) var(--bg-amount), transparent);
-
-      & a {
-        color: var(--danger);
-      }
+    &[data-variant="error"], &[data-variant="danger"] {
+      --alert-base: var(--danger);
     }
 
     &[data-variant="success"] {
-      color: var(--success);
-      background-color: color-mix(in srgb, var(--success) var(--bg-amount), transparent);
-
-      & a {
-        color: var(--success);
-      }
+      --alert-base: var(--success);
     }
 
     &[data-variant="warning"] {
-      color: var(--warning);
-      background-color: color-mix(in srgb, var(--warning) var(--bg-amount), transparent);
+      --alert-base: var(--warning);
+    }
+
+    &:is([data-variant="error"], [data-variant="danger"], [data-variant="success"], [data-variant="warning"]) {
+      color: color-mix(in srgb, var(--alert-base) 60%, black);
+      background-color: color-mix(in srgb, var(--alert-base) 12%, white);
 
       & a {
-        color: var(--warning);
+        color: currentColor;
+      }
+    }
+
+    [data-theme="dark"] & {
+      &:is([data-variant="error"], [data-variant="danger"], [data-variant="success"], [data-variant="warning"]) {
+        color: color-mix(in srgb, var(--alert-base) 60%, white);
+        background-color: color-mix(in srgb, var(--alert-base) 40%, black);
       }
     }
   }
