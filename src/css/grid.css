@@ -51,7 +51,15 @@
 
   /* Responsive: stack on mobile */
   @media (max-width: 768px) {
-    .row { --grid-cols: 4; --grid-gap: 1rem; }
-    .col, [class*="col-"] { --span: 4; } /* full width */
+    .row {
+      --grid-cols: 4;
+      --grid-gap: 1rem;
+    }
+    .col, [class*="col-"] {
+      --span: 4;
+    }
+    [class*="offset-"] {
+      grid-column-start: auto;
+    }
   }
 }

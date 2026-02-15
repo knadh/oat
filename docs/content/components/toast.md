@@ -4,14 +4,14 @@ weight = 160
 description = "Notification toasts with placement and stacking."
 +++
 
-Show toast notifications with `ot.toast(message, options?)`.
+Show toast notifications with `ot.toast(message, title?, options?)`.
 
 {% demo() %}
 ```html
 <button onclick="ot.toast('Action completed successfully', 'All good', { variant: 'success' })">Success</button>
 <button onclick="ot.toast('Something went wrong', 'Oops', { variant: 'danger', placement: 'top-left' })" data-variant="danger">Danger</button>
 <button onclick="ot.toast('Please review this warning', 'Warning', { variant: 'warning', placement: 'bottom-right' })" class="outline">Warning</button>
-<button onclick="ot.toast('New notification', 'For your attenton', { placement: 'top-center' })">Info</button>
+<button onclick="ot.toast('New notification', 'For your attention', { placement: 'top-center' })">Info</button>
 ```
 {% end %}
 

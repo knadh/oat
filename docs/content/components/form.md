@@ -46,7 +46,7 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
   </label>
 
   <label data-field>
-    File
+    File<br />
     <input type="file" placeholder="Pick a file..." />
   </label>
 
@@ -90,7 +90,7 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
 ```html
 <fieldset class="group">
   <legend>https://</legend>
-  <input type="url" placeholder="Subdomain">
+  <input type="url" placeholder="subdomain">
   <select placeholder="Select">
     <option>.example.com</option>
     <option>.example.net</option>

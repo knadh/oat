@@ -1,5 +1,5 @@
 @layer base {
-  :is(button, [type=submit], [type=reset], [type=button], a.button) {
+  :is(button, [type=submit], [type=reset], [type=button], a.button), ::file-selector-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -119,6 +119,16 @@
         width: 3rem;
       }
     }
+  }
+
+  ::file-selector-button {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+  }
+  ::file-selector-button:hover {
+    /* pseudoelement:hover can't be nested and has to be a separate block. */
+    background-color: var(--accent);
   }
 }
 
