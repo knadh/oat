@@ -39,10 +39,11 @@ class OtDropdown extends OtBase {
     if (e.newState === 'open') {
       this.#position();
       window.addEventListener('scroll', this.#position, true);
+      window.addEventListener('resize', this.#position);
       this.$('[role="menuitem"]')?.focus();
       this.#trigger.ariaExpanded = 'true';
     } else {
-      window.removeEventListener('scroll', this.#position, true);
+      this.cleanup();
       this.#trigger.ariaExpanded = 'false';
       this.#trigger.focus();
     }
@@ -68,6 +69,7 @@ class OtDropdown extends OtBase {
 
   cleanup() {
     window.removeEventListener('scroll', this.#position, true);
+    window.removeEventListener('resize', this.#position);
   }
 }
 
