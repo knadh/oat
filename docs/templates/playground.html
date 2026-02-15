@@ -104,30 +104,7 @@
         html:not([data-theme="dark"]) .icon-light {
             display: none;
         }
-        /* Wait, if I hide icon-dark in dark mode, I show icon-light (Sun)? Usually dark mode shows Moon (to switch to dark) or Sun (to switch to light)? 
-           In base.html:
-           html[data-theme="dark"] .icon-dark { display: none; } -> Hides Dark Icon (Moon?) when in Dark Mode. So shows Light Icon (Sun).
-           html:not([data-theme="dark"]) .icon-light { display: none; } -> Hides Light Icon (Sun) when NOT in Dark Mode (Light Mode). So shows Dark Icon (Moon).
-           
-           Let's check the SVGs in playground.html I added.
-           First SVG class="icon-light": Circle/Lines -> Sun.
-           Second SVG class="icon-dark": Path -> Moon.
-           
-           If Light Mode (not dark):
-           - Show Moon (icon-dark).
-           - Hide Sun (icon-light).
-           So: html:not([data-theme="dark"]) .icon-light { display: none; } -> Correct.
-           
-           If Dark Mode:
-           - Show Sun (icon-light).
-           - Hide Moon (icon-dark).
-           So: html[data-theme="dark"] .icon-dark { display: none; } -> Correct.
-           
-           Wait, my playground.html added `style="display: none;"` to icon-dark initially. 
-           This assumes starting in Light Mode (Moon visible? No, Sun visible? No).
-           
-           Let's just use the CSS to control it and remove inline styles if possible, or override them.
-        */
+
         html[data-theme="dark"] .icon-dark { display: none !important; }
         html[data-theme="dark"] .icon-light { display: inline-block !important; }
         
