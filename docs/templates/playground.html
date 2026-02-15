@@ -88,6 +88,51 @@
                 height: 50%;
             }
         }
+
+        /* Swap theme icons */
+        html[data-theme="dark"] .icon-dark {
+            display: none;
+        }
+        html:not([data-theme="dark"]) .icon-light {
+            display: display; /* Default is block/inline usually, but 'none' hides it. Let's use 'none' for the opposite. */
+            display: none;
+        }
+        /* Actually, let's copy the logic from base.html exactly but correct the second rule logic */
+        html[data-theme="dark"] .icon-dark {
+            display: none;
+        }
+        html:not([data-theme="dark"]) .icon-light {
+            display: none;
+        }
+        /* Wait, if I hide icon-dark in dark mode, I show icon-light (Sun)? Usually dark mode shows Moon (to switch to dark) or Sun (to switch to light)? 
+           In base.html:
+           html[data-theme="dark"] .icon-dark { display: none; } -> Hides Dark Icon (Moon?) when in Dark Mode. So shows Light Icon (Sun).
+           html:not([data-theme="dark"]) .icon-light { display: none; } -> Hides Light Icon (Sun) when NOT in Dark Mode (Light Mode). So shows Dark Icon (Moon).
+           
+           Let's check the SVGs in playground.html I added.
+           First SVG class="icon-light": Circle/Lines -> Sun.
+           Second SVG class="icon-dark": Path -> Moon.
+           
+           If Light Mode (not dark):
+           - Show Moon (icon-dark).
+           - Hide Sun (icon-light).
+           So: html:not([data-theme="dark"]) .icon-light { display: none; } -> Correct.
+           
+           If Dark Mode:
+           - Show Sun (icon-light).
+           - Hide Moon (icon-dark).
+           So: html[data-theme="dark"] .icon-dark { display: none; } -> Correct.
+           
+           Wait, my playground.html added `style="display: none;"` to icon-dark initially. 
+           This assumes starting in Light Mode (Moon visible? No, Sun visible? No).
+           
+           Let's just use the CSS to control it and remove inline styles if possible, or override them.
+        */
+        html[data-theme="dark"] .icon-dark { display: none !important; }
+        html[data-theme="dark"] .icon-light { display: inline-block !important; }
+        
+        html:not([data-theme="dark"]) .icon-light { display: none !important; }
+        html:not([data-theme="dark"]) .icon-dark { display: inline-block !important; }
     </style>
 </head>
 <body>
@@ -101,6 +146,19 @@
         <strong>Playground</strong>
     </div>
     <div>
+        <button class="small outline" onclick="toggleTheme()" style="margin-right: var(--space-2);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark" style="display: none;">
+                <path d="M21 12.79A9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            Theme
+        </button>
         <a href="/" class="button small outline">Back to Docs</a>
     </div>
 </header>
@@ -109,7 +167,10 @@
     <div class="editor-pane">
         <div class="pane-header">
             <span>HTML Code</span>
-            <button class="small outline" id="reset-btn">Reset</button>
+            <div class="pane-actions">
+                <button class="small outline" id="copy-btn">Copy</button>
+                <button class="small outline" id="reset-btn">Reset</button>
+            </div>
         </div>
         <textarea id="editor" spellcheck="false" placeholder="Enter your HTML here..."></textarea>
     </div>
@@ -119,37 +180,7 @@
     </div>
 </div>
 
-<script>
-    const editor = document.getElementById('editor');
-    const preview = document.getElementById('preview-container');
-    const resetBtn = document.getElementById('reset-btn');
-    const defaultCode = `<!-- Welcome to the Oat Playground! -->
-<div class="card">
-  <h3>Hello, World!</h3>
-  <p>Edit this code to see live changes.</p>
-  <button>Click Me</button>
-</div>`;
-
-    const params = new URLSearchParams(window.location.search);
-    const initialCode = params.get('code') || defaultCode;
-
-    editor.value = initialCode;
-    updatePreview(initialCode);
-
-    editor.addEventListener('input', () => {
-        updatePreview(editor.value);
-    });
-
-    resetBtn.addEventListener('click', () => {
-        editor.value = initialCode;
-        updatePreview(initialCode);
-    });
-
-    function updatePreview(html) {
-        preview.innerHTML = html;
-    }
-    
-</script>
+<script src="/main.js"></script>
 
 </body>
 </html>

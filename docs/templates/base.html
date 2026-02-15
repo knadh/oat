@@ -186,12 +186,11 @@
     }
 
     /* Swap theme icons */
-    html[data-theme="dark"] .icon-dark {
-      display: none;
-    }
-    html:not([data-theme="dark"]) .icon-light {
-      display: none;
-    }
+    html[data-theme="dark"] .icon-dark { display: none !important; }
+    html[data-theme="dark"] .icon-light { display: inline-block !important; }
+    
+    html:not([data-theme="dark"]) .icon-light { display: none !important; }
+    html:not([data-theme="dark"]) .icon-dark { display: inline-block !important; }
 
     @layer components {
       .container {
@@ -228,35 +227,31 @@
       }
 
       menu.actions {
-        opacity: 0;
         position: absolute;
         top: var(--space-2);
         right: var(--space-2);
+        padding: 0;
+        opacity: 0;
         transition: opacity 150ms ease-in-out;
+        display: flex;
+        gap: var(--space-2);
       }
 
-      &:hover menu.actions {
+      &:hover menu.actions,
+      &:focus-within menu.actions {
         opacity: 1;
       }
 
-      menu.actions button {
+      menu.actions button,
+      menu.actions .button {
         color: #bbb;
         border: 1px solid #bbb;
         padding: 2px var(--space-3);
-
-        &.btn-reset {
-          border-right: none;
-        }
-      .copy-btn, .playground-btn {
-        opacity: 0;
-        position: absolute;
-        top: var(--space-2);
-        padding: 2px var(--space-3);
-        color: #bbb;
-        border: 1px solid #bbb;
-        transition: opacity 150ms ease-in-out;
+        margin: 0;
         text-decoration: none;
         line-height: normal;
+        background: transparent;
+        font-size: var(--text-7);
 
         &:hover {
           background-color: transparent;
@@ -267,16 +262,6 @@
 
       [contenteditable] {
         outline: none;
-      .copy-btn {
-        right: var(--space-2);
-      }
-
-      .playground-btn {
-        right: calc(var(--space-2) + 60px); 
-      }
-
-      &:hover .copy-btn, &:hover .playground-btn {
-        opacity: 1;
       }
     }
 

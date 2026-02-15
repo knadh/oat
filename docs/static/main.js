@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 'Copy' button.
     {
       const b = document.createElement('button');
-      b.className = 'ghost small';
+      b.className = 'copy-btn ghost small';
       b.textContent = 'Copy';
       b.setAttribute('aria-label', 'Copy code to clipboard');
       b.addEventListener('click', () => {
@@ -60,42 +60,85 @@ document.addEventListener('DOMContentLoaded', () => {
     // 'Reset' button.
     {
       const b = document.createElement('button');
-      b.className = 'ghost small btn-reset';
+      b.className = 'btn-reset ghost small';
       b.textContent = 'Reset';
-      b.setAttribute('aria-label', 'Reset code to original');
+      b.setAttribute('aria-label', 'Reset code changes');
       b.addEventListener('click', () => {
-        el.innerHTML = highlighted;
-        content.innerHTML = rawHTML;
+         el.innerHTML = highlighted;
+         content.innerHTML = el.textContent;
       });
-      menu.prepend(b);
-  // Add 'copy' and 'run' buttons to code blocks.
-  document.querySelectorAll('pre[data-lang]').forEach(el => {
-    const code = el.querySelector('code').textContent;
-
-    // Cupy Button
-    const btn = document.createElement('button');
-    btn.className = 'copy-btn ghost small';
-    btn.textContent = 'Copy';
-    btn.setAttribute('aria-label', 'Copy code to clipboard');
-    btn.addEventListener('click', () => {
-      navigator.clipboard.writeText(code.trim()).then(() => {
-        btn.textContent = 'Copied';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
-      });
-    });
-    el.prepend(btn);
-
+      menu.appendChild(b);
+    }
+      
     // Playground Button (only for HTML)
-    if (el.getAttribute('data-lang') === 'html') {
-      const playBtn = document.createElement('a');
-      playBtn.className = 'playground-btn button ghost small';
-      playBtn.textContent = 'Run';
-      playBtn.href = '/playground/?code=' + encodeURIComponent(code);
-      playBtn.target = '_blank';
-      playBtn.setAttribute('aria-label', 'Open in Playground');
-      el.prepend(playBtn);
+    if (pre.getAttribute('data-lang') === 'html') {
+        const playBtn = document.createElement('a');
+        playBtn.className = 'playground-btn button ghost small';
+        playBtn.textContent = 'Run';
+        playBtn.href = '/playground/?code=' + encodeURIComponent(rawHTML);
+        playBtn.target = '_blank';
+        playBtn.setAttribute('aria-label', 'Open in Playground');
+        menu.appendChild(playBtn);
     }
   });
+  // Initialize Playground if present
+  const editor = document.getElementById('editor');
+  if (editor) {
+    const preview = document.getElementById('preview-container');
+    const resetBtn = document.getElementById('reset-btn');
+    const copyBtn = document.getElementById('copy-btn');
+    
+    // Update preview helper
+    const updatePreview = (html) => {
+        preview.innerHTML = html;
+    };
+
+    const defaultCode = `<!-- Welcome to the Oat Playground! -->
+<div class="card">
+  <h3>Hello, World!</h3>
+  <p>Edit this code to see live changes.</p>
+  <button>Click Me</button>
+</div>`;
+
+    const params = new URLSearchParams(window.location.search);
+    // Prioritize URL param > localStorage > default
+    const savedCode = localStorage.getItem('oat-playground-code');
+    const initialCode = params.get('code') || savedCode || defaultCode;
+
+    editor.value = initialCode;
+    updatePreview(initialCode);
+
+    editor.addEventListener('input', () => {
+        const code = editor.value;
+        updatePreview(code);
+        localStorage.setItem('oat-playground-code', code);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if(confirm('Reset playground to default?')) {
+                editor.value = defaultCode;
+                updatePreview(defaultCode);
+                localStorage.setItem('oat-playground-code', defaultCode);
+                // Remove query param if present
+                if (params.get('code')) {
+                     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                     window.history.pushState({path:newUrl},'',newUrl);
+                }
+            }
+        });
+    }
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(editor.value).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => copyBtn.textContent = originalText, 2000);
+            });
+        });
+    }
+  }
 });
 
 
