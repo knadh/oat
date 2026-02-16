@@ -89,7 +89,7 @@ if (typeof window !== 'undefined') {
 // Polyfill for command/commandfor (Safari)
 if (!('commandForElement' in HTMLButtonElement.prototype)) {
   document.addEventListener('click', e => {
-    const btn = e.target.closest('[commandfor]');
+    const btn = e.target.closest('button[commandfor]');
     if (!btn) return;
 
     const target = document.getElementById(btn.getAttribute('commandfor'));
