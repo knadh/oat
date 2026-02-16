@@ -175,3 +175,7 @@
     cursor: not-allowed;
   }
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
