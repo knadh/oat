@@ -96,13 +96,19 @@ ot.toast = function (message, title, options = {}) {
 ot.toastEl = function (el, options = {}) {
   let toast;
 
-  if (el instanceof HTMLTemplateElement) {
-    toast = el.content.firstElementChild.cloneNode(true);
-  } else if (typeof el === 'string') {
-    toast = document.querySelector(el).cloneNode(true);
-  } else {
-    toast = el.cloneNode(true);
+  let src = el;
+  if (typeof el === 'string') {
+    src = document.querySelector(el);
+    if (!src) return;
   }
+
+  if (src instanceof HTMLTemplateElement) {
+    toast = src.content.firstElementChild?.cloneNode(true);
+  } else {
+    toast = src.cloneNode(true);
+  }
+
+  if (!toast) return;
 
   toast.removeAttribute('id');
 

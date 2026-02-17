@@ -70,6 +70,8 @@ class OtDropdown extends OtBase {
   cleanup() {
     window.removeEventListener('scroll', this.#position, true);
     window.removeEventListener('resize', this.#position);
+    try { this.#menu?.hidePopover(); } catch {}
+    if (this.#trigger) this.#trigger.ariaExpanded = 'false';
   }
 }
 
