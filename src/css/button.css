@@ -119,6 +119,10 @@
         width: 3rem;
       }
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   ::file-selector-button {
