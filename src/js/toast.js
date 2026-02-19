@@ -126,8 +126,25 @@ function removeToast(toast, container) {
     }
   };
 
+  // Calculate transition duration from computed styles to match CSS
+  // Falls back to 200ms if calculation fails (matches CSS transition duration)
+  const getTransitionDuration = () => {
+    // Force reflow to ensure data-exiting styles are applied
+    void toast.offsetHeight;
+    const style = window.getComputedStyle(toast);
+    const transitionDuration = style.transitionDuration;
+    if (transitionDuration && transitionDuration !== '0s') {
+      // Parse duration (e.g., "0.2s" -> 200ms)
+      // Handle multiple durations by taking the maximum
+      const durations = transitionDuration.split(',').map(d => parseFloat(d.trim()) * 1000);
+      const maxDuration = Math.max(...durations);
+      return Math.max(maxDuration, 200); // Ensure minimum 200ms
+    }
+    return 200; // Fallback to CSS transition duration
+  };
+
   toast.addEventListener('transitionend', cleanup, { once: true });
-  setTimeout(cleanup, 200);
+  setTimeout(cleanup, getTransitionDuration());
 }
 
 // Clear all toasts.
