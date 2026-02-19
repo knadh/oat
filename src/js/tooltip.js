@@ -6,7 +6,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const _attrib = 'title', _sel = '[title]';
+  // https://developer.mozilla.org/en-US/docs/Glossary/Replaced_elements
+  const _replacedElements = [
+    'img', 'video', 'embed', 'iframe', 'fencedframe',
+    // The following three elements are only sometimes considered replaced, but
+    // we'll skip them nonetheless to at least get the native browser tooltip
+    // if they can have it.
+    'audio', 'canvas', 'object',
+  ];
+  const isReplacedElement = el => _replacedElements.includes(el.localName);
+  const isInputImage = el => el.localName == 'input' && el.type == 'image';
+
   const apply = el => {
+    if (isReplacedElement(el) || isInputImage(el)) return;
     const t = el.getAttribute(_attrib);
     if (!t) return;
     el.setAttribute('data-tooltip', t);
