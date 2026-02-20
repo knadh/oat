@@ -4,7 +4,7 @@ weight = 155
 description = "Smoothl tooltips using the native title attribute."
 +++
 
-Use the standard `title` attribute on any non-replaced element to render a tooltip with smooth transition.
+Use the standard `title` attribute on any element to render a tooltip with smooth transition.
 
 {% demo() %}
 ```html
@@ -14,8 +14,14 @@ Use the standard `title` attribute on any non-replaced element to render a toolt
 ```
 {% end %}
 
-### Replaced Elements
+### Special Elements
 
-A few HTML elements are categorised as *replaced*, i.e. their content is determined by external resources. As a consequence, the pseudo-classes `::before` and `::after` cannot be used on them, which is exactly the technique used to create these tooltips. Therefore, these elements are skipped so that the native browser behaviour is used when hovering over them. A simple workaround is to move the `title` attribute onto the parent element, creating it manually if necessary.
+The technique used to display these tooltips won't work on a few HTML elements, most notably `<img>`, so the native browser tooltip will be shown. To workaround this issue, simply wrap those elements into another (e.g. `<div>` or `<span>`), and move the `title` attribute onto that parent element:
 
-The most widely used of those replaced elements is `<img>`. The others are `<video>`, `<embed>`, `<input type="image">`, `<iframe>`, and `<fencedframe>`. Finally, three elements are *sometimes* considered replaced: `<audio>`, `<canvas>`, and `<object>`.
+```html
+<span title="A title for the image">
+    <img src="...">
+</span>
+```
+
+Other elements affected by this are `<input type="image">`, `<video>`, `<embed>`, `<iframe>`, `<fencedframe>`, `<audio>`, `<canvas>`, and `<object>`.
