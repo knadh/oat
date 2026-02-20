@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oat - Ultra-lightweight, semantic, zero-dependency HTML UI component library</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="home">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" style="height: 24px;"></a>
+        <a href="/" class="logo"><img src="/logo.svg" alt="Oat UI" style="height: 24px;"></a>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      
+<section class="intro">
+  <p class="logo">
+    <a href="/"><img src="/logo.svg" alt="Oat UI"></a>
+  </p>
+
+  <h1 class="title">Ultra-lightweight UI library</h1>
+  <h3 class="slogan text-light">Semantic, minimal, zero dependencies. ~8KB CSS and JS.</h3>
+
+  <p>
+    Oat is an ultra-lightweight HTML + CSS, semantic UI component library with zero dependencies.
+    No framework, build, or dev complexity. Just include the tiny CSS and JS files and you are good to go building
+    decent looking web applications with most commonly needed components and elements.
+  </p>
+  <p>
+    Semantic tags and attributes are styled contextually out of the box without classes, forcing best practices, and reducing
+    markup class pollution. A few dynamic components are WebComponents and use minimal JavaScript.
+  </p>
+  <br />
+  <div class="hstack">
+    <a href="/components/" class="button">Browse components</a>
+    <a href="/usage/" class="button outline">Get started</a>
+  </div>
+</section>
+
+<section class="features">
+  <article class="card">
+    <header>
+      <h3>Light like an oat flake</h3>
+    </header>
+    <p><strong>6KB</strong> CSS, <strong>2.2KB</strong> JS, minified + gzipped.</p>
+    <p>That's it.</p>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>Zero dependencies</h3>
+    </header>
+    <p>Fully-standalone with no dependencies on any JS or CSS frameworks or libraries.
+      No Node.js ecosystem garbage or bloat.
+    </p>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>Semantic HTML</h3>
+    </header>
+    <p>Native elements like <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;dialog&gt;</code> and
+      semantic attributes like <code>role="button"</code> are styled directly. No classes.</p>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>Accessibility</h3>
+    </header>
+    <p>Semantic HTML and ARIA roles are used (and forced in many places) throughout.
+      Proper keyboard navigation support for all components and elements.</p>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>Easy customization</h3>
+    </header>
+    <p>Easily customize the overall theme by overriding a handful of CSS variables. <code>data-theme="dark"</code> on body
+      automatically uses the bundled dark theme.</p>
+  </article>
+</section>
+
+<br />
+
+<section>
+  <h2>Why?</h2>
+  <p>
+    This was made after the unending frustration with the over-engineered bloat, complexity, and dependency-hell of pretty much every Javascript UI library and framework out there. Done with the continuous PTSD of rug-pulls and lockins of the Node.js ecosystem trash.
+    <sup><a href="https://nadh.in/blog/javascript-ecosystem-software-development-are-a-hot-mess/">[1]</a></sup>
+    I've published this, in case other Node.js ecosystem trauma victims find it useful.
+  </p>
+  <p>
+    My goal is a simple, minimal, vanilla, standards-based UI library that I can use in my own projects for the long term without having to worry about Javascript ecosystem trash. Long term because it's just simple vanilla CSS and JS.
+    The look and feel are influenced by the shadcn aesthetic.
+  </p>
+</section>
+
+
+
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+    </div>
+  </main>
+</body>
+</html>

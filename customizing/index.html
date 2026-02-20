@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customizing - Oat UI</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="customizing">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" style="height: 24px;"></a>
+        <a href="/" class="logo"><img src="/logo.svg" alt="Oat UI" style="height: 24px;"></a>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      
+<h1>Customizing</h1>
+<p>Pretty much all properties of Oat are defined as CSS variables that can be overridden. See <a href="https://github.com/knadh/oat/blob/master/src/css/01-theme.css">theme.css</a> to see all variables. To override, redefine them in a CSS file in your project and include it after the lib's CSS files.</p>
+<h2 id="picking-and-choosing">Picking and choosing</h2>
+<p>While it is quite okay to bundle all of Oat given how tiny it is (CSS %KB, JS %KB), it is possible to include components selectively.</p>
+<h5 id="must-include">Must include</h5>
+<ul>
+<li><code>00-base.css</code></li>
+<li><code>01-theme.css</code></li>
+<li><code>base.js</code></li>
+<li><code>your files after this</code></li>
+</ul>
+<hr />
+<h2 id="theming">Theming</h2>
+<p>The following color variables from theme.css control the theme (colour profile). Override them to create your own theme.</p>
+<pre data-lang="css" style="background-color:#2b2c2f;color:#cccece;" class="language-css "><code class="language-css" data-lang="css"><span style="color:#5fb3b3;">:</span><span>root </span><span style="color:#5fb3b3;">{
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Page background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">background</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">255 255 255</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Primary text color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">9 9 11</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Card background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">card</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">255 255 255</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Card text color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">card-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">9 9 11</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Primary buttons and links */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">primary</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">24 24 27</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Text color on primary buttons */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">primary-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">250 250 250</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Secondary button background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">secondary</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">244 244 245</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Text colour on secondary buttons */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">secondary-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">24 24 27</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Muted (lighter) background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">muted</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">244 244 245</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Muted (lighter) text colour */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">muted-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">113 113 122</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Subtler than muted background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">faint</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">250 250 250</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Subtler than muted text color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">faint-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">161 161 170</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Accent background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">accent</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">244 244 245</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Accent text color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">accent-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">24 24 27</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Error/danger color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">danger</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">223 81 76</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Text color on danger background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">danger-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">250 250 250</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Success color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">success</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">76 175 80</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Text colour on success background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">success-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">250 250 250</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Warning color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">warning</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">255 140 0</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Text colour on warning background */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">warning-foreground</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">9 9 11</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Border color (boxes) */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">border</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">212 212 216</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Input borders */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">input</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">212 212 216</span><span style="color:#5fb3b3;">);
+</span><span>
+</span><span>  </span><span style="color:#5f6364;">/* Focus ring color */
+</span><span>  </span><span style="color:#5fb3b3;">--</span><span style="color:#fac863;">ring</span><span style="color:#5fb3b3;">: </span><span style="color:#6699cc;">rgb</span><span style="color:#5fb3b3;">(</span><span style="color:#f99157;">24 24 27</span><span style="color:#5fb3b3;">);
+</span><span style="color:#5fb3b3;">}
+</span></code></pre>
+<p>After these, include CSS and JS files the respective components.</p>
+<h2 id="example-themes">Example themes</h2>
+<h3 id="default-oat-brown">Default Oat brown</h3>
+<pre data-lang="css" style="background-color:#2b2c2f;color:#cccece;" class="language-css "><code class="language-css" data-lang="css"><span>--background: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fff</span><span>;
+</span><span>--foreground: #09090b;
+</span><span>--card: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fff</span><span>;
+</span><span>--</span><span style="color:#eb606b;">card-foreground</span><span>: #09090b;
+</span><span>--primary: #574747;
+</span><span>--</span><span style="color:#eb606b;">primary-foreground</span><span>: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fafafa</span><span>;
+</span><span>--secondary: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">f4f4f5</span><span>;
+</span><span>--</span><span style="color:#eb606b;">secondary-foreground</span><span>: #574747;
+</span><span>--muted: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">f4f4f5</span><span>;
+</span><span>--</span><span style="color:#eb606b;">muted-foreground</span><span>: #71717a;
+</span><span>--faint: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fafafa</span><span>;
+</span><span>--accent: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">f4f4f5</span><span>;
+</span><span>--danger: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">df514c</span><span>;
+</span><span>--</span><span style="color:#eb606b;">danger-foreground</span><span>: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fafafa</span><span>;
+</span><span>--success: #4caf50;
+</span><span>--</span><span style="color:#eb606b;">success-foreground</span><span>: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">fafafa</span><span>;
+</span><span>--warning: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">ff8c00</span><span>;
+</span><span>--</span><span style="color:#eb606b;">warning-foreground</span><span>: #09090b;
+</span><span>--border: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">d4d4d8</span><span>;
+</span><span>--</span><span style="color:#eb606b;">input</span><span>: </span><span style="color:#5fb3b3;">#</span><span style="color:#bb80b3;">d4d4d8</span><span>;
+</span><span>--ring: #574747;
+</span></code></pre>
+<hr />
+<h2 id="dark-mode">Dark mode</h2>
+<p>Adding <code>data-theme="dark"</code> to <code>&lt;body&gt;</code> applies the dark theme. Customize the dark theme by redefining the aforementioned theme variables and scoping them inside <code>[data-theme="dark"] { ... }</code></p>
+
+
+
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+    </div>
+  </main>
+</body>
+</html>
