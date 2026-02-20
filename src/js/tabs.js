@@ -45,7 +45,7 @@ class OtTabs extends OtBase {
     });
 
     // Find initially active tab or default to first.
-    const activeTab = this.#tabs.findIndex(t => t.ariaSelected === 'true');
+    const activeTab = this.#tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
     this.#activate(activeTab >= 0 ? activeTab : 0);
   }
 
@@ -92,7 +92,7 @@ class OtTabs extends OtBase {
   }
 
   get activeIndex() {
-    return this.#tabs.findIndex(t => t.ariaSelected === 'true');
+    return this.#tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
   }
 
   set activeIndex(value) {
