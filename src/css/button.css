@@ -17,7 +17,10 @@
     border: 1px solid;
     border-color: rgb(from #fff r g b / 0.15) rgb(from #000 r g b / 0.2) rgb(from #000 r g b / 0.2) rgb(from #fff r g b / 0.15);
     transition: background-color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
-    cursor: pointer;
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
 
     &:hover:not(:disabled) {
       background-color: color-mix(in srgb, var(--primary), white 25%);

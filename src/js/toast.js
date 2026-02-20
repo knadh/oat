@@ -127,7 +127,15 @@ function removeToast(toast, container) {
   };
 
   toast.addEventListener('transitionend', cleanup, { once: true });
-  setTimeout(cleanup, 200);
+
+  // Couldn't confirm what unit this actually returns across browsers, so
+  // assume that it could be ms or s. Also, setTimeou() is required because
+  // there's no guarantee that the `transitionend` event will always fire,
+  // eg: clients that disable animations.
+  const t = getComputedStyle(toast).getPropertyValue('--transition').trim();
+  const val = parseFloat(t);
+  const ms = t.endsWith('ms') ? val : val * 1000;
+  setTimeout(cleanup, ms);
 }
 
 // Clear all toasts.

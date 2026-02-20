@@ -1,21 +1,46 @@
 @layer components {
-  .spinner {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid var(--muted);
-    border-top-color: var(--primary);
-    border-radius: var(--radius-full);
-    animation: spin 1s linear infinite;
+  [aria-busy="true"] {
+    &::before {
+      content: "";
+      display: inline-block;
+      inset: 0;
+      margin: auto;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 2px solid var(--muted);
+      border-top-color: var(--primary);
+      border-radius: var(--radius-full);
+      animation: spin 1s linear infinite;
+      text-align: center;
+    }
 
-    &.small {
+    &[data-spinner~="small"]::before {
       width: 1rem;
       height: 1rem;
     }
 
-    &.large {
+    &[data-spinner~="large"]::before {
       width: 2rem;
       height: 2rem;
       border-width: 3px;
+    }
+
+    &[data-spinner~="overlay"] {
+      position: relative;
+
+      > * {
+        opacity: 0.3;
+
+        /* "disable" all elements in the container while it's busy */
+        pointer-events: none;
+      }
+
+      &::before {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        z-index: 1;
+      }
     }
   }
 

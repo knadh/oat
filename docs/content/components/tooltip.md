@@ -1,7 +1,7 @@
 +++
 title = "Tooltip"
 weight = 155
-description = "Smoothl tooltips using the native title attribute."
+description = "Smooth tooltips using the native title attribute."
 +++
 
 Use the standard `title` attribute on any element to render a tooltip with smooth transition.

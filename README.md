@@ -10,6 +10,8 @@ I wrote this to use in my own projects after getting sick of the ridiculous bloa
 
 See live demo and docs at [**oat.ink**](https://oat.ink)
 
+**IMPORTANT:** The lib is currently sub v1 and is likely to have breaking changes until it hits v1.
+
 -------------
 
 <img width="739" height="735" alt="image" src="https://github.com/user-attachments/assets/b0a2f55c-659d-4aab-922c-b13d89eeab36" />

@@ -46,6 +46,9 @@
   }
 
   .toast {
+    --transition: 300ms;
+    --transition-in: calc(var(--transition) - 50ms);
+
     padding: var(--space-5) var(--space-4);
     max-width: 28rem;
     min-width: 20rem;
@@ -56,7 +59,7 @@
     border-inline-start-style: solid;
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
-    transition: opacity 150ms, transform 150ms, margin 150ms;
+    transition: opacity var(--transition-in), transform var(--transition-in), margin var(--transition-in);
     line-height: 1;
 
     .toast-title {
@@ -109,7 +112,7 @@
       padding-block: 0;
       max-height: 0;
       overflow: hidden;
-      transition: opacity 200ms, margin 200ms, padding 200ms, max-height 200ms;
+      transition: opacity var(--transition), margin var(--transition), padding var(--transition), max-height var(--transition);
     }
   }
 }
