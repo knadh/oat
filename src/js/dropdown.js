@@ -29,9 +29,12 @@ class OtDropdown extends OtBase {
     this.#position = () => {
       // Position has to be calculated and applied manually because
       // popover positioning is like fixed, relative to the window.
-      const rect = this.#trigger.getBoundingClientRect();
-      this.#menu.style.top = `${rect.bottom}px`;
-      this.#menu.style.left = `${rect.left}px`;
+      const r = this.#trigger.getBoundingClientRect();
+      const m = this.#menu.getBoundingClientRect();
+
+      // Flip if menu overflows viewport.
+      this.#menu.style.top = `${r.bottom + m.height > window.innerHeight ? r.top - m.height : r.bottom}px`;
+      this.#menu.style.left = `${r.left + m.width > window.innerWidth ? r.right - m.width : r.left}px`;
     };
   }
 
@@ -63,6 +66,17 @@ class OtDropdown extends OtBase {
       case 'ArrowUp':
         e.preventDefault();
         items[idx - 1 < 0 ? items.length - 1 : idx - 1]?.focus();
+        break;
+      case 'Home':
+        e.preventDefault();
+        items[0]?.focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+        break;
+      case 'Escape':
+        this.#menu.hidePopover();
         break;
     }
   }
