@@ -80,6 +80,10 @@
           &:is(:hover, [aria-current]) {
             background-color: var(--accent);
           }
+
+          &.active {
+            font-weight: var(--font-medium);
+          }
         }
 
         details {

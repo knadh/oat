@@ -103,6 +103,61 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  function initNavHighlight() {
+    const linkMap = {};
+    document.querySelectorAll('aside nav a').forEach(a => {
+      const hash = new URL(a.href, location.origin).hash;
+      if (hash) {
+        linkMap[hash] = a;
+      }
+    });
+
+    const sections = Array.from(document.querySelectorAll('[id]')).filter(
+      el => linkMap['#' + el.id]
+    );
+
+    if (!sections.length) {
+      return;
+    };
+
+    let currentActiveEl = null;
+
+    const observer = new IntersectionObserver((components) => {
+      components.forEach(component => {
+        const activeEl = linkMap['#' + component.target.id];
+        if (!activeEl) {
+          return;
+        }
+        if (component.isIntersecting) {
+          if (currentActiveEl) {
+            currentActiveEl.classList.remove('active');
+          }
+          currentActiveEl = activeEl;
+          activeEl.classList.add('active');
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -80% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(s => observer.observe(s));
+
+    function syncFromHash() {
+      const activeEl = linkMap[location.hash];
+      if (activeEl) {
+        if (currentActiveEl) {
+          currentActiveEl.classList.remove('active');
+        }
+        currentActiveEl = activeEl;
+        activeEl.classList.add('active');
+      }
+    }
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+  }
+  initNavHighlight();
 });
 
 
