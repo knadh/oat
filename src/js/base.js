@@ -90,6 +90,9 @@ class OtBase extends HTMLElement {
 // Export for use in other files
 if (typeof window !== 'undefined') {
   window.OtBase = OtBase;
+
+  // Allow other files to expose simple functions and utilities
+  window.ot = {};
 }
 
 // Polyfill for command/commandfor (Safari)

@@ -13,8 +13,6 @@
  *   ot.toastEl(document.querySelector('#my-template'))
  */
 
-const ot = window.ot || (window.ot = {});
-
 const containers = {};
 const DEFAULT_DURATION = 4000;
 const DEFAULT_PLACEMENT = 'top-right';
