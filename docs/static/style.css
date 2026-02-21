@@ -198,7 +198,7 @@ html:not([data-theme="dark"]) .icon-light {
   padding: 0;
 }
 
-pre[data-lang] {
+pre:has(code[data-lang]) {
   position: relative;
 
   code {
