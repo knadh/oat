@@ -3,8 +3,7 @@
     position: fixed;
     inset: 0;
     z-index: var(--z-modal);
-    width: 100%;
-    max-width: 32rem;
+    width: min(100% - 2rem, 32rem);
     max-height: 85vh;
     margin: auto;
     padding: 0;
