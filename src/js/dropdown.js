@@ -16,6 +16,7 @@ class OtDropdown extends OtBase {
   #menu;
   #trigger;
   #position;
+  #items;
 
   init() {
     this.#menu = this.$('[popover]');
@@ -29,9 +30,12 @@ class OtDropdown extends OtBase {
     this.#position = () => {
       // Position has to be calculated and applied manually because
       // popover positioning is like fixed, relative to the window.
-      const rect = this.#trigger.getBoundingClientRect();
-      this.#menu.style.top = `${rect.bottom}px`;
-      this.#menu.style.left = `${rect.left}px`;
+      const r = this.#trigger.getBoundingClientRect();
+      const m = this.#menu.getBoundingClientRect();
+
+      // Flip if menu overflows viewport.
+      this.#menu.style.top = `${r.bottom + m.height > window.innerHeight ? r.top - m.height : r.bottom}px`;
+      this.#menu.style.left = `${r.left + m.width > window.innerWidth ? r.right - m.width : r.left}px`;
     };
   }
 
@@ -40,10 +44,12 @@ class OtDropdown extends OtBase {
       this.#position();
       window.addEventListener('scroll', this.#position, true);
       window.addEventListener('resize', this.#position);
-      this.$('[role="menuitem"]')?.focus();
+      this.#items = this.$$('[role="menuitem"]');
+      this.#items[0]?.focus();
       this.#trigger.ariaExpanded = 'true';
     } else {
       this.cleanup();
+      this.#items = null;
       this.#trigger.ariaExpanded = 'false';
       this.#trigger.focus();
     }
@@ -52,19 +58,9 @@ class OtDropdown extends OtBase {
   onkeydown(e) {
     if (!e.target.matches('[role="menuitem"]')) return;
 
-    const items = this.$$('[role="menuitem"]');
-    const idx = items.indexOf(e.target);
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        items[(idx + 1) % items.length]?.focus();
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        items[idx - 1 < 0 ? items.length - 1 : idx - 1]?.focus();
-        break;
-    }
+    const idx = this.#items.indexOf(e.target);
+    const next = this.keyNav(e, idx, this.#items.length, 'ArrowUp', 'ArrowDown', true);
+    if (next >= 0) this.#items[next].focus();
   }
 
   cleanup() {
