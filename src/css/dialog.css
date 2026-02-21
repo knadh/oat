@@ -3,9 +3,7 @@
     position: fixed;
     inset: 0;
     z-index: var(--z-modal);
-    width: 100%;
-    max-width: 32rem;
-    max-height: 85vh;
+    width: min(100% - 2rem, 32rem);
     margin: auto;
     padding: 0;
     background-color: var(--card);

@@ -40,7 +40,7 @@ Forms inside dialogs work naturally. Use `command="close"` on cancel buttons to 
     <header>
       <h3>Edit form</h3>
     </header>
-    <div>
+    <div class="flex flex-col gap-4">
       <label>Name <input name="name" required></label>
       <label>Email <input name="email" type="email"></label>
     </div>
