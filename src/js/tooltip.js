@@ -22,4 +22,4 @@ ot.tooltip = function(...elements) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', ot.tooltip);
+document.addEventListener('DOMContentLoaded', () => ot.tooltip());
