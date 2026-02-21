@@ -23,9 +23,6 @@ class OtBase extends HTMLElement {
     this.init();
   }
 
-  // Override in WebComponent subclasses for init logic.
-  init() {}
-
   // Called when element is removed from DOM.
   disconnectedCallback() {
     this.cleanup();
@@ -41,6 +38,29 @@ class OtBase extends HTMLElement {
     if (handler) handler.call(this, event);
   }
 
+  // Given a keyboard event (left, right, home, end), the current selection idx
+  // total items in a list, return 0-n index of the next/previous item
+  // for doing a roving keyboard nav.
+  keyNav(event, idx, len, prevKey, nextKey, homeEnd = false) {
+    const { key } = event;
+    let next = -1;
+
+    if (key === nextKey) {
+      next = (idx + 1) % len;
+    } else if (key === prevKey) {
+      next = (idx - 1 + len) % len;
+    } else if (homeEnd) {
+      if (key === 'Home') {
+        next = 0;
+      } else if (key === 'End') {
+        next = len - 1;
+      }
+    }
+
+    if (next >= 0) event.preventDefault();
+    return next;
+  }
+
   // Emit a custom event.
   emit(name, detail = null) {
     return this.dispatchEvent(new CustomEvent(name, {
@@ -49,20 +69,6 @@ class OtBase extends HTMLElement {
       cancelable: true,
       detail
     }));
-  }
-
-  // Get boolean attribute value.
-  getBool(name) {
-    return this.hasAttribute(name);
-  }
-
-  // Set or remove boolean attribute.
-  setBool(name, value) {
-    if (value) {
-      this.setAttribute(name, '');
-    } else {
-      this.removeAttribute(name);
-    }
   }
 
   // Query selector within this element.
