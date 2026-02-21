@@ -23,7 +23,7 @@ jobs:
         run: make dist
 
       - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.21.0
+        uses: shalzz/zola-deploy-action@v0.22.1
         env:
           # Build docs site from ./docs
           BUILD_DIR: docs
