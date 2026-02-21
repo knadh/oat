@@ -1,0 +1,191 @@
+@layer components {
+  ot-date-range {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    width: min(100%, 34rem);
+
+    > ot-datepicker {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  ot-datepicker {
+    position: relative;
+    display: inline-block;
+    width: min(100%, 16rem);
+
+    > input {
+      width: 100%;
+      margin: 0;
+      padding-inline-end: var(--space-8);
+    }
+
+    > [data-datepicker-toggle] {
+      position: absolute;
+      inset-inline-end: var(--space-1);
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      color: var(--muted-foreground);
+      background: none;
+      border: none;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        display: block;
+        flex: 0 0 auto;
+        width: 1rem;
+        height: 1rem;
+        background-color: currentColor;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+      }
+
+      > [data-datepicker-icon] {
+        width: 1rem;
+        height: 1rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        display: none;
+      }
+
+      &:is(:hover, :focus-visible) {
+        color: var(--foreground);
+        background-color: transparent;
+      }
+    }
+
+    [data-datepicker-panel] {
+      position: fixed;
+      margin: 0;
+      padding: var(--space-3);
+      min-width: 14rem;
+      max-width: calc(100vw - var(--space-4));
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow-large);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition:
+        opacity 150ms ease-out,
+        transform 150ms ease-out,
+        display 150ms allow-discrete,
+        overlay 150ms allow-discrete;
+
+      &:popover-open {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @starting-style {
+        &:popover-open {
+          opacity: 0;
+          transform: translateY(-4px);
+        }
+      }
+
+      > header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+        margin-block-end: var(--space-2);
+
+        > strong {
+          font-size: var(--text-7);
+          font-weight: var(--font-semibold);
+        }
+      }
+    }
+
+    [data-datepicker-nav] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      color: var(--foreground);
+      background: none;
+      border: 1px solid transparent;
+      border-radius: var(--radius-small);
+      cursor: pointer;
+
+      &:is(:hover, :focus-visible) {
+        background-color: var(--accent);
+      }
+    }
+
+    [data-datepicker-weekdays],
+    [data-datepicker-days] {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    [data-datepicker-weekdays] {
+      margin-block-end: var(--space-1);
+
+      > span {
+        text-align: center;
+        font-size: var(--text-8);
+        color: var(--muted-foreground);
+      }
+    }
+
+    [data-day] {
+      width: 2rem;
+      height: 2rem;
+      margin: 1px auto;
+      padding: 0;
+      font-size: var(--text-7);
+      color: var(--foreground);
+      background: none;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+
+      &:is(:hover, :focus-visible) {
+        background-color: var(--accent);
+      }
+
+      &[data-outside] {
+        color: var(--faint-foreground);
+      }
+
+      &[data-today]:not([aria-selected="true"]) {
+        box-shadow: inset 0 0 0 1px var(--ring);
+      }
+
+      &[aria-selected="true"] {
+        color: var(--background);
+        background-color: var(--foreground);
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        background: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+@layer components {
+  ot-carousel {
+    position: relative;
+    display: block;
+    overflow: clip;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    background-color: var(--card);
+
+    &:focus-visible {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    [data-carousel-track] {
+      display: flex;
+      transition: transform 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform;
+      touch-action: pan-y;
+    }
+
+    [data-carousel-slide] {
+      flex: 0 0 100%;
+      min-width: 100%;
+      opacity: 0.78;
+      transform: scale(0.99);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    [data-carousel-slide][aria-hidden="false"] {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    [data-carousel-slide] > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    [data-carousel-prev],
+    [data-carousel-next] {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0;
+      color: var(--foreground);
+      background-color: color-mix(in srgb, var(--background) 70%, transparent);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      transform: translateY(-50%);
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+
+      &:is(:hover, :focus-visible) {
+        background-color: var(--accent);
+        transform: translateY(-50%) scale(1.06);
+      }
+    }
+
+    [data-carousel-prev] {
+      inset-inline-start: var(--space-3);
+    }
+
+    [data-carousel-next] {
+      inset-inline-end: var(--space-3);
+    }
+
+    &:is(:hover, :focus-within) {
+      [data-carousel-prev],
+      [data-carousel-next] {
+        opacity: 0.85;
+        pointer-events: auto;
+      }
+    }
+
+    [data-carousel-dots] {
+      position: absolute;
+      inset-block-end: var(--space-3);
+      inset-inline: var(--space-3);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      pointer-events: none;
+    }
+
+    [data-carousel-dot] {
+      width: 0.625rem;
+      height: 0.625rem;
+      padding: 0;
+      pointer-events: auto;
+      background-color: color-mix(in srgb, var(--background) 60%, var(--faint));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+
+      &:is(:hover, :focus-visible) {
+        background-color: var(--muted-foreground);
+        transform: scale(1.08);
+      }
+
+      &[aria-current="true"] {
+        background-color: var(--foreground);
+        border-color: var(--foreground);
+        transform: scale(1.15);
+      }
+    }
+
+    &[data-carousel-single] {
+      [data-carousel-prev],
+      [data-carousel-next],
+      [data-carousel-dots] {
+        display: none;
+      }
+    }
+  }
+}
