@@ -3,7 +3,6 @@
  * Converts title attributes to data-tooltip for custom styling.
  * Progressive enhancement: native title works without JS.
  */
-const ot = window.ot || (window.ot = {});
 
 // Initialise tooltips on any number of elements. If none are provided,
 // initialise all the elements in the document with a 'title' attribute.
