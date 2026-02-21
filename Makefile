@@ -8,6 +8,8 @@ CSS_FILES = src/css/00-base.css \
             src/css/animations.css \
             src/css/button.css \
             src/css/form.css \
+            src/css/datepicker.css \
+            src/css/carousel.css \
             src/css/table.css \
             src/css/progress.css \
             src/css/spinner.css \
@@ -37,7 +39,7 @@ css:
 
 js:
 	@mkdir -p dist
-	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
+	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/carousel.js src/js/datepicker.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
 	@esbuild dist/oat.js --minify --outfile=dist/oat.min.js
 	@gzip -9 -k -f dist/oat.min.js
 	@cp dist/oat.min.js docs/static/oat.min.js
