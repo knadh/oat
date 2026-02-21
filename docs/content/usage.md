@@ -75,7 +75,7 @@ Oat styles semantic HTML elements by default. No classes needed for basic stylin
 # Local dev setup
 
 ### Requirements
-- [zola](https://github.com/getzola/zola/releases) static site generator installed to preview the docs/demo site and to try out changes.
+- [zola](https://github.com/getzola/zola/releases) static site generator installed to preview the docs/demo site and to try out changes (must be `zola>=0.22.0`).
 - [esbuild](https://esbuild.github.io/) installed for bundling+minifying JS and CSS.
 
 ### Running
