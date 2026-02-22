@@ -141,11 +141,58 @@ nav[data-topnav] {
   display: block;
 }
 
-.ot-demo.compact .demo-content {
-  max-width: 400px;
-}
-.ot-demo pre {
-  display: none;
+.ot-demo {
+  &.compact .demo-content {
+    max-width: 400px;
+  }
+
+  pre {
+    display: none;
+  }
+
+  /* Fullscreen side-by-side editor */
+  &.fullscreen {
+    background: rgb(from var(--background) r g b / 0.95);
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    padding: var(--space-4);
+    overflow: hidden;
+
+    ot-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      height: 100%;
+
+      [role="tablist"] {
+        display: none;
+      }
+
+      [role="tabpanel"],
+      [role="tabpanel"][hidden] {
+        display: flex !important;
+        flex-direction: column;
+        overflow: auto;
+        min-height: 0;
+      }
+    }
+
+    .demo-box {
+      flex: 1;
+      margin-top: 0;
+      overflow: auto;
+    }
+
+    pre {
+      flex: 1;
+      overflow: auto;
+      margin: 0;
+      padding-top: 40px;
+
+      menu.actions { opacity: 1; }
+    }
+  }
 }
 
 .demo-grid {
@@ -198,7 +245,7 @@ html:not([data-theme="dark"]) .icon-light {
   padding: 0;
 }
 
-pre[data-lang] {
+pre {
   position: relative;
 
   code {
@@ -233,49 +280,6 @@ pre[data-lang] {
   }
 }
 
-/* Fullscreen side-by-side editor. */
-.ot-demo.fullscreen {
-  background: rgb(from var(--background) r g b / 0.95);;
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  padding: var(--space-4);
-  overflow: hidden;
-
-  ot-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
-    height: 100%;
-
-    [role="tablist"] {
-      display: none;
-    }
-
-    [role="tabpanel"],
-    [role="tabpanel"][hidden] {
-      display: flex !important;
-      flex-direction: column;
-      overflow: auto;
-      min-height: 0;
-    }
-  }
-
-  .demo-box {
-    flex: 1;
-    margin-top: 0;
-    overflow: auto;
-  }
-
-  pre[data-lang] {
-    flex: 1;
-    overflow: auto;
-    margin: 0;
-    padding-top: 40px;
-
-    menu.actions { opacity: 1; }
-  }
-}
 
 @media (max-width: 600px) {
   .features {

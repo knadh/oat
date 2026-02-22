@@ -4,8 +4,7 @@ compile_sass = false
 build_search_index = false
 
 [markdown]
-highlight_code = true
-highlight_theme = "charcoal"
+highlighting = { theme = "one-dark-pro" }
 
 [extra]
 description = "Oat - Ultra-lightweight, semantic, zero-dependency HTML UI component library"

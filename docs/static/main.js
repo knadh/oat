@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Iterate over Zola syntax highlighte code blocks and create 'Preview' and 'Code' tabs.
-  document.querySelectorAll('pre[data-lang]').forEach(pre => {
-
+  document.querySelectorAll('pre').forEach(pre => {
     // Insert the buttons menu before the code block.
     const menu = document.createElement('menu');
     menu.className = 'actions buttons';
