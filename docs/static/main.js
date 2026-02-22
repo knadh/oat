@@ -103,20 +103,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Highlight the current sidebar link.
-  const sb = document.querySelector('aside[data-sidebar]');
-  if (sb) {
-    const p = location.pathname.replace(/\/$/, '');
+  function sync() {
+    // Highlight the current sidebar link.
+    const sb = document.querySelector('aside[data-sidebar]');
+    if (sb) {
+      // remove aria-current from links, then add it to the current one
+      sb.querySelectorAll('a[aria-current]').forEach(a => a.removeAttribute('aria-current'));
+      const p = location.pathname.replace(/\/$/, '');
 
-    // First, try selecting the URL with the hash ID, then the direct URL, then the /components section.
-    const a = (location.hash && sb.querySelector(`a[href="${p}/${location.hash}"], a[href="${p}${location.hash}"]`))
-      || sb.querySelector(`a[href="${p}/"], a[href="${p}"]`)
-      || sb.querySelector(`a[href="/components/#${p.split('/').filter(Boolean).pop()}"]`);
+      // First, try selecting the URL with the hash ID, then the direct URL, then the /components section.
+      const a = (location.hash && sb.querySelector(`a[href="${p}/${location.hash}"], a[href="${p}${location.hash}"]`))
+        || sb.querySelector(`a[href="${p}/"], a[href="${p}"]`)
+        || sb.querySelector(`a[href="/components/#${p.split('/').filter(Boolean).pop()}"]`);
 
-    if (a) {
-      a.setAttribute('aria-current', 'page');
+      if (a) {
+        a.setAttribute('aria-current', 'page');
+      }
     }
   }
+  window.addEventListener('hashchange', sync);
 });
 
 
