@@ -2,7 +2,7 @@
 title = "Installation and usage"
 +++
 
-**IMPORTANT:** The lib is currently sub v1 and is likely to have breaking changes until it hits v1.
+> **IMPORTANT:** The lib is currently sub v1 and is likely to have breaking changes until it hits v1.
 
 ### CDN
 
