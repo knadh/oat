@@ -3,6 +3,7 @@ import './tabs.js';
 import './dropdown.js';
 import './tooltip.js';
 import './sidebar.js';
+import './dialog.js';
 import { toast, toastEl, toastClear } from './toast.js';
 
 // Register the global window.ot.* APIs.
