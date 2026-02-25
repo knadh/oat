@@ -1,7 +1,7 @@
 @layer utilities {
-  .text-left { text-align: start; }
-  .text-center { text-align: center; }
-  .text-right { text-align: end; }
+  .align-left { text-align: start; }
+  .align-center { text-align: center; }
+  .align-right { text-align: end; }
   .text-light { color: var(--muted-foreground); }
   .text-lighter { color: var(--faint-foreground); }
 
@@ -10,12 +10,13 @@
   .items-center { align-items: center; }
   .justify-center { justify-content: center; }
   .justify-between { justify-content: space-between; }
+  .justify-end { justify-content: flex-end; }
 
   /* Bootstrap inspired. */
   .hstack {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     flex-wrap: wrap;
     align-content: flex-start;
     height: auto;
