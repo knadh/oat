@@ -51,7 +51,7 @@ Set `data-sidebar-layout="always"` to keep the toggle visible on all screen size
 
 ### With top sticky nav
 
-Add `data-topnav` to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it.
+Add `data-topnav` to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
 
 ```html
 <body data-sidebar-layout>
