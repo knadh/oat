@@ -11,7 +11,7 @@
     visibility: hidden;
     transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
     pointer-events: none;
-    z-index: 1000;
+    z-index: var(--z-tooltip);
   }
 
   /* Text */
