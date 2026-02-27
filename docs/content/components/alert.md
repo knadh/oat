@@ -8,16 +8,16 @@ Use `role="alert"` for alert styling. Set `data-variant` for success, warning, o
 
 {% demo() %}
 ```html
-<div role="alert">
-  <strong>Default Alert</strong> This is a default alert message.
-</div>
-
 <div role="alert" data-variant="success">
   <strong>Success!</strong> Your changes have been saved.
 </div>
 
 <div role="alert" data-variant="warning">
   <strong>Warning!</strong> Please review before continuing.
+</div>
+
+<div role="alert">
+  <strong>Info</strong> This is a default alert message.
 </div>
 
 <div role="alert" data-variant="error">

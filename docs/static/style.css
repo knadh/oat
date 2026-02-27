@@ -148,6 +148,9 @@ nav[data-topnav] {
 #skeleton .demo-content {
   display: block;
 }
+#alert .demo-content {
+  display: grid;
+}
 
 #typography .demo-box,
 .demo-section[id="typography"] .demo-box {
