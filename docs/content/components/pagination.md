@@ -1,6 +1,6 @@
 +++
 title = "Pagination"
-weight = 155
+weight = 105
 description = "Pagination nav bars."
 +++
 

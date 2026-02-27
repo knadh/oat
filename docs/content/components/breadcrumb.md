@@ -1,6 +1,6 @@
 +++
 title = "Breadcrumb"
-weight = 145
+weight = 45
 description = "Simple navigation hierarchy using nav and ordered lists"
 +++
 
