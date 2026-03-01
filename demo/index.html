@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oat kitchensink dashboard demo — Oat UI</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) {
+        document.documentElement.style.colorScheme = t;
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="demo">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" /></a>
+        <a href="/" class="logo"><img src="/logo.svg" alt="Oat UI" /></a>
+      </div>
+
+      <div class="col-8 justify-end hstack">
+        <a href="/">Home</a>
+        <a href="/demo">Demo</a>
+        <a href="https://github.com/knadh/oat">GitHub</a>
+        <ot-dropdown>
+          <button popovertarget="nav-menu" class="outline small">
+            More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          <menu popover id="nav-menu">
+            <a href="/usage" role="menuitem">Usage</a>
+            <a href="/customizing" role="menuitem">Customizing</a>
+            <a href="/other-libs" role="menuitem">Other libs</a>
+            <hr>
+            <a href="/recipes" role="menuitem">Recipes</a>
+            <a href="/extensions" role="menuitem">Extensions</a>
+          </menu>
+        </ot-dropdown>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#breadcrumb">Breadcrumb
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#pagination">Pagination
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main>
+    <div class="container">
+      
+<link href="/demo.css" rel="stylesheet" />
+
+<section class="section">
+  <div class="hstack justify-between mb-6">
+    <div class="hstack">
+      <h2 style="margin: 0;">Demo</h2>
+      <span class="badge success">Live</span>
+      <span class="badge secondary">v1.0.0</span>
+    </div>
+    <div class="hstack">
+      <label class="hstack gap-2" style="margin: 0;">
+        <input type="checkbox" role="switch" checked> Auto-refresh
+      </label>
+
+      <ot-dropdown>
+        <button popovertarget="export-menu" class="outline small">
+          Export ▾
+        </button>
+        <menu popover id="export-menu">
+          <button role="menuitem">Export as CSV</button>
+          <button role="menuitem">Export as JSON</button>
+          <hr>
+          <button role="menuitem">Print report</button>
+        </menu>
+      </ot-dropdown>
+
+      <button class="small" data-tooltip="Refresh data now">
+        ↻ Refresh
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="row">
+    <div class="col-3">
+      <article class="card">
+        <header>
+          <small class="text-light">Revenue</small>
+          <div class="stat-value">$42,128</div>
+          <small class="text-light"><span class="badge success">+12.5%</span> vs last month</small>
+        </header>
+        <footer>
+          <progress value="72" max="100"></progress>
+        </footer>
+      </article>
+    </div>
+    <div class="col-3">
+      <article class="card">
+        <header>
+          <small class="text-light">Active Users</small>
+          <div class="stat-value">2,847</div>
+          <small class="text-light"><span class="badge warning">-3.2%</span> vs last month</small>
+        </header>
+        <footer>
+          <progress value="58" max="100"></progress>
+        </footer>
+      </article>
+    </div>
+    <div class="col-3">
+      <article class="card">
+        <header>
+          <small class="text-light">Retention</small>
+          <div class="stat-value">3.24%</div>
+          <small class="text-light"><span class="badge success">+0.8%</span> vs last month</small>
+        </header>
+        <footer>
+          <meter value="0.65" min="0" max="1" low="0.3" high="0.7" optimum="1"></meter>
+        </footer>
+      </article>
+    </div>
+    <div class="col-3">
+      <article class="card">
+        <header>
+          <small class="text-light">Uptime</small>
+          <div class="stat-value">99.99%</div>
+          <small class="text-light"><span class="badge">Healthy</span></small>
+        </header>
+        <footer>
+          <meter value="0.9998" min="0" max="1" low="0.95" high="0.99" optimum="1"></meter>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <article class="card">
+    <ot-tabs>
+      <div role="tablist">
+        <button role="tab">Overview</button>
+        <button role="tab">Performance</button>
+        <button role="tab">Reports</button>
+      </div>
+
+      <!-- Overview tab -->
+      <div role="tabpanel">
+        <h4>Weekly Traffic</h4>
+        <div class="faux-bar-chart">
+          <div class="faux-bar" style="height: 45%;" data-tooltip="Mon: 1,204"></div>
+          <div class="faux-bar" style="height: 62%;" data-tooltip="Tue: 1,659"></div>
+          <div class="faux-bar" style="height: 78%;" data-tooltip="Wed: 2,087"></div>
+          <div class="faux-bar" style="height: 55%;" data-tooltip="Thu: 1,472"></div>
+          <div class="faux-bar" style="height: 90%;" data-tooltip="Fri: 2,411"></div>
+          <div class="faux-bar" style="height: 70%;" data-tooltip="Sat: 1,874"></div>
+          <div class="faux-bar" style="height: 40%;" data-tooltip="Sun: 1,071"></div>
+        </div>
+        <blockquote>This dummy kitchensink dashboard page shows various UI components and layouts built with Oat.</blockquote>
+      </div>
+
+      <!-- Performance tab -->
+      <div role="tabpanel">
+        <article class="card" aria-busy="true" data-spinner="large overlay">
+          <header><h4>Performance Metrics</h4></header>
+          <p>Fetching latest benchmark data…</p>
+          <div class="row mt-4">
+            <div class="col-6">
+              <strong>Avg Response</strong>
+              <p>142 ms</p>
+              <progress value="14" max="100"></progress>
+            </div>
+            <div class="col-6">
+              <strong>Error Rate</strong>
+              <p>0.03%</p>
+              <progress value="3" max="100"></progress>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Reports tab -->
+      <div role="tabpanel">
+        <h4>Monthly Summary</h4>
+        <div class="table">
+          <table>
+            <thead>
+              <tr><th>Metric</th><th>Value</th><th>Change</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Page views</td><td>1,234,567</td><td><span class="badge success">+8%</span></td></tr>
+              <tr><td>Bounce rate</td><td>42.3%</td><td><span class="badge danger">+2.1%</span></td></tr>
+              <tr><td>Avg session</td><td>4m 12s</td><td><span class="badge success">+15s</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ot-tabs>
+  </article>
+</section>
+
+<section class="section">
+  <div class="row">
+    <!-- Left: Activity Feed -->
+    <div class="col-6">
+      <article class="card">
+        <header><h3>Recent Activity</h3></header>
+
+        <div class="vstack gap-4">
+          <div class="activity-item">
+            <div class="hstack">
+              <span class="badge success">Deploy</span>
+              <strong>Production deploy #1847</strong>
+            </div>
+            <small class="text-lighter">2 minutes ago by <strong>alice</strong></small>
+          </div>
+
+          <div class="activity-item">
+            <div class="hstack">
+              <span class="badge warning">Alert</span>
+              <strong>High memory usage on worker-3</strong>
+            </div>
+            <small class="text-lighter">18 minutes ago — <em>auto-resolved</em></small>
+          </div>
+
+          <div class="activity-item">
+            <div class="hstack">
+              <span class="badge">Merge</span>
+              <strong>PR #392: Update auth middleware</strong>
+            </div>
+            <small class="text-lighter">1 hour ago by <strong>bob</strong></small>
+          </div>
+
+          <div class="activity-item">
+            <div class="hstack">
+              <span class="badge danger">Incident</span>
+              <strong>API latency spike (resolved)</strong>
+            </div>
+            <small class="text-lighter">3 hours ago — duration: 4m 22s</small>
+          </div>
+
+          <div class="activity-item">
+            <div class="hstack">
+              <span class="badge secondary">Config</span>
+              <strong>Updated rate limits</strong>
+            </div>
+            <small class="text-lighter">5 hours ago by <strong>carol</strong></small>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Right: Server Status -->
+    <div class="col-6">
+      <article class="card">
+        <header>
+          <h3>Server Status</h3>
+          <small class="text-light hstack gap-2">
+            <span aria-busy="true" data-spinner="small"></span> Monitoring
+          </small>
+        </header>
+
+        <div class="vstack gap-4">
+          <div>
+            <div class="hstack justify-between">
+              <strong>CPU Usage</strong>
+              <span class="badge success">Normal</span>
+            </div>
+            <progress value="42" max="100"></progress>
+            <small class="text-lighter">42% — 8 cores</small>
+          </div>
+
+          <div>
+            <div class="hstack justify-between">
+              <strong>Memory</strong>
+              <span class="badge warning">High</span>
+            </div>
+            <progress value="78" max="100"></progress>
+            <small class="text-lighter">12.5 / 16 GB used</small>
+          </div>
+
+          <div>
+            <div class="hstack justify-between">
+              <strong>Disk I/O</strong>
+              <span class="badge success">Normal</span>
+            </div>
+            <meter value="0.35" min="0" max="1" low="0.3" high="0.7" optimum="0"></meter>
+            <small class="text-lighter">Read: 145 MB/s — Write: 82 MB/s</small>
+          </div>
+
+          <div>
+            <div class="row">
+              <div class="col-6">
+                <strong>Network In</strong>
+                <p style="margin:0;">1.2 Gbps</p>
+                <progress value="60" max="100"></progress>
+              </div>
+              <div class="col-6">
+                <strong>Network Out</strong>
+                <p style="margin:0;">840 Mbps</p>
+                <progress value="42" max="100"></progress>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <article class="card">
+    <header>
+      <h3>Recent Orders</h3>
+    </header>
+
+    <div class="hstack justify-between mb-4">
+      <fieldset class="group" style="margin: 0; max-width: 300px;">
+        <input type="search" placeholder="Search orders…" aria-label="Search orders">
+        <button class="outline">Search</button>
+      </fieldset>
+
+      <menu class="buttons">
+        <li><button class="ghost small">All</button></li>
+        <li><button class="outline small">Pending</button></li>
+        <li><button class="outline small">Shipped</button></li>
+      </menu>
+    </div>
+
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th><label><input type="checkbox" aria-label="Select all"></label></th>
+            <th>Order</th>
+            <th>Customer</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label><input type="checkbox" aria-label="Select order"></label></td>
+            <td><code>#ORD-7291</code></td>
+            <td>Alice Johnson</td>
+            <td>$249.00</td>
+            <td><span class="badge success">Delivered</span></td>
+            <td>
+              <menu class="buttons">
+                <li><button class="ghost small">View</button></li>
+                <li><button class="ghost small">Edit</button></li>
+              </menu>
+            </td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" aria-label="Select order"></label></td>
+            <td><code>#ORD-7292</code></td>
+            <td>Bob Chen</td>
+            <td>$1,450.00</td>
+            <td><span class="badge warning">Pending</span></td>
+            <td>
+              <menu class="buttons">
+                <li><button class="ghost small">View</button></li>
+                <li><button class="ghost small">Edit</button></li>
+              </menu>
+            </td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" aria-label="Select order"></label></td>
+            <td><code>#ORD-7293</code></td>
+            <td>Carol Davis</td>
+            <td>$89.50</td>
+            <td><span class="badge">Processing</span></td>
+            <td>
+              <menu class="buttons">
+                <li><button class="ghost small">View</button></li>
+                <li><button class="ghost small">Edit</button></li>
+              </menu>
+            </td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" aria-label="Select order"></label></td>
+            <td><code>#ORD-7294</code></td>
+            <td>David Park</td>
+            <td>$672.00</td>
+            <td><span class="badge outline">Shipped</span></td>
+            <td>
+              <menu class="buttons">
+                <li><button class="ghost small">View</button></li>
+                <li><button class="ghost small">Edit</button></li>
+              </menu>
+            </td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" aria-label="Select order"></label></td>
+            <td><code>#ORD-7295</code></td>
+            <td>Emma Wilson</td>
+            <td>$34.99</td>
+            <td><span class="badge danger">Cancelled</span></td>
+            <td>
+              <menu class="buttons">
+                <li><button class="ghost small">View</button></li>
+                <li><button class="ghost small" commandfor="delete-dialog" command="show-modal" data-variant="danger">Delete</button></li>
+              </menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hstack mt-4" style="justify-content: flex-end;">
+      <small class="text-light">Showing 1–5 of 243</small>
+      <menu class="buttons">
+        <li><button class="outline small" disabled>← Prev</button></li>
+        <li><button class="outline small">1</button></li>
+        <li><button class="outline small">2</button></li>
+        <li><button class="outline small">3</button></li>
+        <li><button class="outline small">Next →</button></li>
+      </menu>
+    </div>
+  </article>
+
+  <!-- Delete confirmation dialog -->
+  <dialog id="delete-dialog" closedby="any">
+    <form method="dialog">
+      <header>
+        <h3>Confirm Deletion</h3>
+        <p>This action cannot be undone.</p>
+      </header>
+      <div>
+        <p>Are you sure you want to delete order <strong>#ORD-7295</strong>? This will permanently remove it from the system.</p>
+      </div>
+      <footer>
+        <button type="button" commandfor="delete-dialog" command="close" class="outline">Cancel</button>
+        <button data-variant="danger" value="confirm">Delete Order</button>
+      </footer>
+    </form>
+  </dialog>
+</section>
+
+<section class="section">
+  <div class="row">
+    <!-- Left: Alerts & Toasts -->
+    <div class="col-6">
+      <article class="card">
+        <header><h3>System Notifications</h3></header>
+
+        <div role="alert" class="mb-4">
+          <strong>Info:</strong> System maintenance scheduled for Sunday 2:00 AM UTC.
+        </div>
+        <div role="alert" data-variant="success" class="mb-4">
+          <strong>Success:</strong> All backups completed successfully.
+        </div>
+        <div role="alert" data-variant="warning" class="mb-4">
+          <strong>Warning:</strong> SSL certificate expires in 7 days.
+        </div>
+        <div role="alert" data-variant="error" class="mb-4">
+          <strong>Error:</strong> Payment gateway timeout — 3 transactions affected.
+        </div>
+
+        <hr>
+
+        <h4>Toast Notifications</h4>
+        <div class="hstack mt-4">
+          <button class="small" onclick="ot.toast('Deployment completed.', 'Success', { variant: 'success' })">Success toast</button>
+          <button class="small outline" onclick="ot.toast('Disk usage at 89%.', 'Warning', { variant: 'warning', placement: 'top-left' })">Warning toast</button>
+          <button class="small" data-variant="danger" onclick="ot.toast('Connection lost.', 'Error', { variant: 'danger', placement: 'bottom-right' })">Error toast</button>
+          <button class="small" data-variant="secondary" onclick="ot.toast('Build #1847 started.', 'Info')">Info toast</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Right: Accordion FAQ -->
+    <div class="col-6">
+      <article class="card">
+        <header><h3>FAQ</h3></header>
+
+        <details name="faq">
+          <summary>How do I reset my password?</summary>
+          <p>Navigate to <strong>Settings → Security</strong> and click <em>"Reset password"</em>. You'll receive a confirmation email with a link.</p>
+          <blockquote>Note: Password reset links expire after <mark>24 hours</mark>.</blockquote>
+        </details>
+
+        <details name="faq">
+          <summary>What export formats are supported?</summary>
+          <p>We support the following formats:</p>
+          <ul>
+            <li><code>CSV</code> — Comma-separated values</li>
+            <li><code>JSON</code> — JavaScript Object Notation</li>
+            <li><code>XLSX</code> — Microsoft Excel</li>
+          </ul>
+        </details>
+
+        <details name="faq">
+          <summary>How is billing calculated?</summary>
+          <p>Billing is based on <strong>active users</strong> per month:</p>
+          <ol>
+            <li>Base plan includes up to <mark>50 users</mark></li>
+            <li>Each additional user is <code>$2/month</code></li>
+            <li>Enterprise pricing available on request</li>
+          </ol>
+        </details>
+
+        <details name="faq">
+          <summary>Can I integrate with third-party services?</summary>
+          <p>Yes! We offer integrations via our <strong>REST API</strong> and <em>webhooks</em>. See the <a href="#">API documentation</a> for details.</p>
+          <pre><code>curl -X POST https://api.example.com/webhooks \
+  -H "Authorization: Bearer TOKEN"</code></pre>
+        </details>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <article class="card">
+    <header>
+      <h3>Account Settings</h3>
+      <p class="text-light">Manage your profile and preferences.</p>
+    </header>
+
+    <form onsubmit="event.preventDefault(); ot.toast('Settings saved!', 'Success', { variant: 'success' });">
+      <div class="row">
+        <div class="col-6">
+          <label data-field>
+            Full Name
+            <input type="text" placeholder="Jane Doe" value="Jane Doe">
+          </label>
+        </div>
+        <div class="col-6">
+          <div data-field="error">
+            <label for="settings-email">Email</label>
+            <input type="email" id="settings-email" value="jane@" aria-invalid="true" aria-describedby="email-err">
+            <div id="email-err" class="error" role="status">Please enter a valid email address.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label data-field>
+            Password
+            <input type="password" placeholder="••••••••">
+            <small data-hint>Minimum 8 characters with one number.</small>
+          </label>
+        </div>
+        <div class="col-6">
+          <div data-field>
+            <label for="settings-role">Role</label>
+            <select id="settings-role" aria-label="Select a role">
+              <option>Administrator</option>
+              <option>Editor</option>
+              <option>Viewer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label data-field>
+            Start Date
+            <input type="date" value="2025-01-15">
+          </label>
+        </div>
+        <div class="col-6">
+          <label data-field>
+            Next Review
+            <input type="datetime-local" value="2025-06-15T09:00">
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <label data-field>
+            Avatar
+            <input type="file" accept="image/*">
+          </label>
+        </div>
+        <div class="col-6">
+          <label data-field>
+            Brand Color
+            <input type="color" value="#6366f1">
+          </label>
+        </div>
+      </div>
+
+      <label data-field>
+        Notification Volume
+        <input type="range" min="0" max="100" value="65">
+      </label>
+
+      <label data-field>
+        Bio
+        <textarea rows="3" placeholder="Tell us about yourself…">This entire dashboard is built with Oat.</textarea>
+      </label>
+
+      <fieldset class="group" style="max-width: 500px;">
+        <legend>Website</legend>
+        <input type="url" placeholder="yoursite.com" value="janedoe.dev">
+        <button type="button" class="outline">Verify</button>
+      </fieldset>
+
+      <fieldset class="mt-4">
+        <legend>Email Preferences</legend>
+        <label><input type="checkbox" checked> Product updates</label>
+        <label><input type="checkbox"> Marketing emails</label>
+        <label><input type="checkbox" checked> Security alerts</label>
+      </fieldset>
+
+      <fieldset class="hstack mt-4">
+        <legend>Theme</legend>
+        <label><input type="radio" name="theme" value="light"> Light</label>
+        <label><input type="radio" name="theme" value="dark"> Dark</label>
+        <label><input type="radio" name="theme" value="auto" checked> System</label>
+      </fieldset>
+
+      <div class="mt-4 vstack gap-2">
+        <label>
+          <input type="checkbox" role="switch" checked> Enable two-factor authentication
+        </label>
+        <label>
+          <input type="checkbox" role="switch"> Enable API access
+        </label>
+      </div>
+
+      <footer class="hstack mt-6">
+        <button type="submit">Save Changes</button>
+        <button type="button" class="outline">Cancel</button>
+        <button type="button" class="ghost" data-variant="danger">Delete Account</button>
+      </footer>
+    </form>
+  </article>
+</section>
+
+<section class="card">
+  <h5>Loading placeholder</h5>
+  <div role="status" class="skeleton line" style="width: 100%;"></div>
+  <div role="status" class="skeleton line" style="width: 80%;"></div>
+  <div role="status" class="skeleton line" style="width: 60%;"></div>
+  <div class="hstack mt-4">
+    <div role="status" class="skeleton box"></div>
+    <div role="status" class="skeleton box"></div>
+    <div role="status" class="skeleton box"></div>
+  </div>
+</section>
+
+
+
+
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+    </div>
+  </main>
+</body>
+</html>

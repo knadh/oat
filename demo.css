@@ -1,0 +1,40 @@
+body.demo {
+  .section {
+    margin-bottom: var(--space-8);
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+
+  .stat-value {
+    font-size: var(--text-1);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .faux-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+    height: 120px;
+  }
+
+  .faux-bar {
+    flex: 1;
+    background: var(--primary);
+    border-radius: var(--radius-small) var(--radius-small) 0 0;
+    min-width: 0;
+  }
+
+  .activity-item {
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}

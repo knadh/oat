@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components - Oat UI</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) {
+        document.documentElement.style.colorScheme = t;
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="components">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" /></a>
+        <a href="/" class="logo"><img src="/logo.svg" alt="Oat UI" /></a>
+      </div>
+
+      <div class="col-8 justify-end hstack">
+        <a href="/">Home</a>
+        <a href="/demo">Demo</a>
+        <a href="https://github.com/knadh/oat">GitHub</a>
+        <ot-dropdown>
+          <button popovertarget="nav-menu" class="outline small">
+            More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          <menu popover id="nav-menu">
+            <a href="/usage" role="menuitem">Usage</a>
+            <a href="/customizing" role="menuitem">Customizing</a>
+            <a href="/other-libs" role="menuitem">Other libs</a>
+            <hr>
+            <a href="/recipes" role="menuitem">Recipes</a>
+            <a href="/extensions" role="menuitem">Extensions</a>
+          </menu>
+        </ot-dropdown>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#breadcrumb">Breadcrumb
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#pagination">Pagination
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main>
+    <div class="container">
+      
+<h1>Components</h1>
+<p>
+  Oat is an ultra-lightweight HTML + CSS + minimal JS, semantic UI component library with zero dependencies.
+  No framework or build or dev dependencies of any kind. Just include the tiny CSS and JS bundles.
+</p>
+<p>
+  Semantic tags and attributes are styled contextually out of the box without classes, thereby forcing best practices.
+  A few dynamic components are WebComponents.
+</p>
+
+<hr style="margin: var(--space-12) 0;" />
+
+
+<section id="typography" class="demo-section">
+  <h2># Typography</h2>
+  <p>Base text elements are styled automatically. No classes needed.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h1</span><span>&gt;Heading 1&lt;/</span><span style="color: #E06C75;">h1</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h2</span><span>&gt;Heading 2&lt;/</span><span style="color: #E06C75;">h2</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Heading 3&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h4</span><span>&gt;Heading 4&lt;/</span><span style="color: #E06C75;">h4</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h5</span><span>&gt;Heading 5&lt;/</span><span style="color: #E06C75;">h5</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">h6</span><span>&gt;Heading 6&lt;/</span><span style="color: #E06C75;">h6</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">p</span><span>&gt;This is a paragraph with &lt;</span><span style="color: #E06C75;">strong</span><span>&gt;bold text&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt;, &lt;</span><span style="color: #E06C75;">em</span><span>&gt;italic text&lt;/</span><span style="color: #E06C75;">em</span><span>&gt;, and &lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#&quot;</span><span>&gt;a link&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">p</span><span>&gt;Here&#39;s some &lt;</span><span style="color: #E06C75;">code</span><span>&gt;inline code&lt;/</span><span style="color: #E06C75;">code</span><span>&gt; and a code block:&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">pre</span><span>&gt;&lt;</span><span style="color: #E06C75;">code</span><span>&gt;function hello() {</span></span>
+<span class="giallo-l"><span>  console.log(&#39;Hello, World!&#39;);</span></span>
+<span class="giallo-l"><span>}&lt;/</span><span style="color: #E06C75;">code</span><span>&gt;&lt;/</span><span style="color: #E06C75;">pre</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">blockquote</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  This is a blockquote. It&#39;s styled automatically.</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">blockquote</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">hr</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Unordered list item 1&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Unordered list item 2&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Unordered list item 3&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ol</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Ordered list item 1&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Ordered list item 2&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;Ordered list item 3&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ol</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;typography&#x2F;" class="section-permalink" aria-label="Permalink to Typography doc">Link</a>
+</section>
+
+<section id="accordion" class="demo-section">
+  <h2># Accordion</h2>
+  <p>Use native <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> for collapsible content.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;What is Oat&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Oat is a minimal, semantic-first UI component library with zero dependencies.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;How do I use it&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Include the CSS and JS files, then write semantic HTML. Most elements are styled by default.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;Is it accessible&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Yes! It uses semantic HTML and ARIA attributes. Keyboard navigation works out of the box.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">details</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;same&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;This is grouped with the next one&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Using the &lt;</span><span style="color: #E06C75;">code</span><span>&gt;name&lt;/</span><span style="color: #E06C75;">code</span><span>&gt; attribute groups items like radio.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">details</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;same&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;This is grouped with the previous one&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Using the &lt;</span><span style="color: #E06C75;">code</span><span>&gt;name&lt;/</span><span style="color: #E06C75;">code</span><span>&gt; attribute groups items like radio.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;accordion&#x2F;" class="section-permalink" aria-label="Permalink to Accordion doc">Link</a>
+</section>
+
+<section id="alert" class="demo-section">
+  <h2># Alert</h2>
+  <p>Use <code>role="alert"</code> for alert styling. Set <code>data-variant</code> for success, warning, or error.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;alert&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;success&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">strong</span><span>&gt;Success!&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt; Your changes have been saved.</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;alert&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;warning&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">strong</span><span>&gt;Warning!&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt; Please review before continuing.</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;alert&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">strong</span><span>&gt;Info&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt; This is a default alert message.</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;alert&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;error&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">strong</span><span>&gt;Error!&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt; Something went wrong.</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;alert&#x2F;" class="section-permalink" aria-label="Permalink to Alert doc">Link</a>
+</section>
+
+<section id="badge" class="demo-section">
+  <h2># Badge</h2>
+  <p>Use <code>.badge</code> class with variant modifiers.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge&quot;</span><span>&gt;Default&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge secondary&quot;</span><span>&gt;Secondary&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge outline&quot;</span><span>&gt;Outline&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge success&quot;</span><span>&gt;Success&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge warning&quot;</span><span>&gt;Warning&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge danger&quot;</span><span>&gt;Danger&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;badge&#x2F;" class="section-permalink" aria-label="Permalink to Badge doc">Link</a>
+</section>
+
+<section id="breadcrumb" class="demo-section">
+  <h2># Breadcrumb</h2>
+  <p>Use a semantic breadcrumb <code>&lt;nav&gt;</code> with an ordered list and <code>aria-current="page"</code> for the active item.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">nav</span><span style="color: #D19A66;"> aria-label</span><span>=</span><span style="color: #98C379;">&quot;Breadcrumb&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">ol</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;unstyled hstack&quot;</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;font-size: var(--text-7)&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#breadcrumbs&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;unstyled&quot;</span><span>&gt;Home&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span style="color: #D19A66;"> aria-hidden</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span>&gt;/&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#breadcrumbs&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;unstyled&quot;</span><span>&gt;Projects&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span style="color: #D19A66;"> aria-hidden</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span>&gt;/&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#breadcrumbs&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;unstyled&quot;</span><span>&gt;Oat Docs&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span style="color: #D19A66;"> aria-hidden</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span>&gt;/&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#breadcrumbs&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;unstyled&quot;</span><span style="color: #D19A66;"> aria-current</span><span>=</span><span style="color: #98C379;">&quot;page&quot;</span><span>&gt;&lt;</span><span style="color: #E06C75;">strong</span><span>&gt;Breadcrumb&lt;/</span><span style="color: #E06C75;">strong</span><span>&gt;&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">ol</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;breadcrumb&#x2F;" class="section-permalink" aria-label="Permalink to Breadcrumb doc">Link</a>
+</section>
+
+<section id="button" class="demo-section">
+  <h2># Button</h2>
+  <p>The <code>&lt;button&gt;</code> element is styled by default. Use <code>data-variant="primary|secondary|danger"</code> for semantic variants and classes for visual styles.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span>&gt;Primary&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;secondary&quot;</span><span>&gt;Secondary&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;danger&quot;</span><span>&gt;Danger&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Outline&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;danger&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Danger&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;ghost&quot;</span><span>&gt;Ghost&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> disabled</span><span>&gt;Disabled&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="sizes">Sizes</h3>
+<p>Use <code>.small</code> or <code>.large</code> for size variants.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;small&quot;</span><span>&gt;Small&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span>&gt;Default&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;large&quot;</span><span>&gt;Large&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#button&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button&quot;</span><span>&gt;Hyperlink&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="button-group">Button group</h3>
+<p>Wrap buttons in <code>&lt;menu class="buttons"&gt;</code> for connected buttons.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">menu</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;buttons&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Left&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Center&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Right&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">menu</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;button&#x2F;" class="section-permalink" aria-label="Permalink to Button doc">Link</a>
+</section>
+
+<section id="card" class="demo-section">
+  <h2># Card</h2>
+  <p>Use <code>class="card"</code> for a visual box-like card look.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Card Title&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Card description goes here.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;This is the card content. It can contain any HTML.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">footer</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;flex gap-2 mt-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;card&#x2F;" class="section-permalink" aria-label="Permalink to Card doc">Link</a>
+</section>
+
+<section id="dialog" class="demo-section">
+  <h2># Dialog</h2>
+  <p>Fully semantic, zero-Javascript, dynamic dialog with <code>&lt;dialog&gt;</code>. Use <code>commandfor</code> and <code>command="show-modal"</code> attributes on an element to open a target dialog. Focus trapping, z placement, keyboard shortcuts all work out of the box.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;show-modal&quot;</span><span>&gt;Open dialog&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">dialog</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> closedby</span><span>=</span><span style="color: #98C379;">&quot;any&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">form</span><span style="color: #D19A66;"> method</span><span>=</span><span style="color: #98C379;">&quot;dialog&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Title&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;This is a dialog description.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Dialog content goes here. You can put any HTML inside.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Click outside or press Escape to close.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;button&quot;</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;close&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;confirm&quot;</span><span>&gt;Confirm&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">form</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">dialog</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="with-form-fields">With form fields</h3>
+<p>Forms inside dialogs work naturally. Use <code>command="close"</code> on cancel buttons to close.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;show-modal&quot;</span><span>&gt;Open form dialog&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">dialog</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">form</span><span style="color: #D19A66;"> method</span><span>=</span><span style="color: #98C379;">&quot;dialog&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Edit form&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;vstack&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">label</span><span>&gt;Name &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;name&quot;</span><span style="color: #D19A66;"> required</span><span>&gt;&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">label</span><span>&gt;Email &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;button&quot;</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;close&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;save&quot;</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">form</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">dialog</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="handling-return-value">Handling return value</h3>
+<p>Listen to the native <code>close</code> event to get the button value:</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="javascript"><span class="giallo-l"><span style="color: #C678DD;">const</span><span style="color: #E5C07B;"> dialog</span><span style="color: #56B6C2;"> =</span><span style="color: #E5C07B;"> document</span><span>.</span><span style="color: #61AFEF;">querySelector</span><span>(</span><span style="color: #98C379;">&quot;#demo-dialog&quot;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">dialog</span><span>.</span><span style="color: #61AFEF;">addEventListener</span><span>(</span><span style="color: #98C379;">&#39;close&#39;</span><span>, (</span><span style="color: #E06C75;font-style: italic;">e</span><span>)</span><span style="color: #C678DD;"> =&gt;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">  console</span><span>.</span><span style="color: #61AFEF;">log</span><span>(</span><span style="color: #E5C07B;">dialog</span><span>.</span><span style="color: #E06C75;">returnValue</span><span>);</span><span style="color: #7F848E;font-style: italic;"> // &quot;confirm&quot;</span></span>
+<span class="giallo-l"><span>});</span></span></code></pre>
+<p>or use <code>onclose</code> inline:</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="plain"><span class="giallo-l"><span>&lt;dialog id=&quot;my-dialog&quot; onclose=&quot;console.log(this.returnValue)&quot;&gt;</span></span></code></pre>
+  <a href="&#x2F;components&#x2F;dialog&#x2F;" class="section-permalink" aria-label="Permalink to Dialog doc">Link</a>
+</section>
+
+<section id="dropdown" class="demo-section">
+  <h2># Dropdown</h2>
+  <p>Wrap in <code>&lt;ot-dropdown&gt;</code>. Use <code>popovertarget</code> on the trigger and <code>popover</code> on the target. If a dropdown <code>&lt;menu&gt;</code>, items use <code>role="menuitem"</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> popovertarget</span><span>=</span><span style="color: #98C379;">&quot;demo-menu&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Options</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">svg</span><span style="color: #D19A66;"> width</span><span>=</span><span style="color: #98C379;">&quot;16&quot;</span><span style="color: #D19A66;"> height</span><span>=</span><span style="color: #98C379;">&quot;16&quot;</span><span style="color: #D19A66;"> viewBox</span><span>=</span><span style="color: #98C379;">&quot;0 0 24 24&quot;</span><span style="color: #D19A66;"> fill</span><span>=</span><span style="color: #98C379;">&quot;none&quot;</span><span style="color: #D19A66;"> stroke</span><span>=</span><span style="color: #98C379;">&quot;currentColor&quot;</span><span style="color: #D19A66;"> stroke-width</span><span>=</span><span style="color: #98C379;">&quot;2&quot;</span><span>&gt;&lt;</span><span style="color: #E06C75;">path</span><span style="color: #D19A66;"> d</span><span>=</span><span style="color: #98C379;">&quot;m6 9 6 6 6-6&quot;</span><span> /&gt;&lt;/</span><span style="color: #E06C75;">svg</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">menu</span><span style="color: #D19A66;"> popover id</span><span>=</span><span style="color: #98C379;">&quot;demo-menu&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Profile&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Settings&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Help&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">hr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Logout&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">menu</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="popover">Popover</h3>
+<p><code>&lt;ot-dropdown&gt;</code> can also be used to show popover dropdown elements.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> popovertarget</span><span>=</span><span style="color: #98C379;">&quot;demo-confirm&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Confirm</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card&quot;</span><span style="color: #D19A66;"> popover id</span><span>=</span><span style="color: #98C379;">&quot;demo-confirm&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h4</span><span>&gt;Are you sure?&lt;/</span><span style="color: #E06C75;">h4</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;This action cannot be undone.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">br</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline small&quot;</span><span style="color: #D19A66;"> popovertarget</span><span>=</span><span style="color: #98C379;">&quot;demo-confirm&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;danger&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;small&quot;</span><span style="color: #D19A66;"> popovertarget</span><span>=</span><span style="color: #98C379;">&quot;demo-confirm&quot;</span><span>&gt;Delete&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;dropdown&#x2F;" class="section-permalink" aria-label="Permalink to Dropdown doc">Link</a>
+</section>
+
+<section id="form" class="demo-section">
+  <h2># Form elements</h2>
+  <p>Form elements are styled automatically. Wrap inputs in <code>&lt;label&gt;</code> for proper association.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">form</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Name</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;text&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Enter your name&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Email</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;you@example.com&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Password</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;password&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Password&quot;</span><span style="color: #D19A66;"> aria-describedby</span><span>=</span><span style="color: #98C379;">&quot;password-hint&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">small</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;password-hint&quot;</span><span style="color: #D19A66;"> data-hint</span><span>&gt;This is a small hint&lt;/</span><span style="color: #E06C75;">small</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span>&gt;Select&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">select</span><span style="color: #D19A66;"> aria-label</span><span>=</span><span style="color: #98C379;">&quot;Select an option&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;&quot;</span><span>&gt;Select an option&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;a&quot;</span><span>&gt;Option A&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;b&quot;</span><span>&gt;Option B&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;c&quot;</span><span>&gt;Option C&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;d&quot;</span><span>&gt;Option D&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;e&quot;</span><span>&gt;Option E&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">option</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;f&quot;</span><span>&gt;Option F&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">select</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Message</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">textarea</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Your message...&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">textarea</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Disabled</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;text&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Disabled&quot;</span><span style="color: #D19A66;"> disabled</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    File&lt;</span><span style="color: #E06C75;">br</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;file&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Pick a file...&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Date and time</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;datetime-local&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Date</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;date&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span> /&gt; I agree to the terms</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">fieldset</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">legend</span><span>&gt;Preference&lt;/</span><span style="color: #E06C75;">legend</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span>&gt;&lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;radio&quot;</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;pref&quot;</span><span>&gt;OptionA&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span>&gt;&lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;radio&quot;</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;pref&quot;</span><span>&gt;Option B&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span>&gt;&lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;radio&quot;</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;pref&quot;</span><span>&gt;Option C&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">fieldset</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Volume</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;range&quot;</span><span style="color: #D19A66;"> min</span><span>=</span><span style="color: #98C379;">&quot;0&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;50&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;submit&quot;</span><span>&gt;Submit&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">form</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="input-group">Input group</h3>
+<p>Use <code>.group</code> on a <code>&lt;fieldset&gt;</code> to combine inputs with buttons or labels.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">fieldset</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;group&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">legend</span><span>&gt;https://&lt;/</span><span style="color: #E06C75;">legend</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;url&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;subdomain&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">select</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Select&quot;</span><span style="color: #D19A66;"> aria-label</span><span>=</span><span style="color: #98C379;">&quot;Select a subdomain&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">option</span><span>&gt;.example.com&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">option</span><span>&gt;.example.net&lt;/</span><span style="color: #E06C75;">option</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">select</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">button</span><span>&gt;Go&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">fieldset</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">fieldset</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;group&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;text&quot;</span><span style="color: #D19A66;"> placeholder</span><span>=</span><span style="color: #98C379;">&quot;Search&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">button</span><span>&gt;Go&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">fieldset</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="validation-error">Validation error</h3>
+<p>Use <code>data-field="error"</code> on field containers to reveal and style error messages.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> data-field</span><span>=</span><span style="color: #98C379;">&quot;error&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> for</span><span>=</span><span style="color: #98C379;">&quot;error-input&quot;</span><span>&gt;Email&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span style="color: #D19A66;"> aria-invalid</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span style="color: #D19A66;"> aria-describedby</span><span>=</span><span style="color: #98C379;">&quot;error-message&quot;</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;error-input&quot;</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;invalid-email&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;error-message&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;error&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span>&gt;Please enter a valid email address.&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;form&#x2F;" class="section-permalink" aria-label="Permalink to Form elements doc">Link</a>
+</section>
+
+<section id="meter" class="demo-section">
+  <h2># Meter</h2>
+  <p>Use <code>&lt;meter&gt;</code> for values within a known range. Browser shows colors based on low/high/optimum attributes.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">meter</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;0.8&quot;</span><span style="color: #D19A66;"> min</span><span>=</span><span style="color: #98C379;">&quot;0&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span style="color: #D19A66;"> low</span><span>=</span><span style="color: #98C379;">&quot;0.3&quot;</span><span style="color: #D19A66;"> high</span><span>=</span><span style="color: #98C379;">&quot;0.7&quot;</span><span style="color: #D19A66;"> optimum</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">meter</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">meter</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;0.5&quot;</span><span style="color: #D19A66;"> min</span><span>=</span><span style="color: #98C379;">&quot;0&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span style="color: #D19A66;"> low</span><span>=</span><span style="color: #98C379;">&quot;0.3&quot;</span><span style="color: #D19A66;"> high</span><span>=</span><span style="color: #98C379;">&quot;0.7&quot;</span><span style="color: #D19A66;"> optimum</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">meter</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">meter</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;0.2&quot;</span><span style="color: #D19A66;"> min</span><span>=</span><span style="color: #98C379;">&quot;0&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span style="color: #D19A66;"> low</span><span>=</span><span style="color: #98C379;">&quot;0.3&quot;</span><span style="color: #D19A66;"> high</span><span>=</span><span style="color: #98C379;">&quot;0.7&quot;</span><span style="color: #D19A66;"> optimum</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">meter</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;meter&#x2F;" class="section-permalink" aria-label="Permalink to Meter doc">Link</a>
+</section>
+
+<section id="pagination" class="demo-section">
+  <h2># Pagination</h2>
+  <p>Pagination does not use any special markup or classes and re-uses the exiting buttons <code>&lt;menu&gt;</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">nav</span><span style="color: #D19A66;"> aria-label</span><span>=</span><span style="color: #98C379;">&quot;Pagination&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">menu</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;buttons&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;</span><span style="color: #E06C75;">&amp;larr;</span><span> Previous&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;1&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;2&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button small&quot;</span><span style="color: #D19A66;"> aria-current</span><span>=</span><span style="color: #98C379;">&quot;page&quot;</span><span>&gt;3&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;4&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;5&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#pagination&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;button outline small&quot;</span><span>&gt;Next </span><span style="color: #E06C75;">&amp;rarr;</span><span>&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">menu</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;pagination&#x2F;" class="section-permalink" aria-label="Permalink to Pagination doc">Link</a>
+</section>
+
+<section id="progress" class="demo-section">
+  <h2># Progress</h2>
+  <p>Use the native <code>&lt;progress&gt;</code> element.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">progress</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;60&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">progress</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">progress</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;30&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">progress</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">progress</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;90&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">progress</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;progress&#x2F;" class="section-permalink" aria-label="Permalink to Progress doc">Link</a>
+</section>
+
+<section id="spinner" class="demo-section">
+  <h2># Spinner</h2>
+  <p>Use <code>aria-busy="true"</code> on any element to show a loading indicator. Size with <code>data-spinner="small|large"</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack&quot;</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;gap: var(--space-8)&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> aria-busy</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span style="color: #D19A66;"> data-spinner</span><span>=</span><span style="color: #98C379;">&quot;small&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> aria-busy</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> aria-busy</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span style="color: #D19A66;"> data-spinner</span><span>=</span><span style="color: #98C379;">&quot;large&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> aria-busy</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span style="color: #D19A66;"> data-spinner</span><span>=</span><span style="color: #98C379;">&quot;small&quot;</span><span style="color: #D19A66;"> disabled</span><span>&gt;Loading&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="overlay">Overlay</h3>
+<p>Adding <code>data-spinner="overlay"</code> dims contents of the container and overlays the spinner on top.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card&quot;</span><span style="color: #D19A66;"> aria-busy</span><span>=</span><span style="color: #98C379;">&quot;true&quot;</span><span style="color: #D19A66;"> data-spinner</span><span>=</span><span style="color: #98C379;">&quot;large overlay&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Card Title&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Card description goes here.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span>&gt;This is the card content. It can contain any HTML.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">footer</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;flex gap-2 mt-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;spinner&#x2F;" class="section-permalink" aria-label="Permalink to Spinner doc">Link</a>
+</section>
+
+<section id="skeleton" class="demo-section">
+  <h2># Skeleton</h2>
+  <p>Use <code>.skeleton</code> with <code>role="status"</code> for loading placeholders. Add <code>.line</code> for text or <code>.box</code> for images.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;skeleton line&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;skeleton box&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="skeleton-card">Skeleton card</h3>
+<p>Put skeleton loader inside <code>&lt;article&gt;</code> to get a card layout.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;display: flex; gap: var(--space-3); padding: var(--space-6);&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;skeleton box&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;flex: 1; display: flex; flex-direction: column; gap: var(--space-1);&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;skeleton line&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;status&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;skeleton line&quot;</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;width: 60%&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;skeleton&#x2F;" class="section-permalink" aria-label="Permalink to Skeleton doc">Link</a>
+</section>
+
+<section id="sidebar" class="demo-section">
+  <h2># Sidebar</h2>
+  <p>Use <code>data-sidebar-layout</code> on a container (typically <code>&lt;body&gt;</code>) with <code>&lt;aside data-sidebar&gt;</code> for the sidebar and <code>&lt;main&gt;</code> for content. The sidebar stays sticky while the main content scrolls. On mobile, the sidebar becomes a slide-out overlay toggled by a <code>[data-sidebar-toggle]</code> button. To make the sidebar collapsible at all widths, set <code>data-sidebar-layout="always"</code>.</p>
+<div class="sidebar-example">
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> data-sidebar-layout</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">aside</span><span style="color: #D19A66;"> data-sidebar</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#sidebar&quot;</span><span style="color: #D19A66;"> aria-current</span><span>=</span><span style="color: #98C379;">&quot;page&quot;</span><span>&gt;Home&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#sidebar&quot;</span><span>&gt;Users&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>          &lt;</span><span style="color: #E06C75;">details</span><span style="color: #D19A66;"> open</span><span>&gt;</span></span>
+<span class="giallo-l"><span>            &lt;</span><span style="color: #E06C75;">summary</span><span>&gt;Settings&lt;/</span><span style="color: #E06C75;">summary</span><span>&gt;</span></span>
+<span class="giallo-l"><span>            &lt;</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"><span>              &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#sidebar&quot;</span><span>&gt;General&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>              &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#sidebar&quot;</span><span>&gt;Security&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>              &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#sidebar&quot;</span><span>&gt;Billing&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>            &lt;/</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"><span>          &lt;/</span><span style="color: #E06C75;">details</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">ul</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;sm&quot;</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;width: 100%;&quot;</span><span>&gt;Logout&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">aside</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">main</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> style</span><span>=</span><span style="color: #98C379;">&quot;padding: var(--space-3)&quot;</span><span>&gt;Main content area. Scrolls with the page body.&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">main</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+</div>
+<h3 id="always-collapsible">Always-collapsible</h3>
+<p>Set <code>data-sidebar-layout="always"</code> to keep the toggle visible on all screen sizes.</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">body</span><span style="color: #D19A66;"> data-sidebar-layout</span><span>=</span><span style="color: #98C379;">&quot;always&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  ...</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">body</span><span>&gt;</span></span></code></pre><h3 id="with-top-sticky-nav">With top sticky nav</h3>
+<p>Add <code>data-topnav</code> to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">body</span><span style="color: #D19A66;"> data-sidebar-layout</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">nav</span><span style="color: #D19A66;"> data-topnav</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-sidebar-toggle aria-label</span><span>=</span><span style="color: #98C379;">&quot;Toggle menu&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;☰&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">span</span><span>&gt;App Name&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">aside</span><span style="color: #D19A66;"> data-sidebar</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;Logo&lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">nav</span><span>&gt;...navigation...&lt;/</span><span style="color: #E06C75;">nav</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;Actions&lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">aside</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">main</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    Main page content.</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">main</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">body</span><span>&gt;</span></span></code></pre><h4 id="structure">Structure</h4>
+<table><thead><tr><th>Attribute</th><th>Element</th><th></th></tr></thead><tbody>
+<tr><td><code>data-sidebar-layout</code></td><td>Container</td><td>Grid layout wrapper (sidebar + main), typically <code>&lt;body&gt;</code></td></tr>
+<tr><td><code>data-sidebar-layout="always"</code></td><td>Container</td><td>Always-collapsible sidebar (toggle visible on screen sizes)</td></tr>
+<tr><td><code>data-topnav</code></td><td><code>&lt;header&gt;</code></td><td>Full-width top nav (optional, spans full width)</td></tr>
+<tr><td><code>data-sidebar</code></td><td><code>&lt;aside&gt;</code></td><td>Sticky sidebar element</td></tr>
+<tr><td><code>data-sidebar-toggle</code></td><td><code>&lt;button&gt;</code></td><td>Toggles sidebar (mobile) and collapse (always mode)</td></tr>
+<tr><td><code>data-sidebar-open</code></td><td>Layout</td><td>Applied to layout when sidebar is open</td></tr>
+</tbody></table>
+
+  <a href="&#x2F;components&#x2F;sidebar&#x2F;" class="section-permalink" aria-label="Permalink to Sidebar doc">Link</a>
+</section>
+
+<section id="switch" class="demo-section">
+  <h2># Switch</h2>
+  <p>Add <code>role="switch"</code> to a checkbox for toggle switch styling.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;switch&quot;</span><span>&gt; Notifications</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;switch&quot;</span><span style="color: #D19A66;"> checked</span><span>&gt; Confabulation</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="disabled">Disabled</h3>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;switch&quot;</span><span style="color: #D19A66;"> disabled</span><span>&gt; Disabled off</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;switch&quot;</span><span style="color: #D19A66;"> checked disabled</span><span>&gt; Disabled on</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;switch&#x2F;" class="section-permalink" aria-label="Permalink to Switch doc">Link</a>
+</section>
+
+<section id="table" class="demo-section">
+  <h2># Table</h2>
+  <p>Tables are styled by default. Use <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> tags. Wrap in a <code>class="table"</code> container to get a horizontal scrollbar on small screens.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;table&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">table</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">thead</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">th</span><span>&gt;Name&lt;/</span><span style="color: #E06C75;">th</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">th</span><span>&gt;Email&lt;/</span><span style="color: #E06C75;">th</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">th</span><span>&gt;Role&lt;/</span><span style="color: #E06C75;">th</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">th</span><span>&gt;Status&lt;/</span><span style="color: #E06C75;">th</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">thead</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">tbody</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Alice Johnson&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;alice@example.com&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Admin&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge success&quot;</span><span>&gt;Active&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Bob Smith&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;bob@example.com&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Editor&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge&quot;</span><span>&gt;Active&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Carol White&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;carol@example.com&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;Viewer&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">td</span><span>&gt;&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge secondary&quot;</span><span>&gt;Pending&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;&lt;/</span><span style="color: #E06C75;">td</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">tr</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">tbody</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">table</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;table&#x2F;" class="section-permalink" aria-label="Permalink to Table doc">Link</a>
+</section>
+
+<section id="tabs" class="demo-section">
+  <h2># Tabs</h2>
+  <p>Wrap tab buttons and panels in <code>&lt;ot-tabs&gt;</code>. Use <code>role="tablist"</code>, <code>role="tab"</code>, and <code>role="tabpanel"</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ot-tabs</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tablist&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tab&quot;</span><span>&gt;Account&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tab&quot;</span><span>&gt;Password&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tab&quot;</span><span>&gt;Notifications&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tabpanel&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Account Settings&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Manage your account information here.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tabpanel&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Password Settings&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Change your password here.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;tabpanel&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Notification Settings&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Configure your notification preferences.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ot-tabs</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;tabs&#x2F;" class="section-permalink" aria-label="Permalink to Tabs doc">Link</a>
+</section>
+
+<section id="tooltip" class="demo-section">
+  <h2># Tooltip</h2>
+  <p>Use the standard <code>title</code> attribute on any element to render a tooltip with smooth transition. <a rel="external" href="https://developer.mozilla.org/en-US/docs/Glossary/Replaced_elements">Replaced elements</a> like <code>&lt;img&gt;</code>, <code>&lt;iframe&gt;</code> etc. need to be wrapped in a parent with the <code>title</code> attribute.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> title</span><span>=</span><span style="color: #98C379;">&quot;Save your changes&quot;</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> title</span><span>=</span><span style="color: #98C379;">&quot;Delete this item&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;danger&quot;</span><span>&gt;Delete&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">a</span><span style="color: #D19A66;"> href</span><span>=</span><span style="color: #98C379;">&quot;#&quot;</span><span style="color: #D19A66;"> title</span><span>=</span><span style="color: #98C379;">&quot;View your profile&quot;</span><span>&gt;Profile&lt;/</span><span style="color: #E06C75;">a</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> title</span><span>=</span><span style="color: #98C379;">&quot;Images need a parent with title&quot;</span><span>&gt;&lt;</span><span style="color: #E06C75;">img</span><span style="color: #D19A66;"> src</span><span>=</span><span style="color: #98C379;">&quot;https://oat.ink/logo.svg&quot;</span><span style="color: #D19A66;"> height</span><span>=</span><span style="color: #98C379;">&quot;32&quot;</span><span> /&gt;&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;tooltip&#x2F;" class="section-permalink" aria-label="Permalink to Tooltip doc">Link</a>
+</section>
+
+<section id="toast" class="demo-section">
+  <h2># Toast</h2>
+  <p>Show toast notifications with <code>ot.toast(message, title?, options?)</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">ot</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">toast</span><span style="color: #98C379;">(&#39;Action completed successfully&#39;, &#39;All good&#39;, {</span><span style="color: #E06C75;"> variant</span><span>:</span><span style="color: #98C379;"> &#39;success&#39; })&quot;</span><span>&gt;Success&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">ot</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">toast</span><span style="color: #98C379;">(&#39;Something went wrong&#39;, &#39;Oops&#39;, {</span><span style="color: #E06C75;"> variant</span><span>:</span><span style="color: #98C379;"> &#39;danger&#39;,</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;top-left&#39; })&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;danger&quot;</span><span>&gt;Danger&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">ot</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">toast</span><span style="color: #98C379;">(&#39;Please review this warning&#39;, &#39;Warning&#39;, {</span><span style="color: #E06C75;"> variant</span><span>:</span><span style="color: #98C379;"> &#39;warning&#39;,</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;bottom-right&#39; })&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Warning&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">ot</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">toast</span><span style="color: #98C379;">(&#39;New notification&#39;, &#39;For your attention&#39;, {</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;top-center&#39; })&quot;</span><span>&gt;Info&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span></code></pre>
+</div>
+<h3 id="placement">Placement</h3>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="javascript"><span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Top left&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>, {</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;top-left&#39;</span><span> })</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Top center&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>,{</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;top-center&#39;</span><span> })</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Top right&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>,{</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;top-right&#39;</span><span> })</span><span style="color: #7F848E;font-style: italic;">  // default</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Bottom left&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>, {</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;bottom-left&#39;</span><span> })</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Bottom center&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>, {</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;bottom-center&#39;</span><span> })</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #61AFEF;">toast</span><span>(</span><span style="color: #98C379;">&#39;Bottom right&#39;</span><span>,</span><span style="color: #98C379;"> &#39;&#39;</span><span>,{</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;bottom-right&#39;</span><span> })</span></span></code></pre><h3 id="options">Options</h3>
+<table><thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>variant</code></td><td><code>''</code></td><td><code>'success'</code>, <code>'danger'</code>, <code>'warning'</code></td></tr>
+<tr><td><code>placement</code></td><td><code>'top-right'</code></td><td>Position on screen</td></tr>
+<tr><td><code>duration</code></td><td><code>4000</code></td><td>Auto-dismiss in ms (0 = persistent)</td></tr>
+</tbody></table>
+<h3 id="custom-markup">Custom markup</h3>
+<p>Use <code>ot.toast.el(element, options?)</code> to show toasts with custom HTML content.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">template</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;undo-toast&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">output</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;toast&quot;</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;success&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h6</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;toast-title&quot;</span><span>&gt;Changes saved&lt;/</span><span style="color: #E06C75;">h6</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Your document has been updated.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> data-variant</span><span>=</span><span style="color: #98C379;">&quot;secondary&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;small&quot;</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">this</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">closest</span><span style="color: #98C379;">(&#39;.toast&#39;).</span><span style="color: #61AFEF;">remove</span><span style="color: #98C379;">()&quot;</span><span>&gt;Okay&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">output</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">template</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> onclick</span><span>=</span><span style="color: #98C379;">&quot;</span><span style="color: #E5C07B;">ot</span><span style="color: #98C379;">.</span><span style="color: #E5C07B;">toast</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">el</span><span style="color: #98C379;">(</span><span style="color: #E5C07B;">document</span><span style="color: #98C379;">.</span><span style="color: #61AFEF;">querySelector</span><span style="color: #98C379;">(&#39;#undo-toast&#39;), {</span><span style="color: #E06C75;"> duration</span><span>:</span><span style="color: #D19A66;"> 8000</span><span style="color: #98C379;"> })&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  Toast with action</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span></code></pre>
+</div>
+<p><strong>From a template:</strong></p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="javascript"><span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #E5C07B;">toast</span><span>.</span><span style="color: #61AFEF;">el</span><span>(</span><span style="color: #E5C07B;">document</span><span>.</span><span style="color: #61AFEF;">querySelector</span><span>(</span><span style="color: #98C379;">&#39;#my-template&#39;</span><span>))</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #E5C07B;">toast</span><span>.</span><span style="color: #61AFEF;">el</span><span>(</span><span style="color: #E5C07B;">document</span><span>.</span><span style="color: #61AFEF;">querySelector</span><span>(</span><span style="color: #98C379;">&#39;#my-template&#39;</span><span>), {</span><span style="color: #E06C75;"> duration</span><span>:</span><span style="color: #D19A66;"> 8000</span><span>,</span><span style="color: #E06C75;"> placement</span><span>:</span><span style="color: #98C379;"> &#39;bottom-center&#39;</span><span> })</span></span></code></pre>
+<p><strong>Dynamic element:</strong></p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="javascript"><span class="giallo-l"><span style="color: #C678DD;">const</span><span style="color: #E5C07B;"> el</span><span style="color: #56B6C2;"> =</span><span style="color: #E5C07B;"> document</span><span>.</span><span style="color: #61AFEF;">createElement</span><span>(</span><span style="color: #98C379;">&#39;output&#39;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">el</span><span>.</span><span style="color: #E06C75;">className</span><span style="color: #56B6C2;"> =</span><span style="color: #98C379;"> &#39;toast&#39;</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">el</span><span>.</span><span style="color: #61AFEF;">setAttribute</span><span>(</span><span style="color: #98C379;">&#39;data-variant&#39;</span><span>,</span><span style="color: #98C379;"> &#39;warning&#39;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">el</span><span>.</span><span style="color: #E06C75;">innerHTML</span><span style="color: #56B6C2;"> =</span><span style="color: #98C379;"> &#39;&lt;h6 class=&quot;toast-title&quot;&gt;Warning&lt;/h6&gt;&lt;p&gt;Custom content here&lt;/p&gt;&#39;</span><span>;</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #E5C07B;">toast</span><span>.</span><span style="color: #61AFEF;">el</span><span>(</span><span style="color: #E06C75;">el</span><span>);</span></span></code></pre>
+<p>The element is cloned before display, so templates can be reused.</p>
+<h3 id="clearing-toasts">Clearing toasts</h3>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="javascript"><span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #E5C07B;">toast</span><span>.</span><span style="color: #61AFEF;">clear</span><span>()</span><span style="color: #7F848E;font-style: italic;">              // Clear all</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">ot</span><span>.</span><span style="color: #E5C07B;">toast</span><span>.</span><span style="color: #61AFEF;">clear</span><span>(</span><span style="color: #98C379;">&#39;top-right&#39;</span><span>)</span><span style="color: #7F848E;font-style: italic;">   // Clear specific placement</span></span></code></pre>
+  <a href="&#x2F;components&#x2F;toast&#x2F;" class="section-permalink" aria-label="Permalink to Toast doc">Link</a>
+</section>
+
+<section id="grid" class="demo-section">
+  <h2># Grid</h2>
+  <p>A 12-column grid system using CSS grid. Use <code>.container</code>, <code>.row</code>, and <code>.col</code> classes. Column widths use <code>.col-{n}</code> where n is 1-12.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;container demo-grid&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4&quot;</span><span>&gt;col-4&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4&quot;</span><span>&gt;col-4&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4&quot;</span><span>&gt;col-4&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-6&quot;</span><span>&gt;col-6&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-6&quot;</span><span>&gt;col-6&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-3&quot;</span><span>&gt;col-3&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-6&quot;</span><span>&gt;col-6&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-3&quot;</span><span>&gt;col-3&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4 offset-2&quot;</span><span>&gt;col-4 offset-2&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4&quot;</span><span>&gt;col-4&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-3&quot;</span><span>&gt;col-3&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;col-4 col-end&quot;</span><span>&gt;col-4 col-end&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+  <a href="&#x2F;components&#x2F;grid&#x2F;" class="section-permalink" aria-label="Permalink to Grid doc">Link</a>
+</section>
+
+<section id="utilities" class="demo-section">
+  <h2># Utils and helpers</h2>
+  <p>See <a rel="external" href="https://github.com/knadh/oat/blob/master/src/css/utilities.css">utilities.css</a> for commonly used utility and helper classes.</p>
+
+  <a href="&#x2F;components&#x2F;utilities&#x2F;" class="section-permalink" aria-label="Permalink to Utils and helpers doc">Link</a>
+</section>
+
+
+
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+    </div>
+  </main>
+</body>
+</html>

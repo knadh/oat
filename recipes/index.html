@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes - Oat UI</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) {
+        document.documentElement.style.colorScheme = t;
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="recipes">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" /></a>
+        <a href="/" class="logo"><img src="/logo.svg" alt="Oat UI" /></a>
+      </div>
+
+      <div class="col-8 justify-end hstack">
+        <a href="/">Home</a>
+        <a href="/demo">Demo</a>
+        <a href="https://github.com/knadh/oat">GitHub</a>
+        <ot-dropdown>
+          <button popovertarget="nav-menu" class="outline small">
+            More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          <menu popover id="nav-menu">
+            <a href="/usage" role="menuitem">Usage</a>
+            <a href="/customizing" role="menuitem">Customizing</a>
+            <a href="/other-libs" role="menuitem">Other libs</a>
+            <hr>
+            <a href="/recipes" role="menuitem">Recipes</a>
+            <a href="/extensions" role="menuitem">Extensions</a>
+          </menu>
+        </ot-dropdown>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#breadcrumb">Breadcrumb
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#pagination">Pagination
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main>
+    <div class="container">
+      
+<h1>Recipes</h1>
+<p>Examples for various composable widgets using Oat components.</p>
+<hr />
+<h2 id="split-button">Split button</h2>
+<p>Use <code>menu.buttons</code> for joined controls and <code>ot-dropdown</code> for secondary actions.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">menu</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;buttons&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;&lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;">  class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span style="color: #D19A66;"> popovertarget</span><span>=</span><span style="color: #98C379;">&quot;save-actions&quot;</span><span style="color: #D19A66;"> aria-label</span><span>=</span><span style="color: #98C379;">&quot;More save actions&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        More</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">svg</span><span style="color: #D19A66;"> width</span><span>=</span><span style="color: #98C379;">&quot;16&quot;</span><span style="color: #D19A66;"> height</span><span>=</span><span style="color: #98C379;">&quot;16&quot;</span><span style="color: #D19A66;"> viewBox</span><span>=</span><span style="color: #98C379;">&quot;0 0 24 24&quot;</span><span style="color: #D19A66;"> fill</span><span>=</span><span style="color: #98C379;">&quot;none&quot;</span><span style="color: #D19A66;"> stroke</span><span>=</span><span style="color: #98C379;">&quot;currentColor&quot;</span><span style="color: #D19A66;"> stroke-width</span><span>=</span><span style="color: #98C379;">&quot;2&quot;</span><span>&gt;&lt;</span><span style="color: #E06C75;">path</span><span style="color: #D19A66;"> d</span><span>=</span><span style="color: #98C379;">&quot;m6 9 6 6 6-6&quot;</span><span> /&gt;&lt;/</span><span style="color: #E06C75;">svg</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">li</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">menu</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">menu</span><span style="color: #D19A66;"> popover id</span><span>=</span><span style="color: #98C379;">&quot;save-actions&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Save draft&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Save and publish&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;menuitem&quot;</span><span>&gt;Duplicate&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">menu</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">ot-dropdown</span><span>&gt;</span></span></code></pre>
+</div>
+<h2 id="form-card">Form card</h2>
+<p>Group related form fields inside a card with standard field containers and actions.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Profile&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">p</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;text-light&quot;</span><span>&gt;Update account infformation&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;mt-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      Name</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;text&quot;</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;Your name&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      Email</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;mila@example.com&quot;</span><span> /&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">label</span><span style="color: #D19A66;"> data-field</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;checkbox&quot;</span><span style="color: #D19A66;"> role</span><span>=</span><span style="color: #98C379;">&quot;switch&quot;</span><span style="color: #D19A66;"> checked</span><span>&gt; Email notifications</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">footer</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack justify-end mt-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span></code></pre>
+</div>
+<h2 id="empty-state">Empty state</h2>
+<p>Use a card, text, and primary actions for list/result empty states.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card align-center&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Nothing here yet&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">p</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;text-light&quot;</span><span>&gt;Why don&#39;t you create something?&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">footer</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack justify-center mt-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">button</span><span>&gt;New something&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span></code></pre>
+</div>
+<h2 id="stats-cards">Stats cards</h2>
+<p>Compose dashboard metrics with <code>grid</code>, <code>card</code>, <code>badge</code>, and <code>progress</code>/<code>meter</code>.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;"><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;container&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;row&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card col-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">header</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack justify-between items-center&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">h4</span><span>&gt;Revenue&lt;/</span><span style="color: #E06C75;">h4</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge success&quot;</span><span>&gt;+12%&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h2</span><span>&gt;$42,200&lt;/</span><span style="color: #E06C75;">h2</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;text-light&quot;</span><span>&gt;vs last month&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">progress</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;72&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">progress</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card col-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">header</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack justify-between items-center&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">h4</span><span>&gt;Completion&lt;/</span><span style="color: #E06C75;">h4</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge warning&quot;</span><span>&gt;-2%&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h2</span><span>&gt;4.6%&lt;/</span><span style="color: #E06C75;">h2</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;text-light&quot;</span><span>&gt;checkout completion&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">meter</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;0.46&quot;</span><span style="color: #D19A66;"> min</span><span>=</span><span style="color: #98C379;">&quot;0&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span style="color: #D19A66;"> low</span><span>=</span><span style="color: #98C379;">&quot;0.3&quot;</span><span style="color: #D19A66;"> high</span><span>=</span><span style="color: #98C379;">&quot;0.7&quot;</span><span style="color: #D19A66;"> optimum</span><span>=</span><span style="color: #98C379;">&quot;1&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">meter</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">article</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;card col-4&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">header</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;hstack justify-between items-center&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">h4</span><span>&gt;Tickets&lt;/</span><span style="color: #E06C75;">h4</span><span>&gt;</span></span>
+<span class="giallo-l"><span>        &lt;</span><span style="color: #E06C75;">span</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;badge&quot;</span><span>&gt;14&lt;/</span><span style="color: #E06C75;">span</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h2</span><span>&gt;14&lt;/</span><span style="color: #E06C75;">h2</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;text-light&quot;</span><span>&gt;support queue&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">progress</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;35&quot;</span><span style="color: #D19A66;"> max</span><span>=</span><span style="color: #98C379;">&quot;100&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">progress</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">article</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span></code></pre>
+</div>
+
+
+
+      <footer class="footer text-light">&copy; <a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+    </div>
+  </main>
+</body>
+</html>
