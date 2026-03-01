@@ -101,6 +101,7 @@
   }
 
   nav[data-topnav] {
+    --topnav-offset: var(--space-12);
     position: fixed;
     inset: 0 0 auto;
     z-index: 5;
@@ -113,6 +114,12 @@
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-small);
 
+    + main {
+      min-width: 0;
+      margin-block-start: var(--topnav-offset);
+      padding-block-start: var(--space-8);
+    }
+    
     a {
       text-decoration: none;
     }
