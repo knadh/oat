@@ -7,18 +7,16 @@
     min-height: 100dvh;
     gap: var(--space-4);
 
+    > main {
+      min-width: 0;
+    }
+
     &:has(nav[data-topnav]) {
       --topnav-offset: var(--space-12);
 
       > main [id] {
         scroll-margin-block-start: calc(var(--space-12) + var(--space-6));
       }
-    }
-
-    > main {
-      min-width: 0;
-      margin-block-start: var(--topnav-offset);
-      padding-block-start: var(--space-8);
     }
 
     > aside[data-sidebar] {
@@ -112,17 +110,14 @@
     background-color: var(--background);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-small);
-
-    + main {
-      --topnav-offset: var(--space-12);
-      min-width: 0;
-      margin-block-start: var(--topnav-offset);
-      padding-block-start: var(--space-8);
-    }
     
     a {
       text-decoration: none;
     }
+  }
+
+  nav[data-topnav] ~ main {
+    margin-block-start: var(--space-12);
   }
 
   :is([data-sidebar-toggle], [data-sidebar-header]) {

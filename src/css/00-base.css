@@ -28,6 +28,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  main {
+    padding-block-start: var(--space-8);
+  }
+
   img, picture, video, canvas, svg {
     max-width: 100%;
   }
