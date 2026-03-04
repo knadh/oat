@@ -202,7 +202,7 @@
       flex: 1;
       margin-block-start: 0;
      
-      &:not(:focus) {
+      &:not(:focus):not(:last-child) {
         border-inline-end-color: transparent;
       }
     }
