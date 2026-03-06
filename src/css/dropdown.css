@@ -3,29 +3,25 @@
     [popover] {
       position: fixed;
       margin: 0;
-      /* padding: var(--space-1); */
-      min-width: 12rem;
       background-color: var(--background);
       border: 1px solid var(--border);
       border-radius: var(--radius-medium);
       box-shadow: var(--shadow-medium);
       opacity: 0;
-      transform: translateY(-4px);
+      will-change: transform, opacity;
+      min-width: 12rem;
       transition:
         opacity 150ms ease-out,
-        transform 150ms ease-out,
         display 150ms allow-discrete,
         overlay 150ms allow-discrete;
 
       &:popover-open {
         opacity: 1;
-        transform: translateY(0);
       }
 
       @starting-style {
         &:popover-open {
           opacity: 0;
-          transform: translateY(-4px);
         }
       }
     }

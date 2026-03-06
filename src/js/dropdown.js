@@ -32,12 +32,22 @@ class OtDropdown extends OtBase {
     this.#position = () => {
       // Position has to be calculated and applied manually because
       // popover positioning is like fixed, relative to the window.
-      const r = this.#trigger.getBoundingClientRect();
-      const m = this.#menu.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        const r = this.#trigger.getBoundingClientRect();
+        const m = this.#menu.getBoundingClientRect();
 
-      // Flip if menu overflows viewport.
-      this.#menu.style.top = `${r.bottom + m.height > window.innerHeight ? r.top - m.height : r.bottom}px`;
-      this.#menu.style.left = `${r.left + m.width > window.innerWidth ? r.right - m.width : r.left}px`;
+        const top =
+          r.bottom + m.height > window.innerHeight
+            ? r.top - m.height
+            : r.bottom;
+
+        const left =
+          r.left + m.width > window.innerWidth
+            ? r.right - m.width
+            : r.left;
+
+        this.#menu.style.transform = `translate(${left}px, ${top}px)`;
+      });
     };
   }
 
