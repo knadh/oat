@@ -69,7 +69,7 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
 
   <fieldset class="hstack">
     <legend>Preference</legend>
-    <label><input type="radio" name="pref">OptionA</label>
+    <label><input type="radio" name="pref">Option A</label>
     <label><input type="radio" name="pref">Option B</label>
     <label><input type="radio" name="pref">Option C</label>
   </fieldset>
