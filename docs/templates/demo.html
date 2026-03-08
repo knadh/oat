@@ -5,6 +5,55 @@
 {% block content %}
 <link href="/demo.css" rel="stylesheet" />
 
+<div class="theme-toolbar" id="theme-toolbar">
+  <div class="theme-toolbar-row">
+    <div class="hstack">
+      <span class="theme-toolbar-label">Theme</span>
+      <input type="color" id="theme-accent" value="#574747" title="Pick accent color">
+      <span class="theme-presets-inline">
+        <button class="ghost small theme-preset-btn active" data-preset="default">Default</button>
+        <button class="ghost small theme-preset-btn" data-preset="#574747">Brown</button>
+        <button class="ghost small theme-preset-btn" data-preset="#1463b4">Ocean</button>
+        <button class="ghost small theme-preset-btn" data-preset="#1b6b3d">Forest</button>
+        <button class="ghost small theme-preset-btn" data-preset="#ad2a67">Rose</button>
+        <button class="ghost small theme-preset-btn" data-preset="#6366f1">Indigo</button>
+        <button class="ghost small theme-preset-btn" data-preset="#ea580c">Orange</button>
+      </span>
+      <ot-dropdown class="theme-presets-dropdown">
+        <button popovertarget="theme-preset-menu" class="outline small" id="theme-preset-dropdown-label">Default ▾</button>
+        <menu popover id="theme-preset-menu">
+          <button role="menuitem" data-preset="default">Default</button>
+          <button role="menuitem" data-preset="#574747">Brown</button>
+          <button role="menuitem" data-preset="#1463b4">Ocean</button>
+          <button role="menuitem" data-preset="#1b6b3d">Forest</button>
+          <button role="menuitem" data-preset="#ad2a67">Rose</button>
+          <button role="menuitem" data-preset="#6366f1">Indigo</button>
+          <button role="menuitem" data-preset="#ea580c">Orange</button>
+        </menu>
+      </ot-dropdown>
+    </div>
+    <div class="hstack">
+      <button class="outline small" id="theme-copy" commandfor="theme-css-dialog" command="show-modal">Copy CSS</button>
+    </div>
+  </div>
+</div>
+
+<dialog id="theme-css-dialog" closedby="any">
+  <form method="dialog">
+    <header>
+      <h3>Theme CSS</h3>
+      <p>Paste this after <code>oat.min.css</code> in your project.</p>
+    </header>
+    <div>
+      <textarea id="theme-css-output" readonly rows="16"></textarea>
+    </div>
+    <footer>
+      <button type="button" id="theme-css-clipboard" class="small">Copy to clipboard</button>
+      <button type="button" class="outline small" commandfor="theme-css-dialog" command="close">Close</button>
+    </footer>
+  </form>
+</dialog>
+
 <section class="section">
   <div class="hstack justify-between mb-6">
     <div class="hstack">
@@ -601,5 +650,194 @@
   </div>
 </section>
 
+<script>
+(function() {
+  const accentInput = document.getElementById('theme-accent');
+  const cssOutput = document.getElementById('theme-css-output');
+  const cssDialog = document.getElementById('theme-css-dialog');
+  const clipboardBtn = document.getElementById('theme-css-clipboard');
+  const presetBtns = document.querySelectorAll('[data-preset]');
+  const dropdownLabel = document.getElementById('theme-preset-dropdown-label');
+  const presetMenu = document.getElementById('theme-preset-menu');
+  const root = document.documentElement;
 
+  function hexToHSL(hex) {
+    let r = parseInt(hex.slice(1, 3), 16) / 255;
+    let g = parseInt(hex.slice(3, 5), 16) / 255;
+    let b = parseInt(hex.slice(5, 7), 16) / 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) { h = s = 0; }
+    else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+        case g: h = ((b - r) / d + 2) / 6; break;
+        case b: h = ((r - g) / d + 4) / 6; break;
+      }
+    }
+    return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
+  }
+
+  function hslToHex(h, s, l) {
+    s /= 100; l /= 100;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return '#' + f(0) + f(8) + f(4);
+  }
+
+  function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
+
+  function deriveTheme(accent) {
+    const [h, s, l] = hexToHSL(accent);
+    const light = {
+      'background':           '#ffffff',
+      'foreground':           hslToHex(h, clamp(s - 30, 5, 15), 5),
+      'card':                 '#ffffff',
+      'card-foreground':      hslToHex(h, clamp(s - 30, 5, 15), 5),
+      'primary':              accent,
+      'primary-foreground':   l > 55 ? hslToHex(h, clamp(s, 10, 30), 10) : '#fafafa',
+      'secondary':            hslToHex(h, clamp(s - 20, 5, 20), 95),
+      'secondary-foreground': accent,
+      'muted':                hslToHex(h, clamp(s - 20, 5, 20), 95),
+      'muted-foreground':     hslToHex(h, clamp(s - 15, 5, 15), 45),
+      'faint':                hslToHex(h, clamp(s - 25, 3, 12), 98),
+      'faint-foreground':     hslToHex(h, clamp(s - 20, 5, 15), 65),
+      'accent':               hslToHex(h, clamp(s - 20, 5, 20), 95),
+      'danger':               '#d32f2f',
+      'danger-foreground':    '#fafafa',
+      'success':              '#008032',
+      'success-foreground':   '#fafafa',
+      'warning':              '#a65b00',
+      'warning-foreground':   '#09090b',
+      'border':               hslToHex(h, clamp(s - 15, 5, 20), 83),
+      'input':                hslToHex(h, clamp(s - 15, 5, 20), 83),
+      'ring':                 accent
+    };
+
+    const dark = {
+      'background':           hslToHex(h, clamp(s - 20, 5, 15), 4),
+      'foreground':           hslToHex(h, clamp(s - 25, 5, 15), 96),
+      'card':                 hslToHex(h, clamp(s - 15, 5, 15), 9),
+      'card-foreground':      hslToHex(h, clamp(s - 25, 5, 15), 96),
+      'primary':              hslToHex(h, clamp(s + 10, 40, 80), 75),
+      'primary-foreground':   hslToHex(h, clamp(s, 10, 30), 10),
+      'secondary':            hslToHex(h, clamp(s - 10, 5, 20), 16),
+      'secondary-foreground': hslToHex(h, clamp(s - 25, 5, 15), 96),
+      'muted':                hslToHex(h, clamp(s - 10, 5, 20), 16),
+      'muted-foreground':     hslToHex(h, clamp(s - 10, 5, 25), 65),
+      'faint':                hslToHex(h, clamp(s - 15, 5, 15), 12),
+      'faint-foreground':     hslToHex(h, clamp(s - 15, 5, 20), 48),
+      'accent':               hslToHex(h, clamp(s - 5, 5, 20), 20),
+      'danger':               '#f4807b',
+      'danger-foreground':    '#18181b',
+      'success':              '#6cc070',
+      'success-foreground':   '#18181b',
+      'warning':              '#f0a030',
+      'warning-foreground':   '#09090b',
+      'border':               hslToHex(h, clamp(s - 5, 5, 20), 32),
+      'input':                hslToHex(h, clamp(s - 5, 5, 20), 32),
+      'ring':                 hslToHex(h, clamp(s + 10, 40, 80), 75)
+    };
+
+    return { light, dark };
+  }
+
+  const TOKEN_ORDER = [
+    'background', 'foreground', 'card', 'card-foreground',
+    'primary', 'primary-foreground', 'secondary', 'secondary-foreground',
+    'muted', 'muted-foreground', 'faint', 'faint-foreground', 'accent',
+    'danger', 'danger-foreground', 'success', 'success-foreground',
+    'warning', 'warning-foreground', 'border', 'input', 'ring'
+  ];
+
+  function resetTheme() {
+    for (const t of TOKEN_ORDER) root.style.removeProperty('--' + t);
+  }
+
+  function applyTheme(accent) {
+    const theme = deriveTheme(accent);
+    const isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    const mode = isDark ? 'dark' : 'light';
+    const tokens = theme[mode];
+
+    for (const [key, val] of Object.entries(tokens)) {
+      root.style.setProperty('--' + key, val);
+    }
+
+    cssOutput.value = makeCss(theme);
+  }
+
+  function makeCss(theme) {
+    const lines = [':root {'];
+    for (const t of TOKEN_ORDER) lines.push('  --' + t + ': ' + theme.light[t] + ';');
+    lines.push('}', '', '[data-theme="dark"] {');
+    for (const t of TOKEN_ORDER) lines.push('  --' + t + ': ' + theme.dark[t] + ';');
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  function setActivePreset(color) {
+    let activeName = 'Custom';
+    presetBtns.forEach(btn => {
+      const isActive = btn.getAttribute('data-preset') === color;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+      if (isActive) activeName = btn.textContent.trim();
+    });
+    dropdownLabel.textContent = activeName + ' \u25be';
+  }
+
+  accentInput.addEventListener('input', () => {
+    setActivePreset(null);
+    applyTheme(accentInput.value);
+  });
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const preset = btn.getAttribute('data-preset');
+      if (preset === 'default') {
+        resetTheme();
+        setActivePreset('default');
+      } else {
+        accentInput.value = preset;
+        setActivePreset(preset);
+        applyTheme(preset);
+      }
+      if (presetMenu.matches(':popover-open')) presetMenu.hidePopover();
+    });
+  });
+
+  cssDialog.addEventListener('toggle', () => {
+    if (cssDialog.open) {
+      const active = document.querySelector('.theme-preset-btn.active');
+      const accent = active?.getAttribute('data-preset');
+      cssOutput.value = accent && accent !== 'default'
+        ? makeCss(deriveTheme(accent))
+        : makeCss(deriveTheme('#574747'));
+    }
+  });
+
+  clipboardBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(cssOutput.value).then(() => {
+      clipboardBtn.textContent = 'Copied!';
+      setTimeout(() => { clipboardBtn.textContent = 'Copy to clipboard'; }, 1500);
+    });
+  });
+
+  const observer = new MutationObserver(() => {
+    const active = document.querySelector('.theme-preset-btn.active');
+    if (active?.getAttribute('data-preset') !== 'default') {
+      applyTheme(accentInput.value);
+    }
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
 {% endblock %}

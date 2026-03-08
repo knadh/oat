@@ -1,1 +1,4 @@
 dist
+docs/public
+docs/static/oat.min.css
+docs/static/oat.min.js
