@@ -18,14 +18,17 @@
       </label>
 
       <ot-dropdown>
-        <button popovertarget="export-menu" class="outline small">
-          Export ▾
+        <button popovertarget="theme-menu" class="outline small">
+          🎨 Theme ▾
         </button>
-        <menu popover id="export-menu">
-          <button role="menuitem">Export as CSV</button>
-          <button role="menuitem">Export as JSON</button>
-          <hr>
-          <button role="menuitem">Print report</button>
+        <menu popover id="theme-menu">
+          <button role="menuitem" onclick="setDemoTheme('default')">Default</button>
+          <button role="menuitem" onclick="setDemoTheme('slate')">Slate</button>
+          <button role="menuitem" onclick="setDemoTheme('stone')">Stone</button>
+          <button role="menuitem" onclick="setDemoTheme('rose')">Rose</button>
+          <button role="menuitem" onclick="setDemoTheme('blue')">Blue</button>
+          <button role="menuitem" onclick="setDemoTheme('green')">Green</button>
+          <button role="menuitem" onclick="setDemoTheme('orange')">Orange</button>
         </menu>
       </ot-dropdown>
 
@@ -601,5 +604,15 @@
   </div>
 </section>
 
+<script>
+function setDemoTheme(theme) {
+  if (theme === 'default') {
+    document.documentElement.removeAttribute('data-demo-theme');
+  } else {
+    document.documentElement.setAttribute('data-demo-theme', theme);
+  }
+  // document.getElementById('theme-menu').hidePopover();
+}
+</script>
 
 {% endblock %}
