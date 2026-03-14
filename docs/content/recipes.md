@@ -47,7 +47,7 @@ Group related form fields inside a card with standard field containers and actio
 <article class="card">
   <header>
     <h3>Profile</h3>
-    <p class="text-light">Update account infformation</p>
+    <p class="text-light">Update account information</p>
   </header>
 
   <div class="mt-4">

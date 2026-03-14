@@ -4,7 +4,7 @@ weight = 105
 description = "Pagination nav bars."
 +++
 
-Pagination does not use any special markup or classes and re-uses the exiting buttons `<menu>`.
+Pagination does not use any special markup or classes and re-uses the existing buttons `<menu>`.
 
 {% demo() %}
 ```html

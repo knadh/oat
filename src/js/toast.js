@@ -80,7 +80,7 @@ function _remove(el, container) {
   el.addEventListener('transitionend', cleanup, { once: true });
 
   // Couldn't confirm what unit this actually returns across browsers, so
-  // assume that it could be ms or s. Also, setTimeou() is required because
+  // assume that it could be ms or s. Also, setTimeout() is required because
   // there's no guarantee that the `transitionend` event will always fire,
   // eg: clients that disable animations.
   const t = getComputedStyle(el).getPropertyValue('--transition').trim();
