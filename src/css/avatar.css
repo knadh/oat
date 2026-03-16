@@ -1,0 +1,59 @@
+@layer components {
+    figure[data-variant="avatar"]:not([role="group"]) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--sz, 2.5rem);
+        height: var(--sz, 2.5rem);
+        color: var(--primary);
+        background-color: var(--muted);
+        border-radius: var(--radius-full);
+        font-weight: var(--font-medium);
+        overflow: hidden;
+
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &.small {
+            --sz: 2rem;
+        }
+        &.large {
+            --sz: 3.25rem;
+        }
+    }
+
+    figure[data-variant="avatar"][role="group"] {
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+
+        & figure[data-variant="avatar"] {
+            margin-inline-end: calc(var(--space-5) * -1);
+            border: 2px solid var(--background);
+
+            &:last-child {
+                margin-inline-end: 0;
+            }
+        }
+
+        &.small {
+            --sz: 2rem;
+
+            & figure[data-variant="avatar"] {
+                margin-inline-end: calc(var(--space-4) * -0.8);
+                border-width: 1px;
+            }
+        }
+
+        &.large {
+            --sz: 3.25rem;
+
+            & figure[data-variant="avatar"] {
+                margin-inline-end: calc(var(--space-6) * -1);
+            }
+        }
+    }
+}

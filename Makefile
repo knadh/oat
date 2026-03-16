@@ -6,6 +6,7 @@
 CSS_FILES = src/css/00-base.css \
             src/css/01-theme.css \
             src/css/animations.css \
+			src/css/avatar.css \
             src/css/button.css \
             src/css/form.css \
             src/css/table.css \
