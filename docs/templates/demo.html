@@ -19,7 +19,7 @@
 
       <ot-dropdown>
         <button popovertarget="theme-menu" class="outline small">
-          🎨 Theme ▾
+          Switch theme ▾
         </button>
         <menu popover id="theme-menu">
           <button role="menuitem" onclick="setDemoTheme('default')">Default</button>
@@ -31,9 +31,6 @@
           <button role="menuitem" onclick="setDemoTheme('orange')">Orange</button>
         </menu>
       </ot-dropdown>
-
-      <button class="small" data-tooltip="Refresh data now">
-        ↻ Refresh
       </button>
     </div>
   </div>
@@ -605,14 +602,16 @@
 </section>
 
 <script>
-function setDemoTheme(theme) {
-  if (theme === 'default') {
-    document.documentElement.removeAttribute('data-demo-theme');
-  } else {
-    document.documentElement.setAttribute('data-demo-theme', theme);
+  function setDemoTheme(theme) {
+    if (theme === 'default') {
+      document.documentElement.removeAttribute('data-demo-theme');
+    } else {
+      document.documentElement.setAttribute('data-demo-theme', theme);
+    }
+    localStorage.setItem('demo-theme', theme);
+    // document.getElementById('theme-menu').hidePopover();
   }
-  // document.getElementById('theme-menu').hidePopover();
-}
+  setDemoTheme(localStorage.getItem('demo-theme') || 'default');
 </script>
 
 {% endblock %}

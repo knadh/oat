@@ -1,4 +1,4 @@
-/* ── Theme definitions ── */
+/* Demo themes. Customize these variables in your setup to change the overall look and feel of the UI easily. */
 [data-demo-theme="slate"] {
   --background: light-dark(#f8fafc, #020817);
   --foreground: light-dark(#0f172a, #f8fafc);
@@ -148,6 +148,8 @@
   --input: light-dark(#fed7aa, #3b2010);
   --ring: light-dark(#ea580c, #fb923c);
 }
+
+/* ________________ */
 
 body.demo {
   .section {
