@@ -1,50 +1,71 @@
 +++
 title = "Avatar"
-weight = 20
+weight = 31
 description = "Avatars are used to represent users or entities visually. They can be images, icons, or text initials."
 +++
 
-Use `.avatar` with an `<img>` tag to create an avatar. Can also use text initials or icons instead of image.
+Use `<figure data-variant="avatar">` with an `<img>` tag to create an avatar. Can also use text initials with `<abbr>` or icons instead of image.
 
 {% demo() %}
 ```html
-<span class="avatar">
-    <img src="/avatar.jpg" alt="Avatar" />
-</span>
-```
-{% end %}
+<figure data-variant="avatar" class="small" aria-label="Jane Doe">
+    <img src="/avatar.svg" alt="" />
+</figure>
 
-### Sizes
+<figure data-variant="avatar" aria-label="Oat">
+    <abbr title="Jane Doe">OT</abbr>
+</figure>
 
-Use `.small` or `.large` for size variants.
+<figure data-variant="avatar" aria-label="Jane Doe">
+    <img src="/avatar.svg" alt="" />
+</figure>
 
-{% demo() %}
-```html
-<span class="avatar small">
-    <img src="/avatar.jpg" alt="Small Avatar" />
-</span>
-<span class="avatar large">
-    <img src="/avatar.jpg" alt="Large Avatar" />
-</span>
+<figure data-variant="avatar" class="large" aria-label="Jane Doe">
+    <img src="/avatar.svg" alt="" />
+</figure>
 ```
 {% end %}
 
 ### Avatar group
 
-Wrap avatars in `<div class="avatar-group">` for grouped avatars. To control the size of all avatars in the group, add `.small` or `.large` to the group container.
+Wrap avatars in `<figure data-variant="avatar" role="group">` for grouped avatars. To control the size of all avatars in the group, add `.small` or `.large` to the group container.
 
 {% demo() %}
 ```html
-<div class="avatar-group small">
-    <span class="avatar">
-      <img src="/avatar.jpg" alt="Avatar" />
-    </span>
-    <span class="avatar">
-      <img src="/avatar.jpg" alt="Avatar" />
-    </span>
-    <span class="avatar">
-      <img src="/avatar.jpg" alt="Avatar" />
-    </span>
-</div>
+<figure data-variant="avatar" role="group" class="small" aria-label="Team members">
+    <figure data-variant="avatar" aria-label="Jane Doe">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="John Smith">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="Alex Lee">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+</figure>
+
+<figure data-variant="avatar" role="group" aria-label="Team members">
+    <figure data-variant="avatar" aria-label="Jane Doe">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="John Smith">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="Alex Lee">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+</figure>
+
+<figure data-variant="avatar" role="group" class="large" aria-label="Team members">
+    <figure data-variant="avatar" aria-label="Jane Doe">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="John Smith">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+    <figure data-variant="avatar" aria-label="Alex Lee">
+        <img src="/avatar.svg" alt="" />
+    </figure>
+</figure>
 ```
 {% end %}
