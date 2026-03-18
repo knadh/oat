@@ -36,6 +36,50 @@ Use `menu.buttons` for joined controls and `ot-dropdown` for secondary actions.
 ```
 {% end %}
 
+## Radio cards
+Use `input[type="radio"]` and `label` to create selectable cards.
+
+{% demo() %}
+```html
+  <div class="container">
+ 
+      <header>
+        <h3>Billing</h3>
+        <p class="text-light">Select a billing cycle</p>
+      </header>
+ 
+      <div class="radio-card-group mt-4">
+ 
+        <label class="radio-card">
+          <div class="hstack justify-between">
+            <strong>Monthly</strong>
+            <input type="radio" name="billing" checked>
+          </div>
+          <p class="text-light mt-2">$12 / mo</p>
+        </label>
+ 
+        <label class="radio-card">
+          <div class="hstack justify-between">
+            <strong>Yearly</strong>
+            <input type="radio" name="billing">
+          </div>
+          <p class="text-light mt-2">$96 / yr · save 33%</p>
+        </label>
+ 
+        <label class="radio-card">
+          <div class="hstack justify-between">
+            <strong>Lifetime</strong>
+            <input type="radio" name="billing">
+          </div>
+          <p class="text-light mt-2">$299 once</p>
+        </label>
+ 
+      </div>
+ 
+  </div>
+ 
+```
+{% end %}
 
 
 ## Form card
