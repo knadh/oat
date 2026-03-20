@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Highlight sidebar items.
   highlightNav();
+  initSectionScrollSpy();
   window.addEventListener('hashchange', highlightNav);
 });
 
@@ -125,6 +126,65 @@ function highlightNav() {
   if (a) {
     a.setAttribute('aria-current', 'page');
   }
+}
+
+function initSectionScrollSpy() {
+  const sections = Array.from(document.querySelectorAll('section.demo-section[id]'));
+  const scroller = document.querySelector('[data-sidebar-layout] > main') || null;
+  if (!sections.length || !scroller) return;
+
+  const setActiveBySection = id => {
+    if (!id) return;
+
+    const sb = document.querySelector('aside[data-sidebar]');
+    if (!sb) return;
+
+    const p = location.pathname.replace(/\/$/, '');
+    const link = sb.querySelector(`a[href="${p}/#${id}"], a[href="${p}#${id}"], a[href="/components/#${id}"]`);
+    if (!link) return;
+
+    sb.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+    link.setAttribute('aria-current', 'page');
+    link.scrollIntoView({ block: 'nearest' });
+  };
+
+  let activeId = '';
+  const updateActive = entries => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (!visible.length) return;
+
+    const id = visible[0].target.id;
+    if (id && id !== activeId) {
+      activeId = id;
+      setActiveBySection(id);
+    }
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(updateActive, {
+      root: scroller,
+      rootMargin: '-20% 0px -65% 0px',
+      threshold: [0.1, 0.25, 0.5, 0.75]
+    });
+    sections.forEach(s => observer.observe(s));
+    return;
+  }
+
+  const onScroll = () => {
+    const top = scroller.scrollTop;
+    const chosen = sections
+      .filter(s => s.offsetTop - top <= 120)
+      .sort((a, b) => b.offsetTop - a.offsetTop)[0];
+    if (chosen && chosen.id !== activeId) {
+      activeId = chosen.id;
+      setActiveBySection(activeId);
+    }
+  };
+
+  scroller.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
 function toggleTheme() {

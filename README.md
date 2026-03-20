@@ -12,6 +12,37 @@ See live demo and docs at [**oat.ink**](https://oat.ink)
 
 **IMPORTANT:** The lib is currently sub v1 and is likely to have breaking changes until it hits v1.
 
+## Setup
+
+### Prerequisites
+
+- Node.js 20+
+- make
+- Zola (for docs preview)
+
+### Install dependencies
+
+~~~bash
+npm install
+npm install -g esbuild
+~~~
+
+### Build assets
+
+~~~bash
+make dist
+~~~
+
+### Run docs locally
+
+From the repository root:
+
+~~~bash
+zola serve --root docs --interface 127.0.0.1 --port 1111
+~~~
+
+Then open http://127.0.0.1:1111
+
 -------------
 
 <img width="739" height="735" alt="image" src="https://github.com/user-attachments/assets/b0a2f55c-659d-4aab-922c-b13d89eeab36" />

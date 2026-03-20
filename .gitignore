@@ -1,1 +1,7 @@
 dist
+.local/
+.vscode/
+docs/public/
+docs/static/oat.min.css
+docs/static/oat.min.js
+package-lock.json
