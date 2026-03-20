@@ -23,7 +23,6 @@ See live demo and docs at [**oat.ink**](https://oat.ink)
 ### Install dependencies
 
 ~~~bash
-npm install
 npm install -g esbuild
 ~~~
 
