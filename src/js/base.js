@@ -87,6 +87,17 @@ export class OtBase extends HTMLElement {
   }
 }
 
+// Prevent dialog backdrop touch events from bleeding through to underlying
+// elements. On WebKit/Firefox, tapping the backdrop fires a ghost click on
+// the element beneath it after the dialog closes.
+document.addEventListener('touchstart', e => {
+  if (e.target instanceof HTMLDialogElement && e.target.open) {
+    e.target.addEventListener('touchend', te => {
+      te.preventDefault();
+    }, { once: true, passive: false });
+  }
+});
+
 // Polyfill for command/commandfor (Safari)
 if (!('commandForElement' in HTMLButtonElement.prototype)) {
   document.addEventListener('click', e => {
