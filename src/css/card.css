@@ -7,5 +7,6 @@
     box-shadow: var(--shadow-small);
     padding: var(--space-6);
     overflow: hidden;
+    min-height: min-content;
   }
 }
