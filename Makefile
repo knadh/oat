@@ -11,11 +11,13 @@ CSS_FILES = src/css/00-base.css \
             src/css/form.css \
             src/css/table.css \
             src/css/progress.css \
+            src/css/meter.css \
             src/css/spinner.css \
             src/css/grid.css \
             src/css/card.css \
             src/css/alert.css \
             src/css/badge.css \
+            src/css/breadcrumb.css \
             src/css/accordion.css \
             src/css/tabs.css \
             src/css/dialog.css \

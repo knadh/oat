@@ -12,43 +12,50 @@
   .justify-between { justify-content: space-between; }
   .justify-end { justify-content: flex-end; }
 
-  /* Bootstrap inspired. */
-  .hstack {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-    align-content: flex-start;
-    height: auto;
-
-    > * {
-      margin: 0;
-    }
-  }
-  .vstack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
+  .hstack { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; align-content: flex-start; height: auto; }
+  .hstack > * { margin: 0; }
+  .vstack { display: flex; flex-direction: column; gap: var(--space-3); }
 
   .gap-1 { gap: var(--space-1); }
   .gap-2 { gap: var(--space-2); }
   .gap-4 { gap: var(--space-4); }
 
+  .mt-1 { margin-block-start: var(--space-1); }
   .mt-2 { margin-block-start: var(--space-2); }
   .mt-4 { margin-block-start: var(--space-4); }
   .mt-6 { margin-block-start: var(--space-6); }
 
+  .mb-1 { margin-block-end: var(--space-1); }
   .mb-2 { margin-block-end: var(--space-2); }
   .mb-4 { margin-block-end: var(--space-4); }
   .mb-6 { margin-block-end: var(--space-6); }
-  .p-4 { padding: var(--space-4); }
 
+  .p-0 { padding: 0; }
+  .p-1 { padding: var(--space-1); }
+  .p-2 { padding: var(--space-2); }
+  .p-3 { padding: var(--space-3); }
+  .p-4 { padding: var(--space-4); }
+  .p-6 { padding: var(--space-6); }
+
+  .mx-auto { margin-inline: auto; }
   .w-100 { width: 100%; }
 
-  :is(ul, ol, a).unstyled {
-    list-style: none;
-    text-decoration: none;
-    padding: 0;
+  .rounded { border-radius: var(--radius-medium); }
+  .rounded-full { border-radius: var(--radius-full); }
+  .border { border: 1px solid var(--border); }
+
+  .bg-secondary { background-color: var(--secondary); }
+  .bg-faint { background-color: var(--faint); }
+
+  .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+  :is(ul, ol, a).unstyled { list-style: none; text-decoration: none; padding: 0; }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white; color: black; }
+    a { color: inherit; }
   }
 }

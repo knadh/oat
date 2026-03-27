@@ -53,6 +53,13 @@
     grid-column-end: -1;
   }
 
+  /* Responsive: tablet */
+  @media (max-width: 1024px) {
+    .row {
+      --grid-gap: 1.25rem;
+    }
+  }
+
   /* Responsive: stack on mobile */
   @media (max-width: 768px) {
     .row {
