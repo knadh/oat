@@ -1,6 +1,8 @@
 /**
  * oat - Tooltip Enhancement
  * Converts title attributes to data-tooltip for custom styling.
+ * Optional data-tooltip-placement (top | bottom | left | right) is left on the
+ * element for CSS; default is top when omitted or invalid.
  * Progressive enhancement: native title works without JS.
  */
 
