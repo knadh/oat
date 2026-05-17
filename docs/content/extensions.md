@@ -9,6 +9,8 @@ Third-party extensions that work with Oat.
 
 - **[oat-animate](https://github.com/dharmeshgurnani/oat-animate)**: Lightweight animation extension for Oat with declarative `ot-animate` triggers (`on-load`, `hover`, `in-view`) and reduced-motion support. ~1kb gzipped ([Demo](https://oat-animate.dharmeshgurnani.com)).
 
+- **[Oat Table](https://github.com/MADEVAL/Oat-Table)**: Semantic table enhancement for Oat UI. Sort, filter, and select rows without turning tables into a framework widget. ([Demo](https://demo.globus.studio/oat-table/)).
+
 
 -------
 [Open a PR](https://github.com/knadh/oat) to list an extension here.
