@@ -119,14 +119,33 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
 
 ### Validation error
 
-Use `data-field="error"` on field containers to reveal and style error messages.
+Error messages are shown when an input is invalid. Use either:
+- HTML5 validation (the browser detects `:user-invalid` after user interaction)
+- `aria-invalid="true"` for custom validation logic
 
+**HTML5 validation**
 {% demo() %}
 ```html
-<div data-field="error">
-  <label for="error-input">Email</label>
-  <input type="email" aria-invalid="true" aria-describedby="error-message" id="error-input" value="invalid-email" />
-  <div id="error-message" class="error" role="status">Please enter a valid email address.</div>
+<div data-field>
+  <label for="email-error-input">Email</label>
+  <input type="email" aria-describedby="email-error-message" id="email-error-input" placeholder="try an invalid email here"  />
+  <div id="email-error-message" class="error" role="status">Please enter a valid email address.</div>
 </div>
 ```
 {% end %}
+
+**Custom validation with JavaScript:**
+
+Toggle the `aria-invalid="true"` attribute on the input using JavaScript to show or hide the error message
+{% demo() %}
+```html
+
+<label data-field>
+  New Password
+  <input type="password" aria-invalid="true" id="new-password" aria-describedby="new-password-error" placeholder="Enter new password" value="asdfasdf"/>
+  <div id="new-password-error" class="error" role="status">New password cannot be the same as old password.</div>
+</label>
+```
+{% end %}
+
+Both approaches work seamlessly together:
