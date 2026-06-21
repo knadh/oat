@@ -28,6 +28,7 @@ class OtDropdown extends OtBase {
 
     this.#menu.addEventListener('toggle', this);
     this.#menu.addEventListener('keydown', this);
+    this.#menu.addEventListener('click', this);
 
     this.#position = () => {
       // Position has to be calculated and applied manually because
@@ -63,6 +64,13 @@ class OtDropdown extends OtBase {
     const idx = this.#items.indexOf(e.target);
     const next = this.keyNav(e, idx, this.#items.length, 'ArrowUp', 'ArrowDown', true);
     if (next >= 0) this.#items[next].focus();
+  }
+
+  onclick(e) {
+    if (!this.hasAttribute('close-on-click')) return;
+    if (!e.target.closest('[role="menuitem"]')) return;
+
+    this.#menu.hidePopover();
   }
 
   cleanup() {
