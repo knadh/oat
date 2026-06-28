@@ -21,7 +21,7 @@
   }
 
   /* Column spans */
-  .col, [class*="col-"] { grid-column-end: span calc(var(--span, var(--grid-cols)) + var(--offset, 0)); }
+  .col, [class*="col-"] { grid-column-end: span var(--span, var(--grid-cols)); }
 
   .col-1  { --span: 1; }
   .col-2  { --span: 2; }
@@ -45,7 +45,7 @@
   .offset-6  { --offset: 6; }
 
   [class*="offset-"] {
-    margin-inline-start: calc(var(--offset) * (100% + var(--grid-gap)) / (var(--span) + var(--offset)));
+    margin-inline-start: calc(var(--offset) * (100% + var(--grid-gap)) / var(--grid-cols));
   }
 
   .col-end {
