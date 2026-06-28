@@ -4,7 +4,7 @@ weight = 50
 description = "Button variants and sizes"
 +++
 
-The `<button>` element is styled by default. Use `data-variant="primary|secondary|danger"` for semantic variants and classes for visual styles.
+The `<button>` element is styled by default. Use `data-variant="secondary|danger"` for semantic variants and classes for visual styles.
 
 {% demo() %}
 ```html

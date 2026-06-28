@@ -37,7 +37,7 @@ The following color variables from theme.css control the theme (colour profile).
   --card-foreground: rgb(9 9 11);
 
   /* Primary buttons and links */
-  --primary: rgb(24 24 27);
+  --primary: rgb(87 71 71);
 
   /* Text color on primary buttons */
   --primary-foreground: rgb(250 250 250);
@@ -46,7 +46,7 @@ The following color variables from theme.css control the theme (colour profile).
   --secondary: rgb(244 244 245);
 
   /* Text colour on secondary buttons */
-  --secondary-foreground: rgb(24 24 27);
+  --secondary-foreground: rgb(87 71 71);
 
   /* Muted (lighter) background */
   --muted: rgb(244 244 245);
@@ -63,23 +63,20 @@ The following color variables from theme.css control the theme (colour profile).
   /* Accent background */
   --accent: rgb(244 244 245);
 
-  /* Accent text color */
-  --accent-foreground: rgb(24 24 27);
-
   /* Error/danger color */
-  --danger: rgb(223 81 76);
+  --danger: rgb(211 47 47);
 
   /* Text color on danger background */
   --danger-foreground: rgb(250 250 250);
 
   /* Success color */
-  --success: rgb(76 175 80);
+  --success: rgb(0 128 50);
 
   /* Text colour on success background */
   --success-foreground: rgb(250 250 250);
 
   /* Warning color */
-  --warning: rgb(255 140 0);
+  --warning: rgb(166 91 0);
 
   /* Text colour on warning background */
   --warning-foreground: rgb(9 9 11);
@@ -91,7 +88,7 @@ The following color variables from theme.css control the theme (colour profile).
   --input: rgb(212 212 216);
 
   /* Focus ring color */
-  --ring: rgb(24 24 27);
+  --ring: rgb(87 71 71);
 }
 ```
 
@@ -113,12 +110,13 @@ After these, include CSS and JS files the respective components.
 --muted: #f4f4f5;
 --muted-foreground: #71717a;
 --faint: #fafafa;
+--faint-foreground: #a1a1aa;
 --accent: #f4f4f5;
---danger: #df514c;
+--danger: #d32f2f;
 --danger-foreground: #fafafa;
---success: #4caf50;
+--success: #008032;
 --success-foreground: #fafafa;
---warning: #ff8c00;
+--warning: #a65b00;
 --warning-foreground: #09090b;
 --border: #d4d4d8;
 --input: #d4d4d8;
@@ -129,4 +127,4 @@ After these, include CSS and JS files the respective components.
 
 ## Dark mode
 
-Adding `data-theme="dark"` to `<body>` applies the dark theme. Customize the dark theme by redefining the aforementioned theme variables and scoping them inside `[data-theme="dark"] { ... }`
+Dark mode is applied automatically via `light-dark()` and `color-scheme: light dark`, following the OS system preference. To customize the dark theme, redefine the theme variables scoped inside a `[data-theme="dark"]` selector in your own CSS, and set `data-theme="dark"` on `<body>` to activate it manually.

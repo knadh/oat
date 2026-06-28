@@ -30,7 +30,7 @@ description = "Responsive admin dashboard layout with sticky sidebar, optional t
       </ul>
     </nav>
     <footer>
-      <button class="outline" class="sm" style="width: 100%;">Logout</button>
+      <button class="outline small" style="width: 100%;">Logout</button>
     </footer>
   </aside>
   <main>
@@ -53,7 +53,7 @@ Set `data-sidebar-layout="always"` to keep the toggle visible and make it collap
 
 ### With top sticky nav
 
-Add `data-topnav` to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
+Add `data-topnav` to a nav element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
 
 ```html
 <body data-sidebar-layout>
@@ -80,7 +80,7 @@ Add `data-topnav` to a header element for a full-width top navigation bar. The s
 | ------------------------------ | ---------- | ------------------------------------------------------------------------------ |
 | `data-sidebar-layout`          | Container  | Grid layout wrapper (sidebar + main), typically `<body>`                       |
 | `data-sidebar-layout="always"` | Container  | Always-collapsible sidebar (toggle visible and functional on all screen sizes) |
-| `data-topnav`                  | `<header>` | Full-width top nav (optional, spans full width)                                |
+| `data-topnav`                  | `<nav>`    | Full-width top nav (optional, spans full width)                                |
 | `data-sidebar`                 | `<aside>`  | Sticky sidebar element                                                         |
 | `data-sidebar-toggle`          | `<button>` | Toggles sidebar (mobile) and collapse (always mode)                            |
 | `data-sidebar-open`            | Layout     | Applied to layout when sidebar is open                                         |
