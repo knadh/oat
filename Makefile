@@ -20,6 +20,7 @@ CSS_FILES = src/css/00-base.css \
             src/css/tabs.css \
             src/css/dialog.css \
             src/css/dropdown.css \
+            src/css/file-drop.css \
             src/css/toast.css \
             src/css/sidebar.css \
             src/css/taginput.css \

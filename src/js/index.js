@@ -1,6 +1,7 @@
 import './base.js';
 import './tabs.js';
 import './dropdown.js';
+import './file-drop.js';
 import './tooltip.js';
 import './sidebar.js';
 import './taginput.js';

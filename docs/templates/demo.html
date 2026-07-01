@@ -541,6 +541,30 @@
         </div>
       </div>
 
+      <div data-field>
+        <label for="settings-attachments">Attachments</label>
+        <ot-file-drop id="settings-attachments" accept="image/*,.pdf" multiple>
+          <span class="content">
+            <strong>Drop images or PDFs here</strong>
+            <small>or click to browse multiple files</small>
+          </span>
+        </ot-file-drop>
+        <small id="settings-attachments-output" data-hint>No files selected.</small>
+        <div class="table mt-4" id="settings-attachments-table" hidden>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>File type</th>
+                <th>Created at</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
       <label data-field>
         Notification Volume
         <input type="range" min="0" max="100" value="65">
@@ -612,6 +636,40 @@
     // document.getElementById('theme-menu').hidePopover();
   }
   setDemoTheme(localStorage.getItem('demo-theme') || 'default');
+
+  document.getElementById('settings-attachments')?.addEventListener('ot-file-drop', e => {
+    const { files, rejected } = e.detail;
+    const out = document.getElementById('settings-attachments-output');
+    const table = document.getElementById('settings-attachments-table');
+    const tbody = table.querySelector('tbody');
+
+    out.textContent = files.length ? `${files.length} file(s) selected.` : 'No files selected.';
+    if (rejected.length) {
+      out.textContent += ` ${rejected.length} file(s) rejected.`;
+    }
+
+    tbody.replaceChildren(...files.map(file => {
+      const row = document.createElement('tr');
+      const createdAt = file.lastModified ? new Date(file.lastModified).toLocaleString() : 'Unknown';
+      const type = file.type || 'Unknown';
+      const size = new Intl.NumberFormat(undefined, {
+        style: 'unit',
+        unit: 'byte',
+        notation: 'compact',
+        unitDisplay: 'narrow'
+      }).format(file.size);
+
+      [file.name, size, type, createdAt].forEach(value => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        row.appendChild(cell);
+      });
+
+      return row;
+    }));
+
+    table.hidden = files.length === 0;
+  });
 </script>
 
 {% endblock %}
