@@ -10,18 +10,25 @@
  *   value              - comma-separated initial tags
  *
  * Properties:
- *   .value             - read/write array of tags
+ *   .value             - read/write array of tags. Each tag is a string, or an
+ *                        object whose toString() returns its display text.
  *
  * Events:
  *   input              - dispatched (bubbles) when a tag is added or removed.
- *                        detail = string[] (the current array of tags)
+ *                        detail = the current array of tags (strings and/or objects)
  */
 
 import { OtBase } from './base.js';
 
 const h = t => document.createElement(t);
 
+// Display text for a tag, which may be a plain string or an object.
+const label = v => String(v).trim();
+
 class OtTaginput extends OtBase {
+  // Maps a tag's badge element to its backing object (only set for object tags).
+  #data = new WeakMap();
+
   init() {
     this.input = this.querySelector('input');
     if (!this.input) return;
@@ -36,8 +43,10 @@ class OtTaginput extends OtBase {
         const picked = list && (e.inputType === 'insertReplacementText' || val.length - (this.prev || '').length > 1);
         this.prev = val;
 
-        if (picked && [...list.options].some(o => o.value === val)) {
-          return requestAnimationFrame(() => this.add(val));
+        if (picked) {
+          // A picked <option> may carry an object via `option.data`.
+          const opt = [...list.options].find(o => o.value === val);
+          if (opt) return requestAnimationFrame(() => this.add(opt.data ?? val));
         }
       });
 
@@ -67,10 +76,11 @@ class OtTaginput extends OtBase {
     x ? this.remove(x.parentElement) : this.input.focus();
   }
 
-  add(val, silent) {
-    val = val.trim();
-    const vals = this.value;
-    if (!val || vals.includes(val)) {
+  // `v` may be a plain string or an object. The badge shows its display text
+  // while the object is retained via `.value`.
+  add(v, silent) {
+    const text = label(v);
+    if (!text || this.value.some(x => label(x) === text)) {
       return;
     }
 
@@ -78,13 +88,14 @@ class OtTaginput extends OtBase {
     const t = h('span');
     t.className = 'badge';
     t.dataset.variant = 'secondary';
-    t.textContent = val;
+    t.textContent = text;
+    if (v && typeof v === 'object') this.#data.set(t, v);
 
     if (!this.input.readOnly) {
       // Append the 'x' button.
       const x = h('button');
       x.type = 'button';
-      x.ariaLabel = `Remove ${val}`;
+      x.ariaLabel = `Remove ${text}`;
       x.textContent = '×';
       t.appendChild(x);
 
@@ -107,16 +118,22 @@ class OtTaginput extends OtBase {
   }
 
   get value() {
-    return [...this.querySelectorAll('.badge')].map(t => t.firstChild.data);
+    return [...this.querySelectorAll('.badge')].map(t => this.#data.get(t) ?? t.firstChild.data);
   }
 
-  // Set tag values.
+  // Set tag values. Each may be a string (comma-splittable) or a rich object.
   set value(tags) {
     this.input ??= this.querySelector('input');
 
     this.querySelectorAll('.badge').forEach(b => b.remove());
 
-    (Array.isArray(tags) ? tags : []).forEach(t => String(t).split(',').forEach(v => this.add(v, true)));
+    (Array.isArray(tags) ? tags : []).forEach(t => {
+      if (typeof t === 'string') {
+        t.split(',').forEach(v => this.add(v, true));
+      } else {
+        this.add(t, true);
+      }
+    });
   }
 }
 

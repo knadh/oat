@@ -21,6 +21,8 @@ Use `<ot-taginput>`. Type a word and press <kbd>Enter</kbd> or <kbd>,</kbd> (com
 
 Give the `<input>` a `list` and a `<datalist>`, then populate the datalist from the input's native `oninput` handler. Selecting a suggestion creates a tag.
 
+A suggestion item can be a plain string or an object. Attach the object to its `<option>` via `option.data`.
+
 {% demo() %}
 ```html
 <ot-taginput id="taginput-demo">
@@ -33,15 +35,31 @@ Give the `<input>` a `list` and a `<datalist>`, then populate the datalist from 
 
 ```html
 <script>
+class Fruit {
+  constructor(id, name) { this.id = id; this.name = name; }
+  toString() { return this.name; }   // Display text
+}
+
 function tagInputAutoComplete(el) {
-  const fruits = ['Apple', 'Apricot', 'Banana', 'Cherry', 'Mango', 'Melon'];
+  // A mix of plain strings and objects.
+  const fruits = [
+    'Apple',
+    'Apricot',
+    new Fruit(1, 'Banana'),
+    new Fruit(2, 'Cherry'),
+    'Mango',
+    'Melon',
+  ];
   el.list.replaceChildren(...fruits
-    .filter(f => f.toLowerCase().startsWith(el.value.toLowerCase()))
-    .map(v => new Option(v)));
+    .filter(f => String(f).toLowerCase().startsWith(el.value.toLowerCase()))
+    .map(f => {
+      const o = new Option(f);
+      o.data = f;
+      return o;
+    }));
 }
 </script>
 ```
-
 
 ### Programmatic read and write
 
@@ -66,9 +84,10 @@ Mutate the `value` property of the component. A standard `input` event is dispat
 
 ### Options
 
-| Property      | Description                                                  |
-| ------------- | ------------------------------------------------------------ |
-| `<input>`     | Child input field where the user types                       |
-| `value`       | Comma-separated list of initial tags.                        |
-| `.value`      | Array of tags. Setting this does not emit the `input` event. |
-| `input` event | Dispatched (bubbles) on add/remove.                          |
+| Property      | Description                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| `<input>`     | Child input field where the user types                                          |
+| `value`       | Comma-separated list of initial tags.                                           |
+| `.value`      | Array of tags (strings or objects). Setting this does not emit `input`.         |
+| `option.data` | Optional object attached to a `<datalist>` `<option>`. |
+| `input` event | Dispatched (bubbles) on add/remove. `detail` is the current tag array.          |
