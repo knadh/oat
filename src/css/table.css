@@ -4,6 +4,10 @@
     min-width: 320px;
     width: 100%;
     overflow-x: auto;
+
+    &:has([data-tooltip]:is(:hover, :focus-visible)) {
+      overflow: visible;
+    }
   }
 
   table {
