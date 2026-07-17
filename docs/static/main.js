@@ -153,9 +153,20 @@ function toggleTheme() {
   localStorage.setItem('theme', theme);
 }
 
+class Fruit {
+  constructor(id, name) { this.id = id; this.name = name; }
+  toString() { return this.name; }
+}
+
 function tagInputAutoComplete(el) {
-  const fruits = ['Apple', 'Apricot', 'Banana', 'Cherry', 'Mango', 'Melon'];
-  el.list.replaceChildren(...fruits
-    .filter(f => f.toLowerCase().startsWith(el.value.toLowerCase()))
-    .map(v => new Option(v)));
+  const fruits = ['Apple', 'Apricot', new Fruit(1, 'Banana'), new Fruit(2, 'Cherry'), 'Mango', 'Melon'];
+
+  const val = el.value.trim().toLowerCase();
+  const out = val ? fruits.filter(f => String(f).toLowerCase().startsWith(val)) : fruits;
+
+  el.list.replaceChildren(...out.map(f => {
+    const o = new Option(f);
+    o.data = f;
+    return o;
+  }));
 }

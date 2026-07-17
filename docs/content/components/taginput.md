@@ -19,7 +19,7 @@ Use `<ot-taginput>`. Type a word and press <kbd>Enter</kbd> or <kbd>,</kbd> (com
 
 ### Autocomplete
 
-Give the `<input>` a `list` and a `<datalist>`, then populate the datalist from the input's native `oninput` handler. Selecting a suggestion creates a tag.
+Give the `<input>` a `list` and a `<datalist>`, then populate the datalist from the input's native `oninput` and `onfocus` handler. Selecting a suggestion creates a tag.
 
 A suggestion item can be a plain string or an object. Attach the object to its `<option>` via `option.data`.
 

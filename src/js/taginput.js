@@ -51,6 +51,7 @@ class OtTaginput extends OtBase {
       });
 
       this.input.addEventListener('change', e => e.stopPropagation());
+      this.input.addEventListener('focus', this);
       this.addEventListener('click', this);
     }
 
@@ -68,6 +69,21 @@ class OtTaginput extends OtBase {
       e.preventDefault();
       this.add(this.input.value);
     }
+  }
+
+  // On focus, re-run the autocomplete handler.
+  onfocus() {
+    if (!this.input.list) return;
+
+    this.input.dispatchEvent(new Event('input', { bubbles: true }));
+
+    // Skip the click that originated and show the datalist in the next frame.
+    // Without this, for whatever reason, browsers don't seem to render the datalist!
+    requestAnimationFrame(() => {
+      try {
+        this.input.showPicker();
+      } catch { }
+    });
   }
 
   // Click a tag's 'x' to remove it.
