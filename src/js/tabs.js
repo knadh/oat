@@ -18,6 +18,8 @@ import { OtBase } from './base.js';
 class OtTabs extends OtBase {
   #tabs = [];
   #panels = [];
+  #anchor;
+  #ids = [];
 
   init() {
     const tablist = this.querySelector(':scope > [role="tablist"]');
@@ -34,6 +36,9 @@ class OtTabs extends OtBase {
       const panel = this.#panels[i];
       if (!panel) return;
 
+      // If there's no ID, skip it from deep-linking.
+      this.#ids[i] = tab.id || '';
+
       const tabId = tab.id || `ot-tab-${this.uid()}`;
       const panelId = panel.id || `ot-panel-${this.uid()}`;
 
@@ -43,12 +48,23 @@ class OtTabs extends OtBase {
       panel.setAttribute('aria-labelledby', tabId);
     });
 
+    // The hash key to use in the # fragment for deep-linking.
+    // Eg: data-anchor="tab" becomes #tab=$id in the URL.
+    this.#anchor = this.dataset.anchor;
+
     tablist.addEventListener('click', this);
     tablist.addEventListener('keydown', this);
 
-    // Find initially active tab or default to first.
-    const activeTab = this.#tabs.findIndex(t => t.ariaSelected === 'true');
-    this.#activate(activeTab >= 0 ? activeTab : 0);
+    // Figure out the selection from the URL fragment.
+    const fromHash = this.#hashIndex();
+    const activeTab = fromHash >= 0 ? fromHash : this.#tabs.findIndex(t => t.ariaSelected === 'true');
+    this.#activate(activeTab >= 0 ? activeTab : 0, false);
+
+    if (this.#anchor) window.addEventListener('hashchange', this);
+  }
+
+  cleanup() {
+    window.removeEventListener('hashchange', this);
   }
 
   onclick(e) {
@@ -66,7 +82,12 @@ class OtTabs extends OtBase {
     }
   }
 
-  #activate(idx) {
+  onhashchange() {
+    const idx = this.#hashIndex();
+    if (idx >= 0 && idx !== this.activeIndex) this.#activate(idx, false);
+  }
+
+  #activate(idx, syncHash = true) {
     this.#tabs.forEach((tab, i) => {
       const isActive = i === idx;
       tab.ariaSelected = String(isActive);
@@ -77,7 +98,34 @@ class OtTabs extends OtBase {
       panel.hidden = i !== idx;
     });
 
+    if (syncHash) this.#syncHash(idx);
+
     this.emit('ot-tab-change', { index: idx, tab: this.#tabs[idx] });
+  }
+
+  // Return the index of the tab whose id matches the hash, or -1.
+  #hashIndex() {
+    if (!this.#anchor) return -1;
+    const id = new URLSearchParams(location.hash.slice(1)).get(this.#anchor);
+    return id ? this.#ids.findIndex(x => x === id) : -1;
+  }
+
+  // Reflect the active tab's id in the hash, preserving other params.
+  // A tab without an id clears our key from the fragment.
+  #syncHash(idx) {
+    if (!this.#anchor) return;
+
+    const id = this.#ids[idx];
+    const params = new URLSearchParams(location.hash.slice(1));
+    id ? params.set(this.#anchor, id) : params.delete(this.#anchor);
+
+    // Keep only key=value pairs.
+    for (const [k, v] of [...params]) {
+      if (!v) params.delete(k);
+    }
+
+    const hash = params.toString();
+    history.replaceState(null, '', hash ? `#${hash}` : location.pathname + location.search);
   }
 
   get activeIndex() {
