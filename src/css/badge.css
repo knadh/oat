@@ -24,27 +24,11 @@
       color: var(--secondary-foreground);
     }
 
-    &[data-variant="success"] {
-      color: var(--success);
+    &:is([data-variant="success"], [data-variant="warning"], [data-variant="danger"]) {
+      color: var(--_variant-color);
       background-color: light-dark(
-        color-mix(in srgb, var(--success) 10%, transparent),
-        color-mix(in srgb, var(--success) 30%, transparent)
-      );
-    }
-
-    &[data-variant="warning"] {
-      color: var(--warning);
-      background-color: light-dark(
-        color-mix(in srgb, var(--warning) 10%, transparent),
-        color-mix(in srgb, var(--warning) 30%, transparent)
-      );
-    }
-
-    &[data-variant="danger"] {
-      color: var(--danger);
-      background-color: light-dark(
-        color-mix(in srgb, var(--danger) 10%, transparent),
-        color-mix(in srgb, var(--danger) 30%, transparent)
+        color-mix(in srgb, var(--_variant-color) 10%, transparent),
+        color-mix(in srgb, var(--_variant-color) 30%, transparent)
       );
     }
   }

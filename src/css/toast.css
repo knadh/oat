@@ -15,33 +15,27 @@
       display: none;
     }
 
-    &[data-placement="top-left"] {
-      inset: var(--space-4) auto auto var(--space-4);
+    /* data-placement is edge (top|bottom) + "-" + alignment (left|center|right). */
+    &[data-placement^="top"] {
+      inset: var(--space-4) auto auto auto;
     }
 
-    &[data-placement="top-center"] {
-      inset: var(--space-4) auto auto 50%;
+    &[data-placement^="bottom"] {
+      inset: auto auto var(--space-4) auto;
+      flex-direction: column-reverse;
+    }
+
+    &[data-placement$="left"] {
+      left: var(--space-4);
+    }
+
+    &[data-placement$="center"] {
+      left: 50%;
       transform: translateX(-50%);
     }
 
-    &[data-placement="top-right"] {
-      inset: var(--space-4) var(--space-4) auto auto;
-    }
-
-    &[data-placement="bottom-left"] {
-      inset: auto auto var(--space-4) var(--space-4);
-      flex-direction: column-reverse;
-    }
-
-    &[data-placement="bottom-center"] {
-      inset: auto auto var(--space-4) 50%;
-      transform: translateX(-50%);
-      flex-direction: column-reverse;
-    }
-
-    &[data-placement="bottom-right"] {
-      inset: auto var(--space-4) var(--space-4) auto;
-      flex-direction: column-reverse;
+    &[data-placement$="right"] {
+      right: var(--space-4);
     }
   }
 
@@ -57,6 +51,7 @@
     border: 1px solid var(--border);
     border-inline-start-width: var(--space-1);
     border-inline-start-style: solid;
+    border-inline-start-color: var(--_variant-color, var(--border));
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
     transition: opacity var(--transition-in), transform var(--transition-in), margin var(--transition-in);
@@ -65,30 +60,10 @@
     .toast-title {
       font-weight: 600;
       margin: 0 0 var(--space-3) 0;
+      color: var(--_variant-color, inherit);
     }
     .toast-message {
       color: var(--muted-foreground);
-    }
-
-    &[data-variant="success"] {
-      border-inline-start-color: var(--success);
-      .toast-title {
-        color: var(--success);
-      }
-    }
-
-    &[data-variant="danger"] {
-      border-inline-start-color: var(--danger);
-      .toast-title {
-        color: var(--danger);
-      }
-    }
-
-    &[data-variant="warning"] {
-      border-inline-start-color: var(--warning);
-      .toast-title {
-        color: var(--warning);
-      }
     }
 
     & > [data-close] {

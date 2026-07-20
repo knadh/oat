@@ -76,4 +76,17 @@
     --z-dropdown: 50;
     --z-modal: 200;
   }
+
+  /* Map [data-variant] to its color. This is shared by multiple components (alert, badge, toast etc.) */
+  [data-variant="success"] {
+    --_variant-color: var(--success);
+  }
+
+  [data-variant="warning"] {
+    --_variant-color: var(--warning);
+  }
+
+  :is([data-variant="danger"], [data-variant="error"]) {
+    --_variant-color: var(--danger);
+  }
 }
