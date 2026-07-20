@@ -29,7 +29,7 @@ export class OtBase extends HTMLElement {
   }
 
   // Override in subclass for cleanup logic.
-  cleanup() {}
+  cleanup() { }
 
   // Central event handler - enables automatic cleanup.
   // Usage: element.addEventListener('click', this)
@@ -71,16 +71,6 @@ export class OtBase extends HTMLElement {
     }));
   }
 
-  // Query selector within this element.
-  $(selector) {
-    return this.querySelector(selector);
-  }
-
-  // Query selector all within this element.
-  $$(selector) {
-    return Array.from(this.querySelectorAll(selector));
-  }
-
   // Generate a unique ID string.
   uid() {
     return Math.random().toString(36).slice(2, 10);
@@ -105,3 +95,12 @@ if (!('commandForElement' in HTMLButtonElement.prototype)) {
     }
   });
 }
+
+// Shim to prevent dialog backdrop clicks from bleeding to the element below
+// the click on touch devices.
+document.addEventListener('touchstart', e => {
+  if (e.target instanceof HTMLDialogElement) {
+    e.preventDefault();
+    e.target.close();
+  }
+}, { passive: false });

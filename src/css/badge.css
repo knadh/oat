@@ -2,19 +2,16 @@
   .badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-1);
     padding: var(--space-1) var(--space-4);
     font-size: var(--text-8);
     font-weight: var(--font-medium);
+    text-wrap: nowrap;
     line-height: var(--leading-normal);
     background-color: var(--primary);
     color: var(--primary-foreground);
     border-radius: var(--radius-full);
-
-    &.secondary {
-      background-color: var(--secondary);
-      color: var(--secondary-foreground);
-    }
 
     &.outline {
       background-color: transparent;
@@ -22,28 +19,40 @@
       border: 1px solid var(--border);
     }
 
-    &.success {
-      color: var(--success);
+    &[data-variant="secondary"] {
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+    }
+
+    &:is([data-variant="success"], [data-variant="warning"], [data-variant="danger"]) {
+      color: var(--_variant-color);
       background-color: light-dark(
-        color-mix(in srgb, var(--success) 10%, transparent),
-        color-mix(in srgb, var(--success) 30%, transparent)
+        color-mix(in srgb, var(--_variant-color) 10%, transparent),
+        color-mix(in srgb, var(--_variant-color) 30%, transparent)
       );
     }
 
-    &.warning {
-      color: var(--warning);
-      background-color: light-dark(
-        color-mix(in srgb, var(--warning) 10%, transparent),
-        color-mix(in srgb, var(--warning) 30%, transparent)
-      );
+    position: relative;
+
+    /* A nested button is a remove 'x', revealed on hover. */
+    button {
+      all: unset;
+      position: absolute;
+      right: 0;
+      padding-inline: var(--space-3) var(--space-2);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      border-start-end-radius: inherit;
+      border-end-end-radius: inherit;
+      background-color: color-mix(in srgb, var(--muted) 60%, transparent);
+      transition: opacity var(--transition-fast);
     }
 
-    &.danger {
-      color: var(--danger);
-      background-color: light-dark(
-        color-mix(in srgb, var(--danger) 10%, transparent),
-        color-mix(in srgb, var(--danger) 30%, transparent)
-      );
+    &:hover button,
+    button:focus-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }

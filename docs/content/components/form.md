@@ -43,9 +43,10 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
     <textarea placeholder="Your message..."></textarea>
   </label>
 
-  <label data-field>
+  <label data-field aria-disabled>
     Disabled
     <input type="text" placeholder="Disabled" disabled />
+    <span data-hint>This is a hint</span>
   </label>
 
   <label data-field>
@@ -65,6 +66,7 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
 
   <label data-field>
     <input type="checkbox" /> I agree to the terms
+    <span data-hint>This is a hint</span>
   </label>
 
   <fieldset class="hstack">
@@ -77,6 +79,13 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
   <label data-field>
     Volume
     <input type="range" min="0" max="100" value="50" />
+    <span data-hint>This is a hint</span>
+  </label>
+
+  <label data-field>
+    State
+    <input type="checkbox" role="switch" />
+    <span data-hint>This is a hint</span>
   </label>
 
   <button type="submit">Submit</button>
@@ -111,14 +120,21 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
 
 ### Validation error
 
-Use `data-field="error"` on field containers to reveal and style error messages.
+Use `aria-invalid="true"` on field containers to reveal and style error messages.
 
 {% demo() %}
 ```html
-<div data-field="error">
-  <label for="error-input">Email</label>
-  <input type="email" aria-invalid="true" aria-describedby="error-message" id="error-input" value="invalid-email" />
-  <div id="error-message" class="error" role="status">Please enter a valid email address.</div>
+<fieldset class="vstack">
+<div data-field>
+  <label for="email-error-input">Email</label>
+  <input type="email" aria-describedby="email-error-message" id="email-error-input" placeholder="Type invalid email here" autocomplete="off"  />
+  <div id="email-error-message" class="error" role="status">Please enter a valid email address</div>
 </div>
+<label data-field aria-invalid="true">
+  Enter secret value
+  <input type="password" aria-invalid="true" id="new-password" aria-describedby="new-password-error" placeholder="Enter new secret" value="abcdefg"/>
+  <div id="new-password-error" class="error" role="status">The value is incorrect</div>
+</label>
+</fieldset>
 ```
 {% end %}

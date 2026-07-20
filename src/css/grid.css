@@ -20,9 +20,9 @@
     width: 100%;
   }
 
-  /* Column spans using CSS custom property */
-  .col, [class*="col-"] { grid-column-end: span var(--span, var(--grid-cols)); }
-  
+  /* Column spans */
+  .col, [class*="col-"] { grid-column-end: span calc(var(--span, var(--grid-cols)) + var(--offset, 0)); }
+
   .col-1  { --span: 1; }
   .col-2  { --span: 2; }
   .col-3  { --span: 3; }
@@ -36,13 +36,17 @@
   .col-11 { --span: 11; }
   .col-12 { --span: 12; }
 
-  /* Offsets via grid-column-start */
-  .offset-1  { grid-column-start: 2; }
-  .offset-2  { grid-column-start: 3; }
-  .offset-3  { grid-column-start: 4; }
-  .offset-4  { grid-column-start: 5; }
-  .offset-5  { grid-column-start: 6; }
-  .offset-6  { grid-column-start: 7; }
+  /* Offsets */
+  .offset-1  { --offset: 1; }
+  .offset-2  { --offset: 2; }
+  .offset-3  { --offset: 3; }
+  .offset-4  { --offset: 4; }
+  .offset-5  { --offset: 5; }
+  .offset-6  { --offset: 6; }
+
+  [class*="offset-"] {
+    margin-inline-start: calc(var(--offset) * (100% + var(--grid-gap)) / (var(--span) + var(--offset)));
+  }
 
   .col-end {
     grid-column-start: span var(--span, 1);
@@ -59,7 +63,8 @@
       --span: 4;
     }
     [class*="offset-"] {
-      grid-column-start: auto;
+      --offset: 0;
+      margin-inline-start: 0;
     }
   }
 }

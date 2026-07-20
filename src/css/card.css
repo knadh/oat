@@ -6,6 +6,5 @@
     border-radius: var(--radius-medium);
     box-shadow: var(--shadow-small);
     padding: var(--space-6);
-    overflow: hidden;
   }
 }

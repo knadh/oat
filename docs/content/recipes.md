@@ -138,7 +138,7 @@ Compose dashboard metrics with `grid`, `card`, `badge`, and `progress`/`meter`.
     <article class="card col-4">
       <header class="hstack justify-between items-center">
         <h4>Revenue</h4>
-        <span class="badge success">+12%</span>
+        <span class="badge" data-variant="success">+12%</span>
       </header>
       <h2>$42,200</h2>
       <p class="text-light">vs last month</p>
@@ -148,7 +148,7 @@ Compose dashboard metrics with `grid`, `card`, `badge`, and `progress`/`meter`.
     <article class="card col-4">
       <header class="hstack justify-between items-center">
         <h4>Completion</h4>
-        <span class="badge warning">-2%</span>
+        <span class="badge" data-variant="warning">-2%</span>
       </header>
       <h2>4.6%</h2>
       <p class="text-light">checkout completion</p>

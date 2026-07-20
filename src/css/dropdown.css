@@ -8,7 +8,7 @@
       background-color: var(--background);
       border: 1px solid var(--border);
       border-radius: var(--radius-medium);
-      box-shadow: var(--shadow-medium);
+      box-shadow: var(--shadow-small);
       opacity: 0;
       transform: translateY(-4px);
       transition:
@@ -28,21 +28,17 @@
           transform: translateY(-4px);
         }
       }
+
+      hr {
+        margin: var(--space-1) 0;
+      }
     }
 
     [role="menuitem"] {
       display: flex;
-      align-items: center;
-      justify-content: start;
-      gap: var(--space-2);
       width: 100%;
       padding: var(--space-2) var(--space-3);
-      font-size: var(--text-7);
-      text-align: start;
-      color: var(--foreground);
-      background: none;
-      border: none;
-      border-radius: var(--radius-small);
+      justify-content: start;
       cursor: pointer;
 
       &:hover, &:focus {

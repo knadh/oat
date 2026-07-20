@@ -16,7 +16,7 @@
     color: var(--primary-foreground);
     border-radius: var(--radius-medium);
     border: 1px solid;
-    border-color: rgb(from #fff r g b / 0.15) rgb(from #000 r g b / 0.2) rgb(from #000 r g b / 0.2) rgb(from #fff r g b / 0.15);
+    border-color: rgb(255 255 255 / 0.15) rgb(0 0 0 / 0.2) rgb(0 0 0 / 0.2) rgb(255 255 255 / 0.15);
     transition: background-color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
 
     &:not(:disabled) {
@@ -35,7 +35,7 @@
       --_hov: color-mix(in srgb, var(--secondary), black 10%);
       background-color: var(--secondary);
       color: var(--secondary-foreground);
-      border-color: rgb(from #fff r g b / 0.5) rgb(from #000 r g b / 0.1) rgb(from #000 r g b / 0.1) rgb(from #fff r g b / 0.5);
+      border-color: rgb(255 255 255 / 0.5) rgb(0 0 0 / 0.1) rgb(0 0 0 / 0.1) rgb(255 255 255 / 0.5);
     }
 
     &[data-variant="danger"] {

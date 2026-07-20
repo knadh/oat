@@ -106,6 +106,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Highlight sidebar items.
   highlightNav();
   window.addEventListener('hashchange', highlightNav);
+
+  // Highlight sidebar link based on scroll position in demo sections.
+  const sections = document.querySelectorAll('.demo-section');
+  const side = document.querySelector('aside[data-sidebar]');
+  if (sections.length && side) {
+    const ob = new IntersectionObserver(items => {
+      const ok = items.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!ok) return;
+
+      side.querySelector('[aria-current]')?.removeAttribute('aria-current');
+      side.querySelector(`a[href$="#${ok.target.id}"]`)?.setAttribute('aria-current', 'page');
+    }, { rootMargin: '0px 0px -60% 0px' });
+
+    // Attach a scroll observer to all sections.
+    sections.forEach(s => ob.observe(s));
+  }
+
 });
 
 
@@ -134,4 +151,22 @@ function toggleTheme() {
   document.documentElement.style.colorScheme = theme;
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
+}
+
+class Fruit {
+  constructor(id, name) { this.id = id; this.name = name; }
+  toString() { return this.name; }
+}
+
+function tagInputAutoComplete(el) {
+  const fruits = ['Apple', 'Apricot', new Fruit(1, 'Banana'), new Fruit(2, 'Cherry'), 'Mango', 'Melon'];
+
+  const val = el.value.trim().toLowerCase();
+  const out = val ? fruits.filter(f => String(f).toLowerCase().startsWith(val)) : fruits;
+
+  el.list.replaceChildren(...out.map(f => {
+    const o = new Option(f);
+    o.data = f;
+    return o;
+  }));
 }

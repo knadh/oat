@@ -1,7 +1,6 @@
 /**
- * oat - Tooltip Enhancement
+ * oat - Tooltip
  * Converts title attributes to data-tooltip for custom styling.
- * Progressive enhancement: native title works without JS.
  */
 
 document.addEventListener('DOMContentLoaded', () => {

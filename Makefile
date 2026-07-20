@@ -22,8 +22,10 @@ CSS_FILES = src/css/00-base.css \
             src/css/dropdown.css \
             src/css/toast.css \
             src/css/sidebar.css \
+            src/css/taginput.css \
             src/css/skeleton.css \
             src/css/tooltip.css \
+            src/css/upload.css \
             src/css/utilities.css
 
 dist: css js size

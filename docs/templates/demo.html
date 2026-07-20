@@ -9,8 +9,8 @@
   <div class="hstack justify-between mb-6">
     <div class="hstack">
       <h2 style="margin: 0;">Demo</h2>
-      <span class="badge success">Live</span>
-      <span class="badge secondary">v1.0.0</span>
+      <span class="badge" data-variant="success">Live</span>
+      <span class="badge" data-variant="secondary">v1.0.0</span>
     </div>
     <div class="hstack">
       <label class="hstack gap-2" style="margin: 0;">
@@ -22,13 +22,13 @@
           Switch theme ▾
         </button>
         <menu popover id="theme-menu">
-          <button role="menuitem" onclick="setDemoTheme('default')">Default</button>
-          <button role="menuitem" onclick="setDemoTheme('slate')">Slate</button>
-          <button role="menuitem" onclick="setDemoTheme('stone')">Stone</button>
-          <button role="menuitem" onclick="setDemoTheme('rose')">Rose</button>
-          <button role="menuitem" onclick="setDemoTheme('blue')">Blue</button>
-          <button role="menuitem" onclick="setDemoTheme('green')">Green</button>
-          <button role="menuitem" onclick="setDemoTheme('orange')">Orange</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('default')">Default</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('slate')">Slate</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('stone')">Stone</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('rose')">Rose</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('blue')">Blue</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('green')">Green</button>
+          <button role="menuitem" class="ghost" onclick="setDemoTheme('orange')">Orange</button>
         </menu>
       </ot-dropdown>
       </button>
@@ -43,7 +43,7 @@
         <header>
           <small class="text-light">Revenue</small>
           <div class="stat-value">$42,128</div>
-          <small class="text-light"><span class="badge success">+12.5%</span> vs last month</small>
+          <small class="text-light"><span class="badge" data-variant="success">+12.5%</span> vs last month</small>
         </header>
         <footer>
           <progress value="72" max="100"></progress>
@@ -55,7 +55,7 @@
         <header>
           <small class="text-light">Active Users</small>
           <div class="stat-value">2,847</div>
-          <small class="text-light"><span class="badge warning">-3.2%</span> vs last month</small>
+          <small class="text-light"><span class="badge" data-variant="warning">-3.2%</span> vs last month</small>
         </header>
         <footer>
           <progress value="58" max="100"></progress>
@@ -67,7 +67,7 @@
         <header>
           <small class="text-light">Retention</small>
           <div class="stat-value">3.24%</div>
-          <small class="text-light"><span class="badge success">+0.8%</span> vs last month</small>
+          <small class="text-light"><span class="badge" data-variant="success">+0.8%</span> vs last month</small>
         </header>
         <footer>
           <meter value="0.65" min="0" max="1" low="0.3" high="0.7" optimum="1"></meter>
@@ -142,9 +142,9 @@
               <tr><th>Metric</th><th>Value</th><th>Change</th></tr>
             </thead>
             <tbody>
-              <tr><td>Page views</td><td>1,234,567</td><td><span class="badge success">+8%</span></td></tr>
-              <tr><td>Bounce rate</td><td>42.3%</td><td><span class="badge danger">+2.1%</span></td></tr>
-              <tr><td>Avg session</td><td>4m 12s</td><td><span class="badge success">+15s</span></td></tr>
+              <tr><td>Page views</td><td>1,234,567</td><td><span class="badge" data-variant="success">+8%</span></td></tr>
+              <tr><td>Bounce rate</td><td>42.3%</td><td><span class="badge" data-variant="danger">+2.1%</span></td></tr>
+              <tr><td>Avg session</td><td>4m 12s</td><td><span class="badge" data-variant="success">+15s</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -163,7 +163,7 @@
         <div class="vstack gap-4">
           <div class="activity-item">
             <div class="hstack">
-              <span class="badge success">Deploy</span>
+              <span class="badge" data-variant="success">Deploy</span>
               <strong>Production deploy #1847</strong>
             </div>
             <small class="text-lighter">2 minutes ago by <strong>alice</strong></small>
@@ -171,7 +171,7 @@
 
           <div class="activity-item">
             <div class="hstack">
-              <span class="badge warning">Alert</span>
+              <span class="badge" data-variant="warning">Alert</span>
               <strong>High memory usage on worker-3</strong>
             </div>
             <small class="text-lighter">18 minutes ago — <em>auto-resolved</em></small>
@@ -187,7 +187,7 @@
 
           <div class="activity-item">
             <div class="hstack">
-              <span class="badge danger">Incident</span>
+              <span class="badge" data-variant="danger">Incident</span>
               <strong>API latency spike (resolved)</strong>
             </div>
             <small class="text-lighter">3 hours ago — duration: 4m 22s</small>
@@ -195,7 +195,7 @@
 
           <div class="activity-item">
             <div class="hstack">
-              <span class="badge secondary">Config</span>
+              <span class="badge" data-variant="secondary">Config</span>
               <strong>Updated rate limits</strong>
             </div>
             <small class="text-lighter">5 hours ago by <strong>carol</strong></small>
@@ -218,7 +218,7 @@
           <div>
             <div class="hstack justify-between">
               <strong>CPU Usage</strong>
-              <span class="badge success">Normal</span>
+              <span class="badge" data-variant="success">Normal</span>
             </div>
             <progress value="42" max="100"></progress>
             <small class="text-lighter">42% — 8 cores</small>
@@ -227,7 +227,7 @@
           <div>
             <div class="hstack justify-between">
               <strong>Memory</strong>
-              <span class="badge warning">High</span>
+              <span class="badge" data-variant="warning">High</span>
             </div>
             <progress value="78" max="100"></progress>
             <small class="text-lighter">12.5 / 16 GB used</small>
@@ -236,7 +236,7 @@
           <div>
             <div class="hstack justify-between">
               <strong>Disk I/O</strong>
-              <span class="badge success">Normal</span>
+              <span class="badge" data-variant="success">Normal</span>
             </div>
             <meter value="0.35" min="0" max="1" low="0.3" high="0.7" optimum="0"></meter>
             <small class="text-lighter">Read: 145 MB/s — Write: 82 MB/s</small>
@@ -299,7 +299,7 @@
             <td><code>#ORD-7291</code></td>
             <td>Alice Johnson</td>
             <td>$249.00</td>
-            <td><span class="badge success">Delivered</span></td>
+            <td><span class="badge" data-variant="success">Delivered</span></td>
             <td>
               <menu class="buttons">
                 <li><button class="ghost small">View</button></li>
@@ -312,7 +312,7 @@
             <td><code>#ORD-7292</code></td>
             <td>Bob Chen</td>
             <td>$1,450.00</td>
-            <td><span class="badge warning">Pending</span></td>
+            <td><span class="badge" data-variant="warning">Pending</span></td>
             <td>
               <menu class="buttons">
                 <li><button class="ghost small">View</button></li>
@@ -351,7 +351,7 @@
             <td><code>#ORD-7295</code></td>
             <td>Emma Wilson</td>
             <td>$34.99</td>
-            <td><span class="badge danger">Cancelled</span></td>
+            <td><span class="badge" data-variant="danger">Cancelled</span></td>
             <td>
               <menu class="buttons">
                 <li><button class="ghost small">View</button></li>

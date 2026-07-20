@@ -16,6 +16,10 @@
     border-bottom: 1px solid var(--border);
   }
 
+  tfoot {
+    border-top: 1px solid var(--border);
+  }
+
   th, td {
     overflow-wrap: break-word;
   }

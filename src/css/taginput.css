@@ -1,0 +1,36 @@
+@layer components {
+  ot-taginput {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--background);
+    border: 1px solid var(--input);
+    border-radius: var(--radius-medium);
+    cursor: text;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+    min-height: calc(1lh + var(--space-5));
+
+    &:focus-within {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 2px rgb(from var(--ring) r g b / 0.2);
+    }
+
+    /* Strip the inherited input chrome; it's just a bare typing field. */
+    input {
+      flex: 1;
+      min-width: 8ch;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+  }
+}

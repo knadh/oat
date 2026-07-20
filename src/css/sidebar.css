@@ -1,7 +1,11 @@
 @layer components {
+  :root {
+    --sidebar-width: 15rem;
+  }
+
   [data-sidebar-layout] {
     display: grid;
-    grid-template-columns: 14rem 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: auto 1fr;
     height: 100dvh;
 
@@ -161,7 +165,7 @@
       > aside[data-sidebar] {
         grid-column: 1;
         z-index: 2;
-        width: 16rem;
+        width: min(var(--sidebar-width), 100vw);
         transform: translateX(-100%);
         transition: transform var(--transition);
         box-shadow: var(--shadow-large);

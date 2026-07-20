@@ -133,6 +133,10 @@ nav[data-topnav] {
   padding: var(--space-5);
   border-radius: 3px;
   margin-top: var(--space-4);
+
+  p {
+    margin: 0;
+  }
 }
 
 .demo-box .demo-content {

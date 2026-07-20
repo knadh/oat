@@ -4,15 +4,15 @@ weight = 40
 description = "Inline badge / tag / pill labels."
 +++
 
-Use `.badge` class with variant modifiers.
+Use `.badge` with `data-variant` for color variants. `.outline` is a style modifier.
 
 {% demo() %}
 ```html
 <span class="badge">Default</span>
-<span class="badge secondary">Secondary</span>
+<span class="badge" data-variant="secondary">Secondary</span>
 <span class="badge outline">Outline</span>
-<span class="badge success">Success</span>
-<span class="badge warning">Warning</span>
-<span class="badge danger">Danger</span>
+<span class="badge" data-variant="success">Success</span>
+<span class="badge" data-variant="warning">Warning</span>
+<span class="badge" data-variant="danger">Danger</span>
 ```
 {% end %}

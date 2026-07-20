@@ -1,0 +1,18 @@
+@layer components {
+  ot-upload {
+    cursor: pointer;
+    width: 100%;
+
+    &[data-drag] {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 2px rgb(from var(--ring) r g b / 0.2);
+    }
+
+    .badge {
+      text-overflow: ellipsis;
+      max-width: 20ch;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+}

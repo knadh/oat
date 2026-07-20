@@ -20,24 +20,44 @@ Tables are styled by default. Use `<thead>` and `<tbody>` tags. Wrap in a `class
     </thead>
     <tbody>
       <tr>
-        <td>Alice Johnson</td>
-        <td>alice@example.com</td>
+        <td>root@localhost</td>
+        <td>root@example.com</td>
         <td>Admin</td>
-        <td><span class="badge success">Active</span></td>
+        <td><span class="badge" data-variant="success">Active</span></td>
       </tr>
       <tr>
-        <td>Bob Smith</td>
-        <td>bob@example.com</td>
+        <td>Byte Bandit</td>
+        <td>byte@example.com</td>
         <td>Editor</td>
         <td><span class="badge">Active</span></td>
       </tr>
       <tr>
-        <td>Carol White</td>
-        <td>carol@example.com</td>
+        <td>Null Pointer</td>
+        <td>null@example.com</td>
         <td>Viewer</td>
-        <td><span class="badge secondary">Pending</span></td>
+        <td><span class="badge" data-variant="secondary">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Bit Stream</td>
+        <td>bit@example.com</td>
+        <td>Editor</td>
+        <td><span class="badge">Active</span></td>
+      </tr>
+      <tr>
+        <td>code@localhost</td>
+        <td>code@example.com</td>
+        <td>Admin</td>
+        <td><span class="badge" data-variant="success">Active</span></td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 ```

@@ -1,28 +1,12 @@
 @layer animations {
-  /* Pop-in animation for modals/overlays - swings from above */
-  .animate-pop-in {
-    opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) translateZ(0);
-    transition:
-      opacity 150ms cubic-bezier(0.4, 0, 0.2, 1),
-      transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
-      overlay 150ms cubic-bezier(0.4, 0, 0.2, 1) allow-discrete,
-      display 150ms cubic-bezier(0.4, 0, 0.2, 1) allow-discrete;
-
-    /* Entry - where to animate FROM */
-    @starting-style {
-      opacity: 0;
-      transform: perspective(1000px) rotateX(-15deg) translateZ(-80px);
-    }
-
-    /* Exit - where to animate TO when closing */
-    &[data-state="closing"] {
-      opacity: 0;
-      transform: perspective(1000px) rotateX(-15deg) translateZ(-80px);
-    }
-
-    &[data-state="closing"]::backdrop {
-      opacity: 0;
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 
@@ -33,27 +17,6 @@
 
     @starting-style {
       opacity: 0;
-    }
-  }
-
-  /* Slide-in animation for toasts */
-  .animate-slide-in {
-    opacity: 1;
-    transform: translateX(0);
-    transition:
-      opacity 150ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* Entry - slide in from right */
-    @starting-style {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-
-    /* Exit - slide out to right */
-    &[data-state="closing"] {
-      opacity: 0;
-      transform: translateX(100%);
     }
   }
 }

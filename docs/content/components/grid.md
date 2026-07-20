@@ -28,6 +28,10 @@ A 12-column grid system using CSS grid. Use `.container`, `.row`, and `.col` cla
     <div class="col-4">col-4</div>
   </div>
   <div class="row">
+    <div class="col-8">col-8</div>
+    <div class="col-3 offset-1">col-3 offset-1</div>
+  </div>
+  <div class="row">
     <div class="col-3">col-3</div>
     <div class="col-4 col-end">col-4 col-end</div>
   </div>

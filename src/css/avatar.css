@@ -31,6 +31,7 @@
         margin: 0;
 
         & figure[data-variant="avatar"] {
+            isolation: isolate;
             margin-inline-end: calc(var(--space-5) * -1);
             border: 2px solid var(--background);
 

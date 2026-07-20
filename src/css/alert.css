@@ -13,40 +13,15 @@
       border: none;
     }
 
-    &[data-variant="error"],
-    &[data-variant="danger"] {
-      color: var(--danger);
+    &:is([data-variant="error"], [data-variant="danger"], [data-variant="success"], [data-variant="warning"]) {
+      color: var(--_variant-color);
       background-color: light-dark(
-        color-mix(in srgb, var(--danger) 8%, transparent),
-        color-mix(in srgb, var(--danger) 20%, transparent)
+        color-mix(in srgb, var(--_variant-color) 8%, transparent),
+        color-mix(in srgb, var(--_variant-color) 20%, transparent)
       );
 
       & a {
-        color: var(--danger);
-      }
-    }
-
-    &[data-variant="success"] {
-      color: var(--success);
-      background-color: light-dark(
-        color-mix(in srgb, var(--success) 8%, transparent),
-        color-mix(in srgb, var(--success) 20%, transparent)
-      );
-
-      & a {
-        color: var(--success);
-      }
-    }
-
-    &[data-variant="warning"] {
-      color: var(--warning);
-      background-color: light-dark(
-        color-mix(in srgb, var(--warning) 8%, transparent),
-        color-mix(in srgb, var(--warning) 20%, transparent)
-      );
-
-      & a {
-        color: var(--warning);
+        color: var(--_variant-color);
       }
     }
   }

@@ -35,14 +35,15 @@ function _show(el, options = {}) {
   el.classList.add('toast');
 
   let timeout;
-
-  // Pause on hover.
-  el.onmouseenter = () => clearTimeout(timeout);
-  el.onmouseleave = () => {
+  const start = () => {
     if (duration > 0) {
       timeout = setTimeout(() => _remove(el, p), duration);
     }
   };
+
+  // Pause on hover.
+  el.onmouseenter = () => clearTimeout(timeout);
+  el.onmouseleave = start;
 
   // Show with animation.
   el.setAttribute('data-entering', '');
@@ -56,10 +57,7 @@ function _show(el, options = {}) {
     });
   });
 
-  if (duration > 0) {
-    timeout = setTimeout(() => _remove(el, p), duration);
-  }
-
+  start();
   return el;
 }
 
@@ -130,15 +128,11 @@ export function toastEl(el, options = {}) {
   return _show(t, options);
 }
 
-// Clear all toasts.
+// Clear all toasts, or only those of the given placement.
 export function toastClear(placement) {
-  if (placement && toasts[placement]) {
-    toasts[placement].innerHTML = '';
-    toasts[placement].hidePopover();
-  } else {
-    Object.values(toasts).forEach(c => {
-      c.innerHTML = '';
-      c.hidePopover();
-    });
-  }
+  (placement ? [toasts[placement]] : Object.values(toasts)).forEach(c => {
+    if (!c) return;
+    c.innerHTML = '';
+    c.hidePopover();
+  });
 }

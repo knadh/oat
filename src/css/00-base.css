@@ -144,7 +144,7 @@
   hr {
     border: none;
     border-top: 1px solid var(--border);
-    margin: var(--space-2) 0;
+    margin: var(--space-8) 0;
   }
 
   ul, ol {
@@ -179,8 +179,8 @@
     outline-offset: 2px;
   }
 
-  :disabled {
-    opacity: 0.5;
+  :disabled, [aria-disabled] {
     cursor: not-allowed;
+    opacity: 0.5;
   }
 }

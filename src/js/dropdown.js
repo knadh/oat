@@ -21,8 +21,8 @@ class OtDropdown extends OtBase {
   #items;
 
   init() {
-    this.#menu = this.$('[popover]');
-    this.#trigger = this.$('[popovertarget]');
+    this.#menu = this.querySelector('[popover]');
+    this.#trigger = this.querySelector('[popovertarget]');
 
     if (!this.#menu || !this.#trigger) return;
 
@@ -46,7 +46,7 @@ class OtDropdown extends OtBase {
       this.#position();
       window.addEventListener('scroll', this.#position, true);
       window.addEventListener('resize', this.#position);
-      this.#items = this.$$('[role="menuitem"]');
+      this.#items = [...this.querySelectorAll('[role="menuitem"]')];
       this.#items[0]?.focus();
       this.#trigger.ariaExpanded = 'true';
     } else {

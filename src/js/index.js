@@ -1,8 +1,10 @@
 import './base.js';
 import './tabs.js';
 import './dropdown.js';
+import './upload.js';
 import './tooltip.js';
 import './sidebar.js';
+import './taginput.js';
 import { toast, toastEl, toastClear } from './toast.js';
 
 // Register the global window.ot.* APIs.

@@ -30,7 +30,7 @@ ot.toast('Bottom right', '',{ placement: 'bottom-right' })
 
 | Option      | Default       | Description                          |
 | ----------- | ------------- | ------------------------------------ |
-| `variant`   | `''`          | `'success'`, `'danger'`, `'warning'` |
+| `variant`   | `'info'`      | `'success'`, `'danger'`, `'warning'` |
 | `placement` | `'top-right'` | Position on screen                   |
 | `duration`  | `4000`        | Auto-dismiss in ms (0 = persistent)  |
 

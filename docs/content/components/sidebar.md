@@ -4,7 +4,9 @@ weight = 120
 description = "Responsive admin dashboard layout with sticky sidebar, optional topnav, and collapsible sections."
 +++
 
-Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-sidebar>` for the sidebar and `<main>` for content. The sidebar stays sticky while the main content scrolls. On mobile, the sidebar becomes a slide-out overlay toggled by a `[data-sidebar-toggle]` button. To make the sidebar collapsible at all widths, set `data-sidebar-layout="always"`.
+- Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-sidebar>` for the sidebar and `<main>` for content. The sidebar stays sticky while the main content scrolls.
+- On mobile, the sidebar becomes a slide-out overlay toggled by a `[data-sidebar-toggle]` button. To show the toggle and make it collapse the sidebar at all widths, set `data-sidebar-layout="always"`.
+- Set the `--sidebar-width` variable to adjust its width globally.
 
 <div class="sidebar-example">
 {% demo() %}
@@ -28,7 +30,7 @@ Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-
       </ul>
     </nav>
     <footer>
-      <button class="outline" class="sm" style="width: 100%;">Logout</button>
+      <button class="outline small" style="width: 100%;">Logout</button>
     </footer>
   </aside>
   <main>
@@ -41,7 +43,7 @@ Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-
 
 ### Always-collapsible
 
-Set `data-sidebar-layout="always"` to keep the toggle visible on all screen sizes.
+Set `data-sidebar-layout="always"` to keep the toggle visible and make it collapse the sidebar on all screen sizes.
 
 ```html
 <body data-sidebar-layout="always">
@@ -51,7 +53,7 @@ Set `data-sidebar-layout="always"` to keep the toggle visible on all screen size
 
 ### With top sticky nav
 
-Add `data-topnav` to a header element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
+Add `data-topnav` to a nav element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
 
 ```html
 <body data-sidebar-layout>
@@ -74,11 +76,11 @@ Add `data-topnav` to a header element for a full-width top navigation bar. The s
 
 #### Structure
 
-| Attribute             | Element    |                                                          |
-| --------------------- | ---------- | -------------------------------------------------------- |
-| `data-sidebar-layout` | Container  | Grid layout wrapper (sidebar + main), typically `<body>` |
-| `data-sidebar-layout="always"` | Container | Always-collapsible sidebar (toggle visible on screen sizes) |
-| `data-topnav`         | `<header>` | Full-width top nav (optional, spans full width)          |
-| `data-sidebar`        | `<aside>`  | Sticky sidebar element                                   |
-| `data-sidebar-toggle` | `<button>` | Toggles sidebar (mobile) and collapse (always mode)      |
-| `data-sidebar-open`   | Layout     | Applied to layout when sidebar is open                   |
+| Attribute                      | Element    |                                                                                |
+| ------------------------------ | ---------- | ------------------------------------------------------------------------------ |
+| `data-sidebar-layout`          | Container  | Grid layout wrapper (sidebar + main), typically `<body>`                       |
+| `data-sidebar-layout="always"` | Container  | Always-collapsible sidebar (toggle visible and functional on all screen sizes) |
+| `data-topnav`                  | `<nav>`    | Full-width top nav (optional, spans full width)                                |
+| `data-sidebar`                 | `<aside>`  | Sticky sidebar element                                                         |
+| `data-sidebar-toggle`          | `<button>` | Toggles sidebar (mobile) and collapse (always mode)                            |
+| `data-sidebar-open`            | Layout     | Applied to layout when sidebar is open                                         |
