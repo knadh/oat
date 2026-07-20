@@ -59,7 +59,7 @@
       padding: var(--space-6);
       padding-block-end: 0;
 
-      & > h1, & > h2, & > h3, & > h4, & > h5, & > h6 {
+      & > :is(h1, h2, h3, h4, h5, h6) {
         margin-block-end: 0;
       }
 
@@ -70,8 +70,7 @@
       }
     }
 
-    & > p, & > div, & > section,
-    & > form > p, & > form > div, & > form > section {
+    :is(&, & > form) > :is(p, div, section) {
       padding: var(--space-6);
       overflow-y: auto;
     }

@@ -1,13 +1,15 @@
 @layer base {
-  progress {
+  progress, meter {
     appearance: none;
     width: 100%;
     height: var(--bar-height);
     border: none;
     border-radius: var(--radius-full);
     overflow: hidden;
-    background-color: var(--muted);
+    background: var(--muted);
+  }
 
+  progress {
     &::-webkit-progress-bar {
       background-color: var(--muted);
       border-radius: var(--radius-full);
@@ -26,14 +28,6 @@
   }
 
   meter {
-    appearance: none;
-    width: 100%;
-    height: var(--bar-height);
-    border: none;
-    border-radius: var(--radius-full);
-    overflow: hidden;
-    background: var(--muted);
-
     &::-webkit-meter-bar {
       background: var(--muted);
       border: none;

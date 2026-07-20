@@ -52,7 +52,7 @@
     padding: 0;
   }
 
-  :is(a).unstyled {
+  a.unstyled {
     color: inherit;
     text-decoration: none;
     &:hover {

@@ -3,15 +3,12 @@
     &::before {
       content: "";
       display: inline-block;
-      inset: 0;
-      margin: auto;
       width: 1.5rem;
       height: 1.5rem;
       border: 2px solid var(--muted);
       border-top-color: var(--primary);
       border-radius: var(--radius-full);
       animation: spin 1s linear infinite;
-      text-align: center;
     }
 
     &[data-spinner~="small"]::before {
