@@ -38,46 +38,40 @@ Use `menu.buttons` for joined controls and `ot-dropdown` for secondary actions.
 
 ## Radio cards
 
-Use `input[type="radio"]` and `label` to create selectable cards.
+Wrap each option in a `<label>` so the whole card is selectable, and group them in a `<fieldset>` with a `<legend>`.
 
 {% demo() %}
 ```html
-<div class="container">
+<fieldset class="w-100">
+  <legend>Billing</legend>
+  <p class="text-light">Select a billing cycle</p>
 
-  <header>
-    <h3>Billing</h3>
-    <p class="text-light">Select a billing cycle</p>
-  </header>
-
-  <div class="row mt-4">
-
-    <div class="col-4 card">
-      <div class="hstack justify-between">
+  <div class="row">
+    <label class="col-4 card vstack">
+      <span class="w-100 hstack justify-between">
         <strong>Monthly</strong>
-        <input type="radio" name="billing" id="monthly">
-      </div>
-      <label for="monthly" class="text-light mt-2">$12 / mo</label>
-    </div>
+        <input type="radio" name="billing">
+      </span>
+      <span class="text-light">$12 / mo</span>
+    </label>
 
-    <div class="col-4 card">
-      <div class="hstack justify-between">
+    <label class="col-4 card vstack">
+      <span class="w-100 hstack justify-between">
         <strong>Yearly</strong>
-        <input type="radio" name="billing" id="yearly">
-      </div>
-      <label for="yearly" class="text-light mt-2">$96 / yr · save 33%</label>
-    </div>
+        <input type="radio" name="billing">
+      </span>
+      <span class="text-light">$96 / yr · save 33%</span>
+    </label>
 
-    <div class="col-4 card">
-      <div class="hstack justify-between">
+    <label class="col-4 card vstack">
+      <span class="w-100 hstack justify-between">
         <strong>Lifetime</strong>
-        <input type="radio" name="billing" id="lifetime" checked>
-      </div>
-      <label for="lifetime" class="text-light mt-2">$299 once</label>
-    </div>
-
+        <input type="radio" name="billing" checked>
+      </span>
+      <span class="text-light">$299 once</span>
+    </label>
   </div>
-
-</div>
+</fieldset>
 ```
 {% end %}
 
