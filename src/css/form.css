@@ -219,7 +219,7 @@
       }
     }
 
-    & > legend {
+    & > legend, & > label {
       float: inline-start;
       display: inline-flex;
       align-items: center;
