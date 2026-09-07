@@ -6,7 +6,7 @@ description = "Data tables with thead, tbody. Styled automatically."
 
 Tables are styled by default. Use `<thead>` and `<tbody>` tags. Wrap in a `class="table"` container to get a horizontal scrollbar on small screens.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <div class="table">
   <table>
@@ -61,4 +61,4 @@ Tables are styled by default. Use `<thead>` and `<tbody>` tags. Wrap in a `class
   </table>
 </div>
 ```
-{% end %}
+{% </demo> %}

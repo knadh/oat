@@ -6,7 +6,7 @@ description = "Alert messages using role=\"alert\"."
 
 Use `role="alert"` for alert styling. Set `data-variant` for success, warning, or error.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <div role="alert" data-variant="success">
   <strong>Success!</strong> Your changes have been saved.
@@ -24,4 +24,4 @@ Use `role="alert"` for alert styling. Set `data-variant` for success, warning, o
   <strong>Error!</strong> Something went wrong.
 </div>
 ```
-{% end %}
+{% </demo> %}

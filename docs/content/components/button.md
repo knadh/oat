@@ -6,7 +6,7 @@ description = "Button variants and sizes"
 
 The `<button>` element is styled by default. Use `data-variant="secondary|danger"` for semantic variants and classes for visual styles.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <button>Primary</button>
 <button data-variant="secondary">Secondary</button>
@@ -18,26 +18,26 @@ The `<button>` element is styled by default. Use `data-variant="secondary|danger
 <button data-variant="danger" disabled>Disabled</button>
 <button disabled>Disabled</button>
 ```
-{% end %}
+{% </demo> %}
 
 ### Sizes
 
 Use `.small` or `.large` for size variants.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <button class="small">Small</button>
 <button>Default</button>
 <button class="large">Large</button>
 <a href="#button" class="button">Hyperlink</a>
 ```
-{% end %}
+{% </demo> %}
 
 ### Button group
 
 Wrap buttons in `<menu class="buttons">` for connected buttons.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <menu class="buttons">
   <li><button class="outline">Left</button></li>
@@ -45,4 +45,4 @@ Wrap buttons in `<menu class="buttons">` for connected buttons.
   <li><button class="outline">Right</button></li>
 </menu>
 ```
-{% end %}
+{% </demo> %}

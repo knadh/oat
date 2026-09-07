@@ -13,7 +13,7 @@ Wrap tab buttons and panels in `<ot-tabs>`. Use `role="tablist"`, `role="tab"`, 
 Optionally, add `data-anchor="<key>"` to `<ot-tabs>` and give each `role="tab"` an `id` to change the page's URL hash fragment to remember/deep-link to the tab on a new page load.
 
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-tabs data-anchor="tab-settings">
   <div role="tablist">
@@ -35,4 +35,4 @@ Optionally, add `data-anchor="<key>"` to `<ot-tabs>` and give each `role="tab"` 
   </div>
 </ot-tabs>
 ```
-{% end %}
+{% </demo> %}

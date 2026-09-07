@@ -6,10 +6,10 @@ description = "Progress bars using the native <progress> element."
 
 Use the native `<progress>` element.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <progress value="60" max="100"></progress>
 <progress value="30" max="100"></progress>
 <progress value="90" max="100"></progress>
 ```
-{% end %}
+{% </demo> %}

@@ -9,7 +9,7 @@ webcomponent = true
 
 Wrap a native `<input type="file" />` in `<ot-upload>`. The `change` event is fired on selection, drop, and removal of files.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-upload>
   <div data-field class="vstack">
@@ -26,4 +26,4 @@ Wrap a native `<input type="file" />` in `<ot-upload>`. The `change` event is fi
   </div>
 </ot-upload>
 ```
-{% end %}
+{% </demo> %}

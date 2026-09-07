@@ -6,7 +6,7 @@ description = "Toggle switches using checkbox with role=\"switch\". Native HTML,
 
 Add `role="switch"` to a checkbox for toggle switch styling.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <label>
   <input type="checkbox" role="switch"> Notifications
@@ -15,11 +15,11 @@ Add `role="switch"` to a checkbox for toggle switch styling.
   <input type="checkbox" role="switch" checked> Confabulation
 </label>
 ```
-{% end %}
+{% </demo> %}
 
 ### Disabled
 
-{% demo() %}
+{% <demo> %}
 ```html
 <label>
   <input type="checkbox" role="switch" disabled> Disabled off
@@ -28,4 +28,4 @@ Add `role="switch"` to a checkbox for toggle switch styling.
   <input type="checkbox" role="switch" checked disabled> Disabled on
 </label>
 ```
-{% end %}
+{% </demo> %}

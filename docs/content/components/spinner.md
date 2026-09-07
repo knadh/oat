@@ -6,7 +6,7 @@ description = "Loading indicators with role=\"status\"."
 
 Use `aria-busy="true"` on any element to show a loading indicator. Size with `data-spinner="small|large"`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <div class="hstack" style="gap: var(--space-8)">
     <div aria-busy="true" data-spinner="small"></div>
@@ -15,12 +15,12 @@ Use `aria-busy="true"` on any element to show a loading indicator. Size with `da
     <button aria-busy="true" data-spinner="small" disabled>Loading</button>
 </div>
 ```
-{% end %}
+{% </demo> %}
 
 ### Overlay
 Adding `data-spinner="overlay"` dims contents of the container and overlays the spinner on top.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <article class="card" aria-busy="true" data-spinner="large overlay">
   <header>
@@ -34,4 +34,4 @@ Adding `data-spinner="overlay"` dims contents of the container and overlays the 
   </footer>
 </article>
 ```
-{% end %}
+{% </demo> %}

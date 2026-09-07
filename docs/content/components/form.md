@@ -6,7 +6,7 @@ description = "Inputs, selects, textareas, checkboxes, radios, and fieldsets"
 
 Form elements are styled automatically. Wrap inputs in `<label>` for proper association.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <form>
   <label data-field>
@@ -91,14 +91,14 @@ Form elements are styled automatically. Wrap inputs in `<label>` for proper asso
   <button type="submit">Submit</button>
 </form>
 ```
-{% end %}
+{% </demo> %}
 
 
 ### Input group
 
 Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <fieldset class="group">
   <legend>https://</legend>
@@ -116,13 +116,13 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
   <button>Go</button>
 </fieldset>
 ```
-{% end %}
+{% </demo> %}
 
 ### Validation error
 
 Use `aria-invalid="true"` on field containers to reveal and style error messages.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <fieldset class="vstack">
 <div data-field>
@@ -137,4 +137,4 @@ Use `aria-invalid="true"` on field containers to reveal and style error messages
 </label>
 </fieldset>
 ```
-{% end %}
+{% </demo> %}

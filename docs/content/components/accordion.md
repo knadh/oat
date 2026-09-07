@@ -6,7 +6,7 @@ description = "Collapsible sections using native <details> and <summary> element
 
 Use native `<details>` and `<summary>` for collapsible content.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <details>
   <summary>What is Oat</summary>
@@ -33,4 +33,4 @@ Use native `<details>` and `<summary>` for collapsible content.
   <p class="p-4">Using the <code>name</code> attribute groups items like radio.</p>
 </details>
 ```
-{% end %}
+{% </demo> %}

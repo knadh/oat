@@ -6,7 +6,7 @@ description = "Card containers using the semantic <article> tag."
 
 Use `class="card"` for a visual box-like card look.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <article class="card">
   <header>
@@ -20,4 +20,4 @@ Use `class="card"` for a visual box-like card look.
   </footer>
 </article>
 ```
-{% end %}
+{% </demo> %}

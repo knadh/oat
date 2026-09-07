@@ -6,7 +6,7 @@ description = "Modal dialogs using native <dialog> with command/commandfor."
 
 Fully semantic, zero-Javascript, dynamic dialog with `<dialog>`. Use `commandfor` and `command="show-modal"` attributes on an element to open a target dialog. Focus trapping, z placement, keyboard shortcuts all work out of the box.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <button commandfor="demo-dialog" command="show-modal">Open dialog</button>
 <dialog id="demo-dialog" closedby="any">
@@ -26,13 +26,13 @@ Fully semantic, zero-Javascript, dynamic dialog with `<dialog>`. Use `commandfor
   </form>
 </dialog>
 ```
-{% end %}
+{% </demo> %}
 
 ### With form fields
 
 Forms inside dialogs work naturally. Use `command="close"` on cancel buttons to close.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <button commandfor="demo-dialog-form" command="show-modal">Open form dialog</button>
 <dialog id="demo-dialog-form">
@@ -51,7 +51,7 @@ Forms inside dialogs work naturally. Use `command="close"` on cancel buttons to 
   </form>
 </dialog>
 ```
-{% end %}
+{% </demo> %}
 
 ### Handling return value
 

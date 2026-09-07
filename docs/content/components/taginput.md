@@ -9,7 +9,7 @@ webcomponent = true
 
 Use `<ot-taginput>`. Type a word and press <kbd>Enter</kbd> or <kbd>,</kbd> (comma) to add.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-taginput value="apple, mango">
   <input placeholder="Add tags ..." maxlength="15" />
@@ -19,7 +19,7 @@ Use `<ot-taginput>`. Type a word and press <kbd>Enter</kbd> or <kbd>,</kbd> (com
   <input placeholder="Disabled taginput ..." maxlength="15" />
 </ot-taginput>
 ```
-{% end %}
+{% </demo> %}
 
 ### Autocomplete
 
@@ -27,14 +27,14 @@ Give the `<input>` a `list` and a `<datalist>`, then populate the datalist from 
 
 A suggestion item can be a plain string or an object. Attach the object to its `<option>` via `option.data`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-taginput id="taginput-demo">
   <input list="fruit-list" placeholder="Type a fruit name" oninput="tagInputAutoComplete(this)">
   <datalist id="fruit-list"></datalist>
 </ot-taginput>
 ```
-{% end %}
+{% </demo> %}
 
 
 ```html

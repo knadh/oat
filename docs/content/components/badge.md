@@ -6,7 +6,7 @@ description = "Inline badge / tag / pill labels."
 
 Use `.badge` with `data-variant` for color variants. `.outline` is a style modifier.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <span class="badge">Default</span>
 <span class="badge" data-variant="secondary">Secondary</span>
@@ -15,4 +15,4 @@ Use `.badge` with `data-variant` for color variants. `.outline` is a style modif
 <span class="badge" data-variant="warning">Warning</span>
 <span class="badge" data-variant="danger">Danger</span>
 ```
-{% end %}
+{% </demo> %}

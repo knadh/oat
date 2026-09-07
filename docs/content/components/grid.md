@@ -6,7 +6,7 @@ description = "12-column responsive grid using container queries and CSS grid."
 
 A 12-column grid system using CSS grid. Use `.container`, `.row`, and `.col` classes. Column widths use `.col-{n}` where n is 1-12.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <div class="container demo-grid">
   <div class="row">
@@ -37,4 +37,4 @@ A 12-column grid system using CSS grid. Use `.container`, `.row`, and `.col` cla
   </div>
 </div>
 ```
-{% end %}
+{% </demo> %}
