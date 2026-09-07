@@ -115,6 +115,13 @@ Use `.group` on a `<fieldset>` to combine inputs with buttons or labels.
   <input type="text" placeholder="Search" />
   <button>Go</button>
 </fieldset>
+
+<fieldset class="group">
+    <input type="text" placeholder="2" />
+    <label>hour(s)</label>
+    <input type="text" placeholder="30" />
+    <label>minute(s)</label>
+</fieldset>
 ```
 {% end %}
 
