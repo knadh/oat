@@ -9,7 +9,7 @@ description = "Responsive admin dashboard layout with sticky sidebar, optional t
 - Set the `--sidebar-width` variable to adjust its width globally.
 
 <div class="sidebar-example">
-{% demo() %}
+{% <demo> %}
 ```html
 <div data-sidebar-layout>
   <aside data-sidebar>
@@ -38,7 +38,7 @@ description = "Responsive admin dashboard layout with sticky sidebar, optional t
   </main>
 </div>
 ```
-{% end %}
+{% </demo> %}
 </div>
 
 ### Always-collapsible

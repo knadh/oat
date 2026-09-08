@@ -6,7 +6,7 @@ description = "Simple navigation hierarchy using nav and ordered lists"
 
 Use a semantic breadcrumb `<nav>` with an ordered list and `aria-current="page"` for the active item.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <nav aria-label="Breadcrumb">
   <ol class="unstyled hstack" style="font-size: var(--text-7)">
@@ -20,4 +20,4 @@ Use a semantic breadcrumb `<nav>` with an ordered list and `aria-current="page"`
   </ol>
 </nav>
 ```
-{% end %}
+{% </demo> %}

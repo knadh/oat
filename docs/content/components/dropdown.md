@@ -9,7 +9,7 @@ webcomponent = true
 
 Wrap in `<ot-dropdown>`. Use `popovertarget` on the trigger and `popover` on the target. If a dropdown `<menu>`, items use `role="menuitem"`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-dropdown>
   <button popovertarget="demo-menu" class="outline">
@@ -30,13 +30,13 @@ Wrap in `<ot-dropdown>`. Use `popovertarget` on the trigger and `popover` on the
   </menu>
 </ot-dropdown>
 ```
-{% end %}
+{% </demo> %}
 
 ### Popover
 
 `<ot-dropdown>` can also be used to show popover dropdown elements.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-dropdown>
   <button popovertarget="demo-confirm" class="outline">
@@ -55,4 +55,4 @@ Wrap in `<ot-dropdown>`. Use `popovertarget` on the trigger and `popover` on the
   </article>
 </ot-dropdown>
 ```
-{% end %}
+{% </demo> %}

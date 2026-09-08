@@ -6,7 +6,7 @@ description = "Headings, paragraphs, lists, code blocks, and other text elements
 
 Base text elements are styled automatically. No classes needed.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <h1>Heading 1</h1>
 <h2>Heading 2</h2>
@@ -41,4 +41,4 @@ Base text elements are styled automatically. No classes needed.
   <li>Ordered list item 3</li>
 </ol>
 ```
-{% end %}
+{% </demo> %}

@@ -6,7 +6,7 @@ description = "Pagination nav bars."
 
 Pagination does not use any special markup or classes and re-uses the existing buttons `<menu>`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <nav aria-label="Pagination">
     <menu class="buttons">
@@ -20,4 +20,4 @@ Pagination does not use any special markup or classes and re-uses the existing b
     </menu>
 </nav>
 ```
-{% end %}
+{% </demo> %}

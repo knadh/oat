@@ -15,7 +15,7 @@ Examples for various composable widgets using Oat components.
 
 Use `menu.buttons` for joined controls and `ot-dropdown` for secondary actions.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <ot-dropdown>
   <menu class="buttons">
@@ -34,13 +34,13 @@ Use `menu.buttons` for joined controls and `ot-dropdown` for secondary actions.
   </menu>
 </ot-dropdown>
 ```
-{% end %}
+{% </demo> %}
 
 ## Radio cards
 
 Wrap each option in a `<label>` so the whole card is selectable, and group them in a `<fieldset>` with a `<legend>`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <fieldset class="w-100">
   <legend>Billing</legend>
@@ -73,13 +73,13 @@ Wrap each option in a `<label>` so the whole card is selectable, and group them 
   </div>
 </fieldset>
 ```
-{% end %}
+{% </demo> %}
 
 ## Form card
 
 Group related form fields inside a card with standard field containers and actions.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <article class="card">
   <header>
@@ -109,13 +109,13 @@ Group related form fields inside a card with standard field containers and actio
   </footer>
 </article>
 ```
-{% end %}
+{% </demo> %}
 
 ## Empty state
 
 Use a card, text, and primary actions for list/result empty states.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <article class="card align-center">
   <h3>Nothing here yet</h3>
@@ -125,13 +125,13 @@ Use a card, text, and primary actions for list/result empty states.
   </footer>
 </article>
 ```
-{% end %}
+{% </demo> %}
 
 ## Stats cards
 
 Compose dashboard metrics with `grid`, `card`, `badge`, and `progress`/`meter`.
 
-{% demo() %}
+{% <demo> %}
 ```html
 <div class="container">
   <div class="row">
@@ -167,4 +167,4 @@ Compose dashboard metrics with `grid`, `card`, `badge`, and `progress`/`meter`.
   </div>
 </div>
 ```
-{% end %}
+{% </demo> %}
