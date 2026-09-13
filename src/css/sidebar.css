@@ -59,7 +59,6 @@
           gap: var(--space-2);
           padding: var(--space-1) var(--space-3);
           color: var(--foreground);
-          text-decoration: none;
           border-radius: var(--radius-small);
           transition: background-color var(--transition-fast);
 
@@ -107,10 +106,6 @@
     background-color: var(--background);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-small);
-    
-    a {
-      text-decoration: none;
-    }
   }
 
   :is([data-sidebar-toggle], [data-sidebar-header]) {

@@ -89,13 +89,17 @@
 
   a {
     color: var(--primary);
-    text-decoration: underline;
+    text-decoration: none;
     text-underline-offset: 2px;
     transition: color var(--transition-fast);
 
     &:hover {
       color: rgb(from var(--primary) r g b / 0.8);
     }
+  }
+
+  :is(p, blockquote, figcaption) a {
+    text-decoration: underline;
   }
 
   strong, b {

@@ -52,7 +52,6 @@
 
   :is(ul, ol).unstyled {
     list-style: none;
-    text-decoration: none;
     padding: 0;
   }
 

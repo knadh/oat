@@ -1,5 +1,4 @@
-# oat - Build System
-# Requires: esbuild
+PKG_MGR := $(shell for c in bun pnpm npm; do command -v $$c >/dev/null 2>&1 && echo $$c && break; done)
 
 .PHONY: dist css js clean size publish
 
@@ -67,4 +66,6 @@ publish: clean dist
 	@cp LICENSE dist/LICENSE
 	@VERSION=$$(git describe --tags --abbrev=0 | sed 's/^v//') && \
 		sed 's/"version-0.0.0"/"'"$$VERSION"'"/' package.json > dist/package.json
-	@cd dist && npm publish --access public
+	@test -n "$(PKG_MGR)" || { echo "error: (bun, pnpm, npm) not found"; exit 1; }
+	@echo "Publishing with $(PKG_MGR)"
+	@cd dist && $(PKG_MGR) publish --access public

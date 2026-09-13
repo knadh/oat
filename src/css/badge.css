@@ -55,4 +55,8 @@
       pointer-events: auto;
     }
   }
+
+  a.badge:hover, a:hover .badge {
+    opacity: 0.8;
+  }
 }
