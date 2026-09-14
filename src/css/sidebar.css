@@ -108,6 +108,16 @@
     box-shadow: var(--shadow-small);
   }
 
+  footer[data-footer] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-8)
+  }
+
   :is([data-sidebar-toggle], [data-sidebar-header]) {
     display: none;
   }
