@@ -1,35 +1,48 @@
 /**
  * oat - Tooltip
- * Converts title attributes to data-tooltip for custom styling.
+ * Converts title attributes to a popover tooltip.
  */
+if ('showPopover' in HTMLElement.prototype) {
+  const tip = document.createElement('span');
+  tip.className = 'ot-tooltip';
+  tip.popover = 'manual';
+  tip.ariaHidden = 'true';
+  let target;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const _attrib = 'title', _sel = '[title]';
-  const apply = el => {
-    const t = el.getAttribute(_attrib);
-    if (!t) return;
-    el.setAttribute('data-tooltip', t);
-    el.hasAttribute('aria-label') || el.setAttribute('aria-label', t);
-
-    // Kill the original 'title'.
-    el.removeAttribute(_attrib);
+  const hide = () => {
+    if (target) tip.hidePopover();
+    target = null;
   };
 
-  // Apply to all elements on load.
-  document.querySelectorAll(_sel).forEach(apply);
+  const update = e => {
+    const node = e.type.endsWith('out') ? e.relatedTarget : e.target;
+    const el = node?.closest?.('[title], [data-tooltip]');
+    if (!el && target?.matches(':hover, :focus-visible')) return;
+    if (el === target) return;
+    hide();
 
-  // Apply to new elements.
-  new MutationObserver(muts => {
-    for (const m of muts) {
-      apply(m.target);
+    if (!el) return;
 
-      for (const n of m.addedNodes)
-        if (n.nodeType === 1) {
-          apply(n);
-          n.querySelectorAll(_sel).forEach(apply);
-        }
+    const title = el.getAttribute('title');
+    if (title) {
+      el.dataset.tooltip = title;
+      el.hasAttribute('aria-label') || el.setAttribute('aria-label', title);
+      el.removeAttribute('title');
     }
-  }).observe(document.body, {
-    childList: true, subtree: true, attributes: true, attributeFilter: [_attrib]
-  });
-});
+
+    if (!el.dataset.tooltip) return;
+
+    target = el;
+    const rect = el.getBoundingClientRect();
+    for (const key of ['left', 'top', 'width', 'height']) tip.style[key] = `${rect[key]}px`;
+    tip.dataset.tooltip = el.dataset.tooltip;
+    tip.dataset.tooltipPlacement = el.dataset.tooltipPlacement || 'top';
+    el.after(tip);
+    tip.showPopover();
+  };
+
+  for (const type of ['mouseover', 'mouseout', 'focusin', 'focusout']) document.addEventListener(type, update);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+  window.addEventListener('scroll', hide, true);
+  window.addEventListener('resize', hide);
+}
