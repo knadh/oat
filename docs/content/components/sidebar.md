@@ -53,14 +53,14 @@ Set `data-sidebar-layout="always"` to keep the toggle visible and make it collap
 
 ### With top sticky nav
 
-Add `data-topnav` to a nav element for a full-width top navigation bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
+Add `data-topnav` to a `<nav>` or `<header>` element for a full-width sticky top bar. The sidebar will adjust to sit below it. Inspect the HTML source of this website for a live example.
 
 ```html
 <body data-sidebar-layout>
-  <nav data-topnav>
+  <header data-topnav>
     <button data-sidebar-toggle aria-label="Toggle menu" class="outline">☰</button>
     <span>App Name</span>
-  </nav>
+  </header>
 
   <aside data-sidebar>
     <header>Logo</header>
@@ -80,7 +80,7 @@ Add `data-topnav` to a nav element for a full-width top navigation bar. The side
 | ------------------------------ | ---------- | ------------------------------------------------------------------------------ |
 | `data-sidebar-layout`          | Container  | Grid layout wrapper (sidebar + main), typically `<body>`                       |
 | `data-sidebar-layout="always"` | Container  | Always-collapsible sidebar (toggle visible and functional on all screen sizes) |
-| `data-topnav`                  | `<nav>`    | Full-width top nav (optional, spans full width)                                |
+| `data-topnav`                  | `<nav>`, `<header>` | Full-width top bar (optional, spans full width)                        |
 | `data-sidebar`                 | `<aside>`  | Sticky sidebar element                                                         |
 | `data-sidebar-toggle`          | `<button>` | Toggles sidebar (mobile) and collapse (always mode)                            |
 | `data-sidebar-open`            | Layout     | Applied to layout when sidebar is open                                         |

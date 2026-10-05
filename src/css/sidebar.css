@@ -90,12 +90,12 @@
       }
     }
 
-    > nav[data-topnav] {
+    > :is(nav, header)[data-topnav] {
       grid-column: 1 / -1;
     }
   }
 
-  nav[data-topnav] {
+  :is(nav, header)[data-topnav] {
     position: sticky;
     top: 0;
     z-index: 5;
