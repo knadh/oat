@@ -8,13 +8,16 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-medium);
     font-size: var(--text-7);
+    border-left-width: var(--space-2);
+    border-left-color: var(--border);
 
     &[data-variant] {
-      border: none;
+      border-width: 0 0 0 var(--space-2);
     }
 
     &:is([data-variant="error"], [data-variant="danger"], [data-variant="success"], [data-variant="warning"]) {
       color: var(--_variant-color);
+      border-left-color: var(--_variant-color);
       background-color: light-dark(
         color-mix(in srgb, var(--_variant-color) 8%, transparent),
         color-mix(in srgb, var(--_variant-color) 20%, transparent)
