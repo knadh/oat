@@ -1,6 +1,6 @@
 PKG_MGR := $(shell for c in bun pnpm npm; do command -v $$c >/dev/null 2>&1 && echo $$c && break; done)
 
-.PHONY: dist css js clean size publish
+.PHONY: dist css js skill clean size publish
 
 CSS_FILES = src/css/00-base.css \
             src/css/01-theme.css \
@@ -44,6 +44,16 @@ js:
 	@gzip -9 -k -f dist/oat.min.js
 	@cp dist/oat.min.js docs/static/oat.min.js
 	@echo "JS: $$(wc -c < dist/oat.min.js | tr -d ' ') bytes (minified)"
+
+skill:
+	@mkdir -p skill/references
+	@find docs/content -type f -name '*.md' \
+		! -name '_index.md' ! -name 'demo.md' ! -name 'other-libs.md' | while read f; do \
+			rel="$${f#docs/content/}"; \
+			mkdir -p "skill/references/$$(dirname "$$rel")"; \
+			cp "$$f" "skill/references/$$rel"; \
+		done
+	@echo "Skill references copied to skill/references/"
 
 clean:
 	@rm -rf dist
