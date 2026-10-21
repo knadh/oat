@@ -1,13 +1,13 @@
 ---
 name: oats-agent-skill
-description: Provides OATS‑specific knowledge, commands and reference links for the OATS project. Use when the user asks about OATS architecture, workflows, configuration, or needs quick access to OATS documentation.
+description: Use this skill when working in a project that uses the OATS (Oat) CSS component library — it imports `@knadh/oat` or `oat.min.css`/`oat.min.js`. Use it to look up the correct semantic-HTML markup, classes, `data-*` variants, and composable patterns for OATS components (button, card, dialog, dropdown, form, table, tabs, toast, tooltip, typography, grid, progress, meter, upload, etc.), to theme/customize OATS via CSS variables, to apply the documented recipes, or to check community extensions. Trigger even when the user doesn't mention "OATS" or "Oat" by name — match on a component name or OATS-style semantic markup. Do not use for other CSS libraries/frameworks (Tailwind, Bootstrap) or unrelated styling.
 ---
 
 # OATS Agent Skill
 
 ## Quick start
 
-This skill surfaces the most relevant OATS documentation and utility scripts. Run `make skill` to refresh the references.
+This skill provides OATS documentation and references. Read the relevant entry under `## References` before writing OATS markup.
 
 ## References
 
@@ -41,7 +41,3 @@ This skill surfaces the most relevant OATS documentation and utility scripts. Ru
 * [extensions.md](./references/extensions.md)
 * [recipes.md](./references/recipes.md)
 * [usage.md](./references/usage.md)
-
-## Advanced usage
-
-If you need to add custom helper scripts, place them under `skill/scripts/` and reference them from here.
