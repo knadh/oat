@@ -19,6 +19,9 @@ jobs:
       - name: install esbuild
         run: npm install -g esbuild
 
+      - name: check agent skill
+        run: make skill-check
+
       - name: build assets
         run: make dist
 

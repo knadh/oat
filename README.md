@@ -10,6 +10,17 @@ I wrote this to use in my own projects after getting sick of the ridiculous bloa
 
 See live demo and docs at [**oat.ink**](https://oat.ink)
 
+### Agent skill
+
+Install the Oat documentation skill for your AI coding agent:
+
+```bash
+npx skills add knadh/oat --skill oats-agent-skill
+```
+
+The skill is generated from `docs/content/` and `templates/SKILL.md.tmpl` via
+`make skill`; see [CONTRIBUTING.md](CONTRIBUTING.md) before editing docs.
+
 -------------
 
 <img width="739" height="735" alt="image" src="https://github.com/user-attachments/assets/b0a2f55c-659d-4aab-922c-b13d89eeab36" />
