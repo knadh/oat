@@ -4,6 +4,7 @@ weight = 80
 description = "Dropdown menus and popover using the native popover API. Supports keyboard navigation."
 
 [extra]
+requires_js = true
 webcomponent = true
 +++
 

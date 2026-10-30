@@ -4,7 +4,12 @@
 
 {% block content %}
 <section id="{{ page.slug }}" class="demo-section card card-float">
-  <h1 class="card-title">{{ page.title }}</h1>
+  <h1 class="card-title">
+    {{ page.title }}
+    {% if page.extra.requires_js | default(value=false) %}
+    <span class="badge" data-variant="warning" aria-description="Requires Javascript">JS</span>
+    {% endif %}
+  </h1>
   {{ page.content | safe }}
 </section>
 {% endblock %}

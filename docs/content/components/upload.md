@@ -4,6 +4,7 @@ weight = 95
 description = "Tiny click and drag/drop file uploader."
 
 [extra]
+requires_js = true
 webcomponent = true
 +++
 

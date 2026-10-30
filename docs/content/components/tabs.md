@@ -4,6 +4,7 @@ weight = 150
 description = "Tabbed interface using a custom WebComponent and semantic behaviour."
 
 [extra]
+requires_js = true
 webcomponent = true
 +++
 

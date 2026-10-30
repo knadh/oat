@@ -299,6 +299,9 @@ body > main {
   scroll-margin-top: var(--space-12);
 
   > .card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     position: absolute;
     top: 0;
     left: var(--space-5);

@@ -4,6 +4,7 @@ weight = 85
 description = "Type words and press Enter or comma to turn them into a tags collection. Supports autocomplete."
 
 [extra]
+requires_js = true
 webcomponent = true
 +++
 

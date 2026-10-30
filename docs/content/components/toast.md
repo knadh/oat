@@ -2,6 +2,9 @@
 title = "Toast"
 weight = 160
 description = "Notification toasts with placement and stacking."
+
+[extra]
+requires_js = true
 +++
 
 Show toast notifications with `ot.toast(message, title?, options?)`. Visually, multiple toasts show as a stack to avoid cluttering the UI. Hovering on them expands them.

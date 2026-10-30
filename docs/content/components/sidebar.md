@@ -2,6 +2,9 @@
 title = "Sidebar"
 weight = 120
 description = "Responsive admin dashboard layout with sticky sidebar, optional topnav, and collapsible sections."
+
+[extra]
+requires_js = true
 +++
 
 - Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-sidebar>` for the sidebar and `<main>` for content. The sidebar stays sticky while the main content scrolls.

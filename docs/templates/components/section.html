@@ -17,7 +17,12 @@
 
 {% for page in section.pages %}
 <section id="{{ page.slug }}" class="demo-section card card-float">
-  <h3 class="card-title">{{ page.title }}</h3>
+  <h3 class="card-title">
+    {{ page.title }}
+    {% if page.extra.requires_js | default(value=false) %}
+    <span class="badge" data-variant="warning" aria-description="Requires Javascript">JS</span>
+    {% endif %}
+  </h3>
   <a href="{{ page.permalink }}" class="section-permalink" aria-label="Permalink to {{ page.title }} doc">Link</a>
   {{ page.content | safe }}
 </section>
