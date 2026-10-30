@@ -53,9 +53,6 @@ class OtDropdown extends OtBase {
       this.cleanup();
       this.#items = null;
       this.#trigger.ariaExpanded = 'false';
-      // Don't steal focus from an element the user clicked outside the menu.
-      const active = document.activeElement;
-      if (!active || active === document.body || this.#menu.contains(active)) this.#trigger.focus();
     }
   }
 
