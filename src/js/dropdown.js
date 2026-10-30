@@ -53,7 +53,6 @@ class OtDropdown extends OtBase {
       this.cleanup();
       this.#items = null;
       this.#trigger.ariaExpanded = 'false';
-      this.#trigger.focus();
     }
   }
 
