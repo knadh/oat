@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog - Oat UI</title>
+
+  <meta property="og:image" content="https://oat.ink/thumb.png">
+  <link rel="stylesheet" href="/oat.min.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script>
+    // Prevent FOUC - apply theme before rendering.
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t) {
+        document.documentElement.style.colorScheme = t;
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    })();
+  </script>
+  <script src="/oat.min.js" defer></script>
+  <script src="/main.js"></script>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body data-sidebar-layout class="components-dialog">
+  <nav data-topnav>
+    <div class="row">
+      <div class="col-4 branding">
+        <button data-sidebar-toggle aria-label="Toggle sidebar menu" class="small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" role="img" aria-label="Menu icon">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="16" y2="17" />
+          </svg>
+        </button>
+
+        <a href="/" class="favicon"><img src="/favicon.svg" alt="Oat UI" /></a>
+        <a href="/" class="logo" aria-label="Oat UI"><svg xmlns="http://www.w3.org/2000/svg" width="133.723" height="75.611" viewBox="0 0 35.381 20.005"><defs><path id="a" d="M-77-72h379v211H-77z"/></defs><path fill="#f4d1a9" d="M1.242 9.526C.562 15.044 3.26 19.73 7.266 19.994s7.806-3.997 8.485-9.515C16.431 4.961 13.734.275 9.727.011S1.922 4.008 1.242 9.526" style="stroke-width:.942922"/><path fill="#dfb07c" d="M8.578 2.245a2.1 2.1 0 0 1 .783.083c.24.079.424.208.515.368a.5.5 0 0 1-.01.512c-.096.171-.279.317-.49.431a9.697 8.44 0 0 0-.822.526C6.302 5.81 5.912 7.563 6.004 9.436c.147 1.874.945 3.869 2.6 5.91l.59.681c.143.15.241.323.248.505.006.182-.08.355-.249.488-.168.134-.408.221-.675.25a2.2 2.2 0 0 1-.785-.075l-1.21-.406C2.973 15.457.248 12.804.033 9.734-.359 6.714 2.75 3.179 7.17 2.44a13 13 0 0 1 1.411-.193Z" style="stroke-width:.969604"/><path d="M8.01 17.893q-1.62 0-3.058-.63-1.438-.629-2.562-1.73Q1.266 14.409.637 12.97q-.63-1.461-.63-3.08t.63-3.057q.629-1.46 1.753-2.562t2.562-1.73q1.439-.63 3.057-.63 1.64 0 3.08.63 1.46.629 2.562 1.73t1.73 2.562q.63 1.439.63 3.057 0 1.619-.63 3.08-.629 1.438-1.73 2.562-1.102 1.101-2.563 1.73-1.438.63-3.079.63m0-2.09q1.168 0 2.18-.45 1.033-.472 1.82-1.304.787-.831 1.236-1.888.45-1.056.45-2.27 0-1.191-.45-2.248-.45-1.078-1.236-1.888-.787-.831-1.82-1.28-1.012-.473-2.18-.473-1.147 0-2.181.472-1.034.45-1.82 1.281-.788.81-1.237 1.888-.45 1.057-.45 2.248 0 1.214.45 2.27t1.236 1.888 1.82 1.304q1.035.45 2.181.45" aria-label="Oat" style="font-weight:500;font-size:22.4771px;line-height:1.1;font-family:&quot;Clarity City&quot;;-inkscape-font-specification:&quot;Clarity City Medium&quot;;letter-spacing:-1.04776px;fill:currentColor;stroke-width:11.2386"/><path d="M25.053 17.622v-7.035q0-.742-.27-1.416-.247-.697-.898-1.146-.652-.45-1.821-.45-.854 0-1.686.292-.831.292-1.573.675l-.832-1.641q1.259-.63 2.36-.9 1.102-.27 2.046-.27 1.573 0 2.652.63 1.079.607 1.64 1.686.563 1.079.563 2.54v7.035zm-3.866.27q-1.213 0-2.202-.45-.967-.45-1.529-1.28-.562-.855-.562-1.979 0-1.169.63-2.023.629-.876 1.685-1.348 1.08-.495 2.338-.495 1.079 0 2.203.27 1.146.247 2.135.697l-.225 1.348q-.809-.314-1.775-.472-.944-.18-2-.18-.765 0-1.417.27t-1.056.764q-.382.472-.382 1.102t.337 1.101q.36.45.944.697.607.225 1.326.225t1.438-.225q.72-.247 1.26-.72.539-.494.718-1.213l.517.922q-.224.966-.921 1.64-.697.652-1.619 1.012-.921.337-1.843.337m11.854 0q-.899 0-1.595-.405-.675-.404-1.08-1.123-.381-.72-.381-1.641V2.81h2.18v11.755q0 .607.36 1.012.36.382.854.382.36 0 .674-.112.337-.135.494-.315l.832 1.528q-.472.382-1.101.607-.607.225-1.237.225M28.256 7.891V6.003h6.653V7.89z" aria-label="Oat" style="font-weight:500;font-size:22.4771px;line-height:1.1;font-family:&quot;Clarity City&quot;;-inkscape-font-specification:&quot;Clarity City Medium&quot;;letter-spacing:-1.04776px;fill:currentColor;stroke-width:11.2386"/></svg></a>
+      </div>
+
+      <div class="col-8 justify-end hstack">
+        <a href="/">Home</a>
+        <a href="/demo">Demo</a>
+        <a href="https://github.com/knadh/oat">GitHub</a>
+        <ot-dropdown>
+          <button popovertarget="nav-menu" class="outline small">
+            More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          <menu popover id="nav-menu">
+            <a href="/usage" role="menuitem">Usage</a>
+            <a href="/customizing" role="menuitem">Customizing</a>
+            <a href="/other-libs" role="menuitem">Other libs</a>
+            <hr>
+            <a href="/recipes" role="menuitem">Recipes</a>
+            <a href="/extensions" role="menuitem">Extensions</a>
+          </menu>
+        </ot-dropdown>
+      </div>
+    </div>
+  </nav>
+
+  <aside data-sidebar class="main-sidebar">
+    <nav>
+      <ul>
+        <li><a href="https://github.com/knadh/oat"><img src="/github.svg" alt="GitHub icon" /> GitHub</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/demo/">Demo</a></li>
+        <li><a href="/usage/">Usage</a></li>
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/customizing/">Customizing</a></li>
+        <li><a href="/other-libs/">Other tiny libs</a></li>
+        <li><a href="/extensions/">Extensions</a></li>
+        <li>
+          <details open>
+            <summary>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Components
+            </summary>
+            <ul>
+              <li><a href="/components">All components</a></li>
+              
+              
+              <li><a href="/components/#typography">Typography
+                </a></li>
+              
+              <li><a href="/components/#accordion">Accordion
+                </a></li>
+              
+              <li><a href="/components/#alert">Alert
+                </a></li>
+              
+              <li><a href="/components/#avatar">Avatar
+                </a></li>
+              
+              <li><a href="/components/#badge">Badge
+                </a></li>
+              
+              <li><a href="/components/#breadcrumb">Breadcrumb
+                </a></li>
+              
+              <li><a href="/components/#button">Button
+                </a></li>
+              
+              <li><a href="/components/#card">Card
+                </a></li>
+              
+              <li><a href="/components/#dialog">Dialog
+                </a></li>
+              
+              <li><a href="/components/#dropdown">Dropdown
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#taginput">TagInput
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#form">Form elements
+                </a></li>
+              
+              <li><a href="/components/#upload">Upload
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#meter">Meter
+                </a></li>
+              
+              <li><a href="/components/#pagination">Pagination
+                </a></li>
+              
+              <li><a href="/components/#progress">Progress
+                </a></li>
+              
+              <li><a href="/components/#spinner">Spinner
+                </a></li>
+              
+              <li><a href="/components/#skeleton">Skeleton
+                </a></li>
+              
+              <li><a href="/components/#sidebar">Sidebar
+                </a></li>
+              
+              <li><a href="/components/#switch">Switch
+                </a></li>
+              
+              <li><a href="/components/#table">Table
+                </a></li>
+              
+              <li><a href="/components/#tabs">Tabs
+                <sup title="WebComponent">WC</sup></a></li>
+              
+              <li><a href="/components/#tooltip">Tooltip
+                </a></li>
+              
+              <li><a href="/components/#toast">Toast
+                </a></li>
+              
+              <li><a href="/components/#grid">Grid
+                </a></li>
+              
+              <li><a href="/components/#utilities">Utils and helpers
+                </a></li>
+              
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <footer>
+      <button class="outline small" onclick="toggleTheme()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-light" role="img" aria-label="Light mode">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-dark" role="img" aria-label="Dark mode">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+
+        Switch theme
+      </button>
+    </footer>
+  </aside>
+
+  <main>
+    <div class="container">
+      
+<section id="dialog" class="demo-section card card-float">
+  <h1 class="card-title">
+    Dialog
+    
+  </h1>
+  <p>Fully semantic, zero-Javascript, dynamic dialog with <code>&lt;dialog&gt;</code>. Use <code>commandfor</code> and <code>command="show-modal"</code> attributes on an element to open a target dialog. Focus trapping, z placement, keyboard shortcuts all work out of the box.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;" ><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;show-modal&quot;</span><span>&gt;Open dialog&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">dialog</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> closedby</span><span>=</span><span style="color: #98C379;">&quot;any&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">form</span><span style="color: #D19A66;"> method</span><span>=</span><span style="color: #98C379;">&quot;dialog&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Title&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;This is a dialog description.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Dialog content goes here. You can put any HTML inside.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">p</span><span>&gt;Click outside or press Escape to close.&lt;/</span><span style="color: #E06C75;">p</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;button&quot;</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;close&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;confirm&quot;</span><span>&gt;Confirm&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">form</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">dialog</span><span>&gt;</span></span></code></pre>
+</div>
+<h4 id="with-form-fields">With form fields</h4>
+<p>Forms inside dialogs work naturally. Use <code>command="close"</code> on cancel buttons to close.</p>
+<div class="ot-demo">
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;" ><code data-lang="html"><span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;show-modal&quot;</span><span>&gt;Open form dialog&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;</span><span style="color: #E06C75;">dialog</span><span style="color: #D19A66;"> id</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;</span><span style="color: #E06C75;">form</span><span style="color: #D19A66;"> method</span><span>=</span><span style="color: #98C379;">&quot;dialog&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">h3</span><span>&gt;Edit form&lt;/</span><span style="color: #E06C75;">h3</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">header</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">div</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;vstack&quot;</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">label</span><span>&gt;Name &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;name&quot;</span><span style="color: #D19A66;"> required</span><span>&gt;&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">label</span><span>&gt;Email &lt;</span><span style="color: #E06C75;">input</span><span style="color: #D19A66;"> name</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;email&quot;</span><span>&gt;&lt;/</span><span style="color: #E06C75;">label</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">div</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> type</span><span>=</span><span style="color: #98C379;">&quot;button&quot;</span><span style="color: #D19A66;"> commandfor</span><span>=</span><span style="color: #98C379;">&quot;demo-dialog-form&quot;</span><span style="color: #D19A66;"> command</span><span>=</span><span style="color: #98C379;">&quot;close&quot;</span><span style="color: #D19A66;"> class</span><span>=</span><span style="color: #98C379;">&quot;outline&quot;</span><span>&gt;Cancel&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>      &lt;</span><span style="color: #E06C75;">button</span><span style="color: #D19A66;"> value</span><span>=</span><span style="color: #98C379;">&quot;save&quot;</span><span>&gt;Save&lt;/</span><span style="color: #E06C75;">button</span><span>&gt;</span></span>
+<span class="giallo-l"><span>    &lt;/</span><span style="color: #E06C75;">footer</span><span>&gt;</span></span>
+<span class="giallo-l"><span>  &lt;/</span><span style="color: #E06C75;">form</span><span>&gt;</span></span>
+<span class="giallo-l"><span>&lt;/</span><span style="color: #E06C75;">dialog</span><span>&gt;</span></span></code></pre>
+</div>
+<h4 id="handling-return-value">Handling return value</h4>
+<p>Listen to the native <code>close</code> event to get the button value:</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;" ><code data-lang="javascript"><span class="giallo-l"><span style="color: #C678DD;">const</span><span style="color: #E5C07B;"> dialog</span><span style="color: #56B6C2;"> =</span><span style="color: #E5C07B;"> document</span><span>.</span><span style="color: #61AFEF;">querySelector</span><span>(</span><span style="color: #98C379;">&quot;#demo-dialog&quot;</span><span>);</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">dialog</span><span>.</span><span style="color: #61AFEF;">addEventListener</span><span>(</span><span style="color: #98C379;">&#39;close&#39;</span><span>, (</span><span style="color: #E06C75;font-style: italic;">e</span><span>)</span><span style="color: #C678DD;"> =&gt;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: #E5C07B;">  console</span><span>.</span><span style="color: #61AFEF;">log</span><span>(</span><span style="color: #E5C07B;">dialog</span><span>.</span><span style="color: #E06C75;">returnValue</span><span>);</span><span style="color: #7F848E;font-style: italic;"> // &quot;confirm&quot;</span></span>
+<span class="giallo-l"><span>});</span></span></code></pre>
+<p>or use <code>onclose</code> inline:</p>
+<pre class="giallo" style="color: #ABB2BF; background-color: #282C34;" ><code data-lang="plain"><span class="giallo-l"><span>&lt;dialog id=&quot;my-dialog&quot; onclose=&quot;console.log(this.returnValue)&quot;&gt;</span></span></code></pre>
+</section>
+
+
+      <footer class="footer text-light"><a href="https://nadh.in"><small class="text-light">Kailash Nadh</small></a></footer>
+      <br />
+    </div>
+  </main>
+</body>
+</html>
