@@ -26,7 +26,8 @@ if ('showPopover' in HTMLElement.prototype) {
     const title = el.getAttribute('title');
     if (title) {
       el.dataset.tooltip = title;
-      el.hasAttribute('aria-label') || el.setAttribute('aria-label', title);
+      const attr = el.textContent.trim() || el.hasAttribute('aria-label') || el.hasAttribute('aria-labelledby') ? 'aria-description' : 'aria-label';
+      el.hasAttribute(attr) || el.setAttribute(attr, title);
       el.removeAttribute('title');
     }
 
