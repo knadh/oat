@@ -95,6 +95,10 @@ Mutate the `value` property of the component. A standard `input` event is dispat
 </script>
 ```
 
+#### DOM objects
+
+Pass a DOM element or text node to `.add()` or `.value` to render it inside the badge. Object tags are deduplicated using strict equality (`===`).
+
 #### Options
 
 | Property      | Description                                                             |

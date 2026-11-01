@@ -12,7 +12,7 @@
  *
  * Properties:
  *   .value             - read/write array of tags. Each tag is a string, or an
- *                        object whose toString() returns its display text.
+ *                        object whose toString() returns its display text, or a DOM node.
  *   .disabled          - read/write boolean for the `disabled` attrib.
  *   .add(value)        - add a string or object tag, emitting `input`.
  *
@@ -25,8 +25,8 @@ import { OtBase } from './base.js';
 
 const h = t => document.createElement(t);
 
-// Display text for a tag, which may be a plain string or an object.
-const label = v => String(v).trim();
+// Return the label to display based on object type. String types are trimmed.
+const label = v => (v instanceof Node ? v.textContent ?? '' : String(v)).trim();
 
 class OtTaginput extends OtBase {
   static observedAttributes = ['disabled'];
@@ -118,11 +118,11 @@ class OtTaginput extends OtBase {
     else if (e.target === this || this.#data.has(e.target)) this.input.focus();
   }
 
-  // `v` may be a plain string or an object. The badge shows its display text
-  // while the object is retained via `.value`.
+  // Render DOM nodes directly while strings and other objects are converted to text.
   add(v, silent) {
     const text = label(v);
-    if (!text || this.value.some(x => label(x) === text)) {
+    const value = v && typeof v === 'object' ? v : text;
+    if (!text || this.value.some(x => x === value)) {
       return;
     }
 
@@ -130,8 +130,12 @@ class OtTaginput extends OtBase {
     const t = h('span');
     t.className = 'badge';
     t.dataset.variant = 'secondary';
-    t.textContent = text;
-    this.#data.set(t, v && typeof v === 'object' ? v : text);
+    if (v instanceof Node) {
+      t.appendChild(v);
+    } else {
+      t.textContent = text;
+    }
+    this.#data.set(t, value);
 
     if (!this.input.readOnly) {
       // Append the 'x' button.
