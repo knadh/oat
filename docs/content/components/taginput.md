@@ -66,6 +66,14 @@ function tagInputAutoComplete(el) {
 </script>
 ```
 
+#### Custom suggestions
+
+To use a custom autcomplete control and not the native `<datalist>` remove the input's `list` attribute and call `.add(value)` when an item is selected.
+
+```js
+picker.addEventListener('change', () => tags.add(picker.value));
+```
+
 #### Programmatic read and write
 
 Mutate the `value` property of the component. A standard `input` event is dispatched (and bubbles) whenever a tag is added or removed.
@@ -96,5 +104,6 @@ Mutate the `value` property of the component. A standard `input` event is dispat
 | `disabled`    | Disables the control like a native `<input>`.                           |
 | `.value`      | Array of tags (strings or objects). Setting this does not emit `input`. |
 | `.disabled`   | Boolean prop for the `disabled` attribute.                              |
+| `.add(value)` | Add a string or object tag. Emits `input` unless empty or duplicate.   |
 | `option.data` | Optional object attached to a `<datalist>` `<option>`.                  |
 | `input` event | Dispatched (bubbles) on add/remove. `detail` is the current tag array.  |

@@ -14,6 +14,7 @@
  *   .value             - read/write array of tags. Each tag is a string, or an
  *                        object whose toString() returns its display text.
  *   .disabled          - read/write boolean for the `disabled` attrib.
+ *   .add(value)        - add a string or object tag, emitting `input`.
  *
  * Events:
  *   input              - dispatched (bubbles) when a tag is added or removed.
@@ -30,7 +31,7 @@ const label = v => String(v).trim();
 class OtTaginput extends OtBase {
   static observedAttributes = ['disabled'];
 
-  // Maps a tag's badge element to its backing object (only set for object tags).
+  // Maps owned badge elements to their string or object values.
   #data = new WeakMap();
 
   init() {
@@ -38,7 +39,7 @@ class OtTaginput extends OtBase {
     if (!this.input) return;
 
     if (!this.input.readOnly) {
-      this.input.addEventListener('keydown', this);
+      this.addEventListener('keydown', this);
       this.input.addEventListener('input', e => {
         e.stopPropagation();
 
@@ -79,8 +80,10 @@ class OtTaginput extends OtBase {
     this.toggleAttribute('disabled', !!v);
   }
 
-  // Enter / command triggers tag addition, backspace removes the last tag.
+  // Enter / comma triggers tag addition, backspace removes the last tag.
   onkeydown(e) {
+    if (e.target !== this.input || e.defaultPrevented || e.isComposing) return;
+
     if (e.key === 'Backspace' && !this.input.value) {
       return this.remove(this.input.previousElementSibling);
     }
@@ -111,7 +114,8 @@ class OtTaginput extends OtBase {
     if (this.disabled) return;
 
     const x = e.target.closest('button');
-    x ? this.remove(x.parentElement) : this.input.focus();
+    if (x && this.#data.has(x.parentElement)) this.remove(x.parentElement);
+    else if (e.target === this || this.#data.has(e.target)) this.input.focus();
   }
 
   // `v` may be a plain string or an object. The badge shows its display text
@@ -127,7 +131,7 @@ class OtTaginput extends OtBase {
     t.className = 'badge';
     t.dataset.variant = 'secondary';
     t.textContent = text;
-    if (v && typeof v === 'object') this.#data.set(t, v);
+    this.#data.set(t, v && typeof v === 'object' ? v : text);
 
     if (!this.input.readOnly) {
       // Append the 'x' button.
@@ -149,21 +153,21 @@ class OtTaginput extends OtBase {
 
   // `el` is a tag element.
   remove(el) {
-    if (!el) return;
+    if (!this.#data.has(el) || el.parentElement !== this) return;
 
     el.remove();
     this.emit('input', this.value);
   }
 
   get value() {
-    return [...this.querySelectorAll('.badge')].map(t => this.#data.get(t) ?? t.firstChild.data);
+    return [...this.children].filter(t => this.#data.has(t)).map(t => this.#data.get(t));
   }
 
   // Set tag values. Each may be a string (comma-splittable) or a rich object.
   set value(tags) {
     this.input ??= this.querySelector('input');
 
-    this.querySelectorAll('.badge').forEach(b => b.remove());
+    [...this.children].filter(t => this.#data.has(t)).forEach(t => t.remove());
 
     (Array.isArray(tags) ? tags : []).forEach(t => {
       if (typeof t === 'string') {
