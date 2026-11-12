@@ -69,7 +69,9 @@ class OtTabs extends OtBase {
   onkeydown(e) {
     if (!e.target.closest('[role="tab"]')) return;
 
-    const next = this.keyNav(e, this.activeIndex, this.#tabs.length, 'ArrowLeft', 'ArrowRight');
+    // Arrow keys follow the visual direction, so they swap in RTL.
+    const rtl = getComputedStyle(this).direction === 'rtl';
+    const next = this.keyNav(e, this.activeIndex, this.#tabs.length, rtl ? 'ArrowRight' : 'ArrowLeft', rtl ? 'ArrowLeft' : 'ArrowRight', true);
     if (next >= 0) {
       this.#activate(next);
       this.#tabs[next].focus();
