@@ -17,7 +17,7 @@
     overflow: visible;
     background: none;
     pointer-events: none;
-    animation: ot-tooltip var(--transition-fast) 700ms both;
+    animation: ot-tooltip var(--transition-fast) var(--tooltip-delay) both;
 
     &::before, &::after {
       content: '';

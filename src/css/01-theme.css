@@ -72,6 +72,7 @@
 
     --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition: 300ms cubic-bezier(0.32, 0.72, 0, 1);
+    --tooltip-delay: 700ms;
 
     --z-dropdown: 50;
     --z-modal: 200;

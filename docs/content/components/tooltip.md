@@ -7,7 +7,7 @@ description = "Smooth tooltips using the native title attribute."
 requires_js = true
 +++
 
-Use the standard `title` attribute on any element to render a tooltip with smooth transition. [Replaced elements](https://developer.mozilla.org/en-US/docs/Glossary/Replaced_elements) like `<img>`, `<iframe>` etc. need to be wrapped in a parent with the `title` attribute. Add `data-tooltip-placement` to position the tooltip. Default is `top`.
+Use the standard `title` attribute on any element to render a tooltip with smooth transition. [Replaced elements](https://developer.mozilla.org/en-US/docs/Glossary/Replaced_elements) like `<img>`, `<iframe>` etc. need to be wrapped in a parent with the `title` attribute. Add `data-tooltip-placement` to position the tooltip. Default is `top`. Set `--tooltip-delay` to change how long the tooltip waits before it appears. Default is `700ms`.
 
 {% <demo> %}
 ```html
