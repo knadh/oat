@@ -13,5 +13,7 @@ Third-party extensions that work with Oat.
 
 - **[oat-upload](https://github.com/MADEVAL/Oat-Upload)**: Dropzone, file previews, validation, removal, and progress for native `<input type="file">` in Oat UI. ([Demo](https://demo.globus.studio/oat-upload/)).
 
+- **[oat-a2ui](https://github.com/mr-karan/oat-a2ui)**: Zero-dependency Web Component renderer (`<ot-a2ui-surface>`) for Google's [A2UI v1.0](https://a2ui.org) generative UI protocol, rendering streaming agent JSON straight into semantic Oat HTML. ~25KB gzipped ([Demo](https://mr-karan.github.io/oat-a2ui/)).
+
 -------
 [Open a PR](https://github.com/knadh/oat) to list an extension here.
